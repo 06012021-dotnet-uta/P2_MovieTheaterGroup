@@ -29,11 +29,11 @@ steps:
     projects: '$(solution)'
     arguments: '--configuration $(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '$(solution)'
-    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'test'
+#     projects: '$(solution)'
+#     arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
 
 # - task: PublishCodeCoverageResults@1
 #   inputs:
@@ -42,18 +42,18 @@ steps:
   
 # - task: SonarCloudAnalyze@1
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '$(solution)'
-    zipAfterPublish: true
-    arguments: 
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'publish'
+#     publishWebProjects: false
+#     projects: '$(solution)'
+#     zipAfterPublish: true
+#     arguments: 
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
-    appType: 'apiApp'
-    WebAppName: 'P2MovieTheaterGroupAPI'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
+#     appType: 'apiApp'
+#     WebAppName: 'P2MovieTheaterGroupAPI'
+#     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
