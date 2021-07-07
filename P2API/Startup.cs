@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using P2DatabaseModelLibrary;
+using Microsoft.EntityFrameworkCore;
 
 namespace P2API
 {
@@ -31,6 +33,13 @@ namespace P2API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "P2API", Version = "v1" });
+            });
+            services.AddDbContext<P2Context>(options =>
+            {
+                if (!options.IsConfigured)
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
+                }
             });
         }
 
