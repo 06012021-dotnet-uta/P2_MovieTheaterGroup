@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2API", "P2API.csproj", "{F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2DatabaseModelLibrary", "..\P2DatabaseModelLibrary\P2DatabaseModelLibrary.csproj", "{8B8E28A2-AEB4-4895-ABD3-3E5AA8D6C4E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryModels", "..\QueryModels\QueryModels.csproj", "{15C43F12-6B91-4C52-BFE5-21F152BA819A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{8B8E28A2-AEB4-4895-ABD3-3E5AA8D6C4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B8E28A2-AEB4-4895-ABD3-3E5AA8D6C4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8E28A2-AEB4-4895-ABD3-3E5AA8D6C4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C43F12-6B91-4C52-BFE5-21F152BA819A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C43F12-6B91-4C52-BFE5-21F152BA819A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C43F12-6B91-4C52-BFE5-21F152BA819A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C43F12-6B91-4C52-BFE5-21F152BA819A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
