@@ -17,10 +17,10 @@ variables:
 steps:
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'P1SonarCloud'
+    SonarCloud: 'SonarCloud'
     organization: 'movietheatergroupp2'
     scannerMode: 'MSBuild'
-    projectKey: 'movietheatergroupp2'
+    projectKey: 'MovieTheaterGroupP2_P2'
     projectName: 'P2'
 
 - task: DotNetCoreCLI@2
