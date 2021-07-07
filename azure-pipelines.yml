@@ -54,6 +54,6 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
-    appType: 'webApp'
-    WebAppName: 'P2MovieTheaterGroup'
+    appType: 'apiApp'
+    WebAppName: 'P2MovieTheaterGroupAPI'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
