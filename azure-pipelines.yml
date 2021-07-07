@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-# steps:
+ steps:
 # - task: SonarCloudPrepare@1
 #   inputs:
 #     SonarCloud: 'P1SonarCloud'
@@ -23,11 +23,11 @@ variables:
 #     projectKey: 'gregoryagnewp1_P1'
 #     projectName: 'P1'
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     projects: '$(solution)'
-#     arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration)'
 
 # - task: DotNetCoreCLI@2
 #   inputs:
