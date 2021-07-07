@@ -6,8 +6,8 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'windows-latest'
+pool: p1temp
+  # vmImage: 'windows-latest'
 
 variables:
   solution: '**P2API/P2API.sln'
@@ -39,7 +39,7 @@ steps:
 #   inputs:
 #     codeCoverageTool: 'Cobertura'
 #     summaryFileLocation: '**/coburtura/coverage.xml'
-  
+
 # - task: SonarCloudAnalyze@1
 
 # - task: DotNetCoreCLI@2
@@ -48,7 +48,7 @@ steps:
 #     publishWebProjects: false
 #     projects: '$(solution)'
 #     zipAfterPublish: true
-#     arguments: 
+#     arguments:
 
 # - task: AzureRmWebAppDeployment@4
 #   inputs:
