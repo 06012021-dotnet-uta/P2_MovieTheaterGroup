@@ -6,26 +6,25 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ModelsLayer
 {
-    public  class Movie
+    public  class Theater
     {
-        // Just a comment
-        public Movie()
+        public Theater()
         {
-            Comments = new HashSet<Comment>();
-            Ratings = new HashSet<Rating>();
             Schedules = new HashSet<Schedule>();
             TheaterMovies = new HashSet<TheaterMovie>();
         }
 
         [Key]
-        public string MovieId { get; set; }
+        public int TheaterId { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        public string MovieName { get; set; }
+        [MaxLength(25)]
+        public string TheaterLoc { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string TheaterName { get; set; }
+
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<TheaterMovie> TheaterMovies { get; set; }
     }
