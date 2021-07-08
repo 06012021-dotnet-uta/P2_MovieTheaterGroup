@@ -1,0 +1,59 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- main
+
+pool: #p1temp
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**P2API/P2API.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'movietheatergroupp2'
+    scannerMode: 'MSBuild'
+    projectKey: 'MovieTheaterGroupP2_P2'
+    projectName: 'P2'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coburtura/coverage.xml'
+
+- task: SonarCloudAnalyze@1
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(solution)'
+    zipAfterPublish: true
+    arguments:
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
+    appType: 'apiApp'
+    WebAppName: 'P2MovieTheaterGroupAPI'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
