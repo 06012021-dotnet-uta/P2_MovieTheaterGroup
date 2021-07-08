@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ModelsLayer;
 
 #nullable disable
 
-namespace P2DatabaseModelLibrary
+namespace RepositoryLayer
 {
     public partial class P2Context : DbContext
     {
