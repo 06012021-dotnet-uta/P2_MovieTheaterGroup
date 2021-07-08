@@ -18,103 +18,104 @@ using Microsoft.EntityFrameworkCore;
 namespace P2API
 {
 
-        public class Startup
+  public class Startup
+  {
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
-            });
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "testApp v1"));
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
-    
-
-
-        // public Startup(IConfiguration configuration)
-        // {
-        //     Configuration = configuration;
-        // }
-
-        // public IConfiguration Configuration { get; }
-
-        // // This method gets called by the runtime. Use this method to add services to the container.
-        // public void ConfigureServices(IServiceCollection services)
-        // {
-
-        //     services.AddControllers();
-        //     services.AddSwaggerGen(c =>
-        //     {
-        //         c.SwaggerDoc("v1", new OpenApiInfo { Title = "P2API", Version = "v1" });
-        //     });
-        //     services.AddDbContext<P2Context>(options =>
-        //     {
-        //         if (!options.IsConfigured)
-        //         {
-        //             options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
-        //         }
-        //     });
-        //     services.AddScoped<IScheduleService,     ScheduleService>();
-        //     services.AddScoped<ICommentService,      CommentService>();
-        //     services.AddScoped<IMovieService,        MovieService>();
-        //     services.AddScoped<IRatingService,       RatingService>();
-        //     services.AddScoped<IRoleService,         RoleService>();
-        //     services.AddScoped<ITheaterMovieService, TheaterMovieService>();
-        //     services.AddScoped<ITheaterService,      TheaterService>();
-        //     services.AddScoped<IScheduleService,     UserService>();
-        // }
-
-        // // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        // {
-        //     if (env.IsDevelopment())
-        //     {
-        //         app.UseDeveloperExceptionPage();
-        //         app.UseSwagger();
-        //         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "P2API v1"));
-        //     }
-
-        //     app.UseHttpsRedirection();
-
-        //     app.UseRouting();
-
-        //     app.UseAuthorization();
-
-        //     app.UseEndpoints(endpoints =>
-        //     {
-        //         endpoints.MapControllers();
-        //     });
-        // }
+      Configuration = configuration;
     }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+
+      services.AddControllers();
+      services.AddSwaggerGen(c =>
+      {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
+      });
+      services.AddDistributedMemoryCache();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+      if (env.IsDevelopment())
+      {
+        app.UseDeveloperExceptionPage();
+        app.UseSwagger();
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "testApp v1"));
+      }
+
+      app.UseHttpsRedirection();
+
+      app.UseRouting();
+
+      app.UseAuthorization();
+
+      app.UseEndpoints(endpoints =>
+      {
+        endpoints.MapControllers();
+      });
+    }
+
+
+
+    // public Startup(IConfiguration configuration)
+    // {
+    //     Configuration = configuration;
+    // }
+
+    // public IConfiguration Configuration { get; }
+
+    // // This method gets called by the runtime. Use this method to add services to the container.
+    // public void ConfigureServices(IServiceCollection services)
+    // {
+
+    //     services.AddControllers();
+    //     services.AddSwaggerGen(c =>
+    //     {
+    //         c.SwaggerDoc("v1", new OpenApiInfo { Title = "P2API", Version = "v1" });
+    //     });
+    //     services.AddDbContext<P2Context>(options =>
+    //     {
+    //         if (!options.IsConfigured)
+    //         {
+    //             options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
+    //         }
+    //     });
+    //     services.AddScoped<IScheduleService,     ScheduleService>();
+    //     services.AddScoped<ICommentService,      CommentService>();
+    //     services.AddScoped<IMovieService,        MovieService>();
+    //     services.AddScoped<IRatingService,       RatingService>();
+    //     services.AddScoped<IRoleService,         RoleService>();
+    //     services.AddScoped<ITheaterMovieService, TheaterMovieService>();
+    //     services.AddScoped<ITheaterService,      TheaterService>();
+    //     services.AddScoped<IScheduleService,     UserService>();
+    // }
+
+    // // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    // public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // {
+    //     if (env.IsDevelopment())
+    //     {
+    //         app.UseDeveloperExceptionPage();
+    //         app.UseSwagger();
+    //         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "P2API v1"));
+    //     }
+
+    //     app.UseHttpsRedirection();
+
+    //     app.UseRouting();
+
+    //     app.UseAuthorization();
+
+    //     app.UseEndpoints(endpoints =>
+    //     {
+    //         endpoints.MapControllers();
+    //     });
+    // }
+  }
 }

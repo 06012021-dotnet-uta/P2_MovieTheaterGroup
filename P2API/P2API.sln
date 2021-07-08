@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2DatabaseModelLibrary", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "..\BusinessLayer\BusinessLayer.csproj", "{FFB1891E-1FFA-4C3A-9E55-7F75988BAD56}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2UnitTests", "..\P2UnitTests\P2UnitTests.csproj", "{988D3C7A-E5E9-41AA-BE11-F05145C8AE85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{FFB1891E-1FFA-4C3A-9E55-7F75988BAD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB1891E-1FFA-4C3A-9E55-7F75988BAD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFB1891E-1FFA-4C3A-9E55-7F75988BAD56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988D3C7A-E5E9-41AA-BE11-F05145C8AE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988D3C7A-E5E9-41AA-BE11-F05145C8AE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988D3C7A-E5E9-41AA-BE11-F05145C8AE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988D3C7A-E5E9-41AA-BE11-F05145C8AE85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
