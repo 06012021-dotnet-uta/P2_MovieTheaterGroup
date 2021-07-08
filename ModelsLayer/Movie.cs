@@ -8,7 +8,6 @@ namespace ModelsLayer
 {
     public  class Movie
     {
-        // Just a comment
         public Movie()
         {
             Comments = new HashSet<Comment>();
