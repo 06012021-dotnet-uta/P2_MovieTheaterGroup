@@ -16,8 +16,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
-  </ItemGroup>
-
 </Project>
