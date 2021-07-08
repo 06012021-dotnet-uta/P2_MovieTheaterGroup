@@ -10,35 +10,35 @@ namespace P2API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TheaterMovieController : ControllerBase
+    public class CommentController : ControllerBase
     {
-        // GET: api/<TheaterController>
+        // GET: api/<CommentController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<TheaterController>/5
+        // GET api/<CommentController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<TheaterController>
+        // POST api/<CommentController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<TheaterController>/5
+        // PUT api/<CommentController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<TheaterController>/5
+        // DELETE api/<CommentController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

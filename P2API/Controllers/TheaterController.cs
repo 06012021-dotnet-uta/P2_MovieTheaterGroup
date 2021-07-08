@@ -10,7 +10,7 @@ namespace P2API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TheaterMovieController : ControllerBase
+    public class TheaterController : ControllerBase
     {
         // GET: api/<TheaterController>
         [HttpGet]

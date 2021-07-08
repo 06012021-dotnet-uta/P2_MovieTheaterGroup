@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    interface ITheaterMovieService
+    interface IScheduleService
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    class MovieService
+    class MovieService : IMovieService
     {
     }
 }
