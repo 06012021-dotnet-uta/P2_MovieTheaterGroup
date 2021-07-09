@@ -38,7 +38,14 @@ namespace P2API
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
       });
-      services.AddDistributedMemoryCache();
+      services.AddDbContext<P2Context>(options =>
+      {
+                if (!options.IsConfigured)
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
+                }
+       });
+            services.AddDistributedMemoryCache();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IScheduleService, ScheduleService>();
             services.AddScoped<ICommentService, CommentService>();
