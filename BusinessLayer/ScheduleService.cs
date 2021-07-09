@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    class ScheduleService : IScheduleService
+    public class ScheduleService : IScheduleService
     {
     }
 }

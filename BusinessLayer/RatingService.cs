@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace QueryModels
+namespace BusinessLayer
 {
     /// <summary>
     /// Contains methods for interacting with the Ratings table in the database.
     /// </summary>
-    public class Rating
+    public class RatingService : IRatingService
     {
         private readonly P2Context _context;
 
@@ -17,7 +17,7 @@ namespace QueryModels
         /// Initializes an instance of the database models.
         /// </summary>
         /// <param name="context"></param>
-        public Rating(P2Context context)
+        public RatingService(P2Context context)
         {
             _context = context;
         }

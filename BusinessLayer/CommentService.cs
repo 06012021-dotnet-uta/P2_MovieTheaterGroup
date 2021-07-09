@@ -3,13 +3,14 @@ using RepositoryLayer;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using BusinessLayer;
 
-namespace QueryModels
+namespace BusinessLayer
 {
     /// <summary>
     /// Contains methods for interacting with the Comments table in the database.
     /// </summary>
-    public class Comment
+    public class CommentService : ICommentService
     {
         private readonly P2Context _context;
 
@@ -17,7 +18,7 @@ namespace QueryModels
         /// Initializes an instance of the database models.
         /// </summary>
         /// <param name="context"></param>
-        public Comment(P2Context context)
+        public CommentService(P2Context context)
         {
             _context = context;
         }

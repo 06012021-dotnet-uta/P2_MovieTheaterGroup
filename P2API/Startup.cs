@@ -11,10 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-//using P2DatabaseModelLibrary;
+
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
-//using P2DatabaseModelLibrary;
+using BusinessLayer;
+
 
 namespace P2API
 {
@@ -38,15 +39,15 @@ namespace P2API
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
       });
       services.AddDistributedMemoryCache();
-      // services.AddScoped<IScheduleService,     ScheduleService>();
-            // services.AddScoped<ICommentService,      CommentService>();
-            // services.AddScoped<IMovieService,        MovieService>();
-            // services.AddScoped<IRatingService,       RatingService>();
-            // services.AddScoped<IRoleService,         RoleService>();
-            // services.AddScoped<ITheaterMovieService, TheaterMovieService>();
-            // services.AddScoped<ITheaterService,      TheaterService>();
-            // services.AddScoped<IScheduleService,     UserService>();
-    }
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ITheaterMovieService, TheaterMovieService>();
+            services.AddScoped<ITheaterService, TheaterService>();
+        }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
