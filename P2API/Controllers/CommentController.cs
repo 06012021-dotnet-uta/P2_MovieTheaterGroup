@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using BusinessLayer;
+using RepositoryLayer;
 
 namespace P2API.Controllers
 {
@@ -12,6 +12,16 @@ namespace P2API.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
+        private readonly P2Context  _context;
+
+        private readonly CommentService _comment;
+
+        public CommentController(P2Context context, ICommentService comment)
+        {
+            _context = context;
+            _comment = (CommentService)comment;
+        }
+
         // GET: api/<CommentController>
         [HttpGet]
         public IEnumerable<string> Get()
