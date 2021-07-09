@@ -22,7 +22,7 @@ namespace BusinessLayer
         /// <param name="context"></param>
         public TheaterMovieService(P2Context context) { this._context = context; }
 
-        // admin should add movie to theater 
+        // admin should add movie to TheaterMovie 
         public async Task<bool> AddTheaterMovieAsync(TheaterMovie p)
         {
             //create a try/catch to save the player
@@ -43,6 +43,8 @@ namespace BusinessLayer
             }
             return true;
         }
+
+        // remove move a movie to TheaterMovie
 
         // TheaterMovieList 
         public async Task<List<TheaterMovie>> TheaterMovieListAsync()

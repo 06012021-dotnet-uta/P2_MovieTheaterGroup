@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ namespace P2UnitTests
 		DbContextOptions<P2Context> options = new DbContextOptionsBuilder<P2Context>()
 		.UseInMemoryDatabase(databaseName: "TestingDb")
 		.Options;
-
+		// Create User test
 		[Fact]
 		public async Task RegisterUserInsertsUserCorrectly()
 		{
@@ -72,11 +73,9 @@ namespace P2UnitTests
 
 			}
 		}
-
-		
-	
+		// UserLogin test
 		[Fact]
-				public async Task LoginExistingUserCorrectly()
+		public async Task LoginExistingUserCorrectly()
 				{
 					// arrange
 					//createa a player to inset into the inmemory db.
@@ -122,8 +121,67 @@ namespace P2UnitTests
 						Assert.True(result2);
 					}
 				}
-	}
-		
 
-	
+		// UserList test 
+		[Fact]
+		public async Task RenderAllUsersCorrectly()
+		{
+			// arrange
+			//createa a player to inset into the inmemory db.
+			User u = new User()
+			{
+				Username = "Max",
+				Passwd = "Max",
+				FirstName = "Max",
+				LastName = "Max",
+				RoleId = 0,
+			};
+			User uu = new User()
+			{
+				Username = "Alex",
+				Passwd = "Alex",
+				FirstName = "Alex",
+				LastName = "Alex",
+				RoleId = 1,
+			};
+			bool result0 = false;
+			List<User> result = new List<User>();
+
+			using (var context = new P2Context(options))
+			{
+				context.Database.EnsureDeleted();// delete any Db fro a previous test
+				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
+				context.Users.Add(u);
+				context.Users.Add(uu);
+				context.SaveChanges();
+			}
+			// act
+			// add to the In-Memory Db
+			//instantiate the inmemory db
+			using (var context = new P2Context(options))
+			{
+				//verify that the db was deleted and created anew
+				context.Database.EnsureDeleted();// delete any Db fro a previous test
+				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
+
+				//instantiate the Class that we are going to unit test
+				UserTest userListTest = new UserTest(context);
+				result0 = await userListTest.RegisterUserAsync(u);
+				context.SaveChanges();
+				result0 = await userListTest.RegisterUserAsync(uu);
+				context.SaveChanges();
+
+				result = await userListTest.UserListAsync();
+				int userCount = await context.Users.CountAsync();
+
+				// context.SaveChanges();
+
+
+				//assert
+				// verify the the result was as expected
+				Assert.Equal(2, userCount);
+				
+			}
+		}
+	}	
 }
