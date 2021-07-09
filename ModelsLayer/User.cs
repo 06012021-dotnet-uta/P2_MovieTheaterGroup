@@ -9,11 +9,6 @@ namespace ModelsLayer
 {
     public  class User
     {
-        public User()
-        {
-            Comments = new HashSet<Comment>();
-            Ratings = new HashSet<Rating>();
-        }
         [Key]
         public int UserId { get; set; }
 
@@ -40,5 +35,25 @@ namespace ModelsLayer
         public virtual Role Role { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
+        public User()
+        {
+            Username = "username";
+            Passwd = "passwd";
+            FirstName = "firstName";
+            LastName = "lastName";
+            RoleId = 0;
+            //Comments = new HashSet<Comment>();
+            //Ratings = new HashSet<Rating>();
+        }
+        public User( string username, string passwd, string firstName,string lastName, int roleId)
+        {
+            this.Username = username;
+            this.Passwd = passwd;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.RoleId = roleId;
+            //Comments = new HashSet<Comment>();
+            //Ratings = new HashSet<Rating>();
+        }
     }
 }
