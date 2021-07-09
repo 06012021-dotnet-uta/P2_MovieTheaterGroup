@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using BusinessLayer;
+using Newtonsoft.Json;
+using ModelsLayer;
 
 namespace P2API.Controllers
 {
@@ -12,11 +13,18 @@ namespace P2API.Controllers
   [ApiController]
   public class CommentController : ControllerBase
   {
+    private readonly CommentService _comment;
+
+    public CommentController(ICommentService comment)
+    {
+        _comment = (CommentService)comment;
+    }
+
     // GET: api/<CommentController>
     [HttpGet]
     public IEnumerable<string> Get()
     {
-      return new string[] { "value1", "value2" };
+        return new string[] { "value1", "value2" };
     }
 
     // GET api/<CommentController>/5
@@ -26,10 +34,16 @@ namespace P2API.Controllers
       return "value";
     }
 
+
     // POST api/<CommentController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public void CreateComment([FromBody] Comment value)
     {
+        if (ModelState.IsValid)
+        {
+            _comment.CreateCommentAsync(value);
+        }
+
     }
 
     // PUT api/<CommentController>/5
