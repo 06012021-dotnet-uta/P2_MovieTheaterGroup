@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
-    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
   </ItemGroup>
 
 </Project>

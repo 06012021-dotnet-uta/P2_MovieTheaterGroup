@@ -28,7 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
-    <ProjectReference Include="..\P2DatabaseModelLibrary\RepositoryLayer.csproj" />
   </ItemGroup>
 
 </Project>
