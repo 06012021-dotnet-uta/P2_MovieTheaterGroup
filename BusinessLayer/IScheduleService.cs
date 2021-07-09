@@ -9,6 +9,9 @@ namespace BusinessLayer
 {
   public interface IScheduleService
   {
+    // ^^^ Passed ^^^
+    // ^^^ Failed ^^^
     Schedule SelectMovieSchedule(string movieId, int theaterId);
+    // ^^^ Untested ^^^
   }
 }

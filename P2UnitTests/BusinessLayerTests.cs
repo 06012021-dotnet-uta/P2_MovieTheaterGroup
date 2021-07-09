@@ -54,6 +54,36 @@ namespace P2UnitTests
     }
 
     [Fact]
+    public async Task DeleteTheaterSuccessfullyRemovesTheaterFromDb()
+    {
+      //
+    }
+
+    [Fact]
+    public async Task UpdateTheaterAsyncSuccessfullyUpdatesTheater()
+    {
+      //
+    }
+
+    [Fact]
+    public void SelectTheatersSuccessfullySelectsAllTheaters()
+    {
+      //
+    }
+
+    [Fact]
+    public void SelectTheaterSuccessfullySelectsSpecifiedTheater()
+    {
+      //
+    }
+
+    [Fact]
+    public void SelectMovieScheduleSuccsfullySelectSpecifiedSchedule()
+    {
+      //
+    }
+
+    [Fact]
     public void TestCreateComment()
     {
 
