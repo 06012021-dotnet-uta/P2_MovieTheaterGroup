@@ -31,6 +31,7 @@ namespace P2UnitTests
 			};
 			bool result = false;
 			bool result1 = false;
+			bool result2 = false;
 
 			using (var context = new P2Context(options))
 			{
@@ -53,11 +54,13 @@ namespace P2UnitTests
 				result = await loginUserTest.RegisterUserAsync(u);
 				context.SaveChanges();
 				result1 = await loginUserTest.UserLoginAsync(u);
+				result2 = await loginUserTest.LoginAsync(u);
 
 				//assert
 				// verify the the result was as expected
 				Assert.True(result);
 				Assert.True(result1);
+				Assert.True(result2);
 			}
 		}
 	}
