@@ -39,21 +39,21 @@ namespace P2API
       });
       services.AddDbContext<P2Context>(options =>
       {
-                if (!options.IsConfigured)
-                {
-                    options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
-                }
-       });
-            services.AddDistributedMemoryCache();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IScheduleService, ScheduleService>();
-            services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<IMovieService, MovieService>();
-            services.AddScoped<IRatingService, RatingService>();
-            services.AddScoped<IRoleService, RoleService>();
-            services.AddScoped<ITheaterMovieService, TheaterMovieService>();
-            services.AddScoped<ITheaterService, TheaterService>();
+        if (!options.IsConfigured)
+        {
+          options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
         }
+      });
+      services.AddDistributedMemoryCache();
+      services.AddScoped<IUserService, UserService>();
+      services.AddScoped<IScheduleService, ScheduleService>();
+      services.AddScoped<ICommentService, CommentService>();
+      services.AddScoped<IMovieService, MovieService>();
+      services.AddScoped<IRatingService, RatingService>();
+      services.AddScoped<IRoleService, RoleService>();
+      services.AddScoped<ITheaterMovieService, TheaterMovieService>();
+      services.AddScoped<ITheaterService, TheaterService>();
+    }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
