@@ -10,7 +10,7 @@ using UserTest = BusinessLayer.UserService;
 
 namespace P2UnitTests
 {
-    public class UserModelTest
+    public class CreatUserTest
     {
 		//create the in-memory Db //  installed EF Core
 		DbContextOptions<P2Context> options = new DbContextOptionsBuilder<P2Context>()
