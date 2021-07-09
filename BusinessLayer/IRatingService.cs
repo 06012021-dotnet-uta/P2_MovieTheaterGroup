@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    class IRatingService
+    public interface IRatingService
     {
     }
 }

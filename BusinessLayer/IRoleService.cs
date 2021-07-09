@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    interface IRoleService
+    public interface IRoleService
     {
     }
 }

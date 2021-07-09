@@ -1,4 +1,6 @@
-﻿using P2DatabaseModelLibrary;
+﻿using ModelsLayer;
+
+using RepositoryLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-  class TheaterService
+    public class TheaterService : ITheaterService
   {
     private readonly P2Context _context;
 

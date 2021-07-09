@@ -2,9 +2,10 @@ using System;
 using Xunit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory;
-using P2DatabaseModelLibrary;
+
 using System.Linq;
 using System.Threading.Tasks;
+using RepositoryLayer;
 
 namespace P2UnitTests
 {
