@@ -8,15 +8,7 @@ namespace ModelsLayer
 {
     public  class Movie
     {
-        // Just a comment
-        public Movie()
-        {
-            Comments = new HashSet<Comment>();
-            Ratings = new HashSet<Rating>();
-            Schedules = new HashSet<Schedule>();
-            TheaterMovies = new HashSet<TheaterMovie>();
-        }
-
+       
         [Key]
         public string MovieId { get; set; }
 
@@ -28,5 +20,19 @@ namespace ModelsLayer
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<TheaterMovie> TheaterMovies { get; set; }
+
+        public Movie()
+        {
+            MovieName = "movieName";
+            // Comments = new HashSet<Comment>();
+            // Ratings = new HashSet<Rating>();
+            // Schedules = new HashSet<Schedule>();
+            // TheaterMovies = new HashSet<TheaterMovie>();
+        }
+        public Movie(string moviename)
+        {
+            this.MovieName = "movieName";
+           
+        }
     }
 }
