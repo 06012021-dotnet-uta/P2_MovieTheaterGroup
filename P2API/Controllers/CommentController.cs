@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer;
-using RepositoryLayer;
+using Newtonsoft.Json;
+using ModelsLayer;
 
 namespace P2API.Controllers
 {
@@ -12,13 +13,11 @@ namespace P2API.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly P2Context  _context;
 
         private readonly CommentService _comment;
 
-        public CommentController(P2Context context, ICommentService comment)
+        public CommentController(ICommentService comment)
         {
-            _context = context;
             _comment = (CommentService)comment;
         }
 
@@ -38,8 +37,13 @@ namespace P2API.Controllers
 
         // POST api/<CommentController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void CreateComment([FromBody] Comment value)
         {
+            if (ModelState.IsValid)
+            {
+                _comment.CreateCommentAsync(value);
+            }
+
         }
 
         // PUT api/<CommentController>/5
