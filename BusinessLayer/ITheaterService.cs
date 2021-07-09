@@ -10,12 +10,12 @@ namespace BusinessLayer
   public interface ITheaterService
   {
     Task<bool> CreateTheaterAsync(Theater theater);
-    // ^^^ Passed ^^^
-    // ^^^ Failed ^^^
-    void DeleteTheaterAsync(int theaterId);
-    void UpdateTheaterAsync(int theaterId, string theaterLoc = "", string theaterName = "");
+    Task<bool> DeleteTheaterAsync(int theaterId);
+    Task<bool> UpdateTheaterAsync(int theaterId, string theaterLoc = "", string theaterName = "");
     List<Theater> SelectTheaters();
     Theater SelectTheater(int theaterId);
+    // ^^^ Passed ^^^
+    // ^^^ Failed ^^^
     // ^^^ Untested ^^^
   }
 }

@@ -7,21 +7,34 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ModelsLayer
 {
-    public  class Schedule
+  public class Schedule
+  {
+    [Key]
+    public int ScheduleId { get; set; }
+
+    [Required]
+    [ForeignKey("TheaterId")]
+    public int TheaterId { get; set; }
+
+    [Required]
+    [ForeignKey("MovieId")]
+    public string MovieId { get; set; }
+    public DateTime ShowingTime { get; set; }
+
+    public virtual Movie Movie { get; set; }
+    public virtual Theater Theater { get; set; }
+
+    public override bool Equals(object obj)
     {
-        [Key]
-        public int ScheduleId { get; set; }
-
-        [Required]
-        [ForeignKey("TheaterId")]
-        public int TheaterId { get; set; }
-
-        [Required]
-        [ForeignKey("MovieId")]
-        public string MovieId { get; set; }
-        public DateTime ShowingTime { get; set; }
-
-        public virtual Movie Movie { get; set; }
-        public virtual Theater Theater { get; set; }
+      if (obj is Schedule)
+      {
+        var that = obj as Schedule;
+        return (this.ScheduleId == that.ScheduleId &&
+          this.MovieId == that.MovieId &&
+          this.TheaterId == that.TheaterId &&
+          this.ShowingTime == that.ShowingTime);
+      }
+      return false;
     }
+  }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BusinessLayer;
 using RepositoryLayer;
 using ModelsLayer;
+using System.Collections.Generic;
 
 namespace P2UnitTests
 {
@@ -56,25 +57,165 @@ namespace P2UnitTests
     [Fact]
     public async Task DeleteTheaterSuccessfullyRemovesTheaterFromDb()
     {
-      //
+      //Arrange
+      Theater theater = new()
+      {
+        TheaterId = 1,
+        TheaterLoc = "Kansas City",
+        TheaterName = "Century"
+      };
+
+      //Act
+      bool result = false;
+      int CtAfterAdd = 0;
+      int CtAfterDelete = 0;
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        TheaterService ThService = new(context);
+        await ThService.CreateTheaterAsync(theater);
+        CtAfterAdd = await context.Theaters.CountAsync();
+        result = await ThService.DeleteTheaterAsync(theater.TheaterId);
+        CtAfterDelete = await context.Theaters.CountAsync();
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      using (var context = new P2Context(options))
+      {
+        Assert.True(result);
+
+        Assert.Equal(1, CtAfterAdd);
+        Assert.Equal(0, CtAfterDelete);
+      }
     }
 
     [Fact]
     public async Task UpdateTheaterAsyncSuccessfullyUpdatesTheater()
     {
-      //
+      //Arrange
+      Theater theater = new()
+      {
+        TheaterId = 1,
+        TheaterLoc = "Kansas City",
+        TheaterName = "Century"
+      };
+
+      //Act
+      bool result1 = false;
+      bool result2 = false;
+      bool result3 = false;
+      string ActualLoc = "";
+      string ActualName = "";
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        TheaterService ThService = new(context);
+        await ThService.CreateTheaterAsync(theater);
+        result1 = await ThService.UpdateTheaterAsync(theater.TheaterId, theaterLoc: "Kentucky City");
+        var ActualTheater = context.Theaters.Where(th => th.TheaterId == theater.TheaterId).FirstOrDefault();
+        ActualLoc = ActualTheater.TheaterLoc;
+        context.SaveChanges();
+        result2 = await ThService.UpdateTheaterAsync(theater.TheaterId, theaterName: "Olympia");
+        ActualTheater = context.Theaters.Where(th => th.TheaterId == theater.TheaterId).FirstOrDefault();
+        ActualName = ActualTheater.TheaterName;
+        context.SaveChanges();
+        result3 = await ThService.UpdateTheaterAsync(theater.TheaterId);
+        context.SaveChanges();
+      }
+
+      //Assert
+      using (var context = new P2Context(options))
+      {
+        Assert.True(result1);
+        Assert.True(result2);
+        Assert.False(result3);
+        Assert.Equal(theater.TheaterLoc, ActualLoc);
+        Assert.Equal(theater.TheaterName, ActualName);
+      }
     }
 
     [Fact]
-    public void SelectTheatersSuccessfullySelectsAllTheaters()
+    public async Task SelectTheatersSuccessfullySelectsAllTheaters()
     {
-      //
+      //Arrange
+      Theater theater1 = new()
+      {
+        TheaterId = 1,
+        TheaterLoc = "Jersey City",
+        TheaterName = "Century"
+      };
+      Theater theater2 = new()
+      {
+        TheaterId = 2,
+        TheaterLoc = "Topeka",
+        TheaterName = "Millenia"
+      };
+
+      //Act
+      List<Theater> Theaters = new();
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        TheaterService ThService = new(context);
+        await ThService.CreateTheaterAsync(theater1);
+        await ThService.CreateTheaterAsync(theater2);
+        Theaters = ThService.SelectTheaters();
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      List<Theater> ExpectedResult = new()
+      {
+        theater1,
+        theater2
+      };
+      using (var context = new P2Context(options))
+      {
+        Assert.Contains(theater1, Theaters);
+        Assert.Contains(theater2, Theaters);
+        Assert.Equal(ExpectedResult, Theaters);
+      }
     }
 
     [Fact]
-    public void SelectTheaterSuccessfullySelectsSpecifiedTheater()
+    public async Task SelectTheaterSuccessfullySelectsSpecifiedTheater()
     {
-      //
+      //Arrange
+      Theater theater = new()
+      {
+        TheaterId = 1,
+        TheaterLoc = "Jersey City",
+        TheaterName = "Century"
+      };
+
+      //Act
+      Theater ActualTheater = new();
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        TheaterService ThService = new(context);
+        await ThService.CreateTheaterAsync(theater);
+        ActualTheater = ThService.SelectTheater(theater.TheaterId);
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      using (var context = new P2Context(options))
+      {
+        Assert.Equal(theater, ActualTheater);
+      }
     }
 
     [Fact]

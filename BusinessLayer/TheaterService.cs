@@ -49,11 +49,23 @@ namespace BusinessLayer
     /// Removes a theater from the database
     /// </summary>
     /// <param name="theaterId">The ID of the theater to remove</param>
-    public async void DeleteTheaterAsync(int theaterId)
+    public async Task<bool> DeleteTheaterAsync(int theaterId)
     {
       var theaterToDelete = _context.Theaters.Where(th => th.TheaterId == theaterId).FirstOrDefault();
       _context.Theaters.Remove(theaterToDelete);
-      await _context.SaveChangesAsync();
+      try { await _context.SaveChangesAsync(); }
+      catch (DbUpdateConcurrencyException exc)
+      {
+        // instead of WriteLine use Logging for exception
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      catch (DbUpdateException exc)
+      {
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      return true;
     }
 
     /// <summary>
@@ -62,14 +74,26 @@ namespace BusinessLayer
     /// <param name="theaterId">The ID of the theater to update</param>
     /// <param name="theaterLoc">[optional] The potential change in location of the theater</param>
     /// <param name="theaterName">[optional] The ptential change in name of the theater</param>
-    public async void UpdateTheaterAsync(int theaterId, string theaterLoc = "", string theaterName = "")
+    public async Task<bool> UpdateTheaterAsync(int theaterId, string theaterLoc = "", string theaterName = "")
     {
-      if (theaterLoc == "" && theaterName == "") return;
+      if (theaterLoc == "" && theaterName == "") return false;
       var theaterToUpdate = _context.Theaters.Where(th => th.TheaterId == theaterId).FirstOrDefault();
       if (theaterLoc != "") theaterToUpdate.TheaterLoc = theaterLoc;
       if (theaterName != "") theaterToUpdate.TheaterName = theaterName;
       _context.Theaters.Update(theaterToUpdate);
-      await _context.SaveChangesAsync();
+      try { await _context.SaveChangesAsync(); }
+      catch (DbUpdateConcurrencyException exc)
+      {
+        // instead of WriteLine use Logging for exception
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      catch (DbUpdateException exc)
+      {
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      return true;
     }
 
     /// <summary>

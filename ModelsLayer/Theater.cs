@@ -27,5 +27,17 @@ namespace ModelsLayer
 
     public virtual ICollection<Schedule> Schedules { get; set; }
     public virtual ICollection<TheaterMovie> TheaterMovies { get; set; }
+
+    public override bool Equals(object obj)
+    {
+      if (obj is Theater)
+      {
+        var that = obj as Theater;
+        return (this.TheaterId == that.TheaterId &&
+          this.TheaterLoc == that.TheaterLoc &&
+          this.TheaterName == that.TheaterName);
+      }
+      return false;
+    }
   }
 }
