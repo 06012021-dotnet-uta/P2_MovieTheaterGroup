@@ -21,4 +21,14 @@ namespace ModelsLayer
         public virtual Movie Movie { get; set; }
         public virtual Theater Theater { get; set; }
     }
+    public TheaterMovie()
+    {
+        TheaterId = 0;
+        MovieId = "A0";
+    }
+    public TheaterMovie(int theaterid, string movieId)
+    {
+        this.TheaterId = theaterid;
+        this.MovieId = movieId;
+    }
 }
