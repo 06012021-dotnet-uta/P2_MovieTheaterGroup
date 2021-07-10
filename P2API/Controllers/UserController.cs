@@ -26,11 +26,14 @@ namespace P2API.Controllers
             this._logger = logger;
 
         }
+
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<User> userList = await _us.UserListAsync();
+            return userList;
+            //return new string[] { "value1", "value2" };
         }
         // UserList 
         [HttpGet("UserList")]
@@ -42,34 +45,12 @@ namespace P2API.Controllers
 
         // Create New User
         [HttpPost("CreateNewUser")]
-        public async Task<ActionResult> CreateNewUser(User u)
+        public async Task<ActionResult<User>> CreateNewUser(User u)
         {
-            //check that the model binding worked.
-            if (!ModelState.IsValid)
-            {
-                RedirectToAction("Create");
-            }
-
-            // injecting the interface allows you to Mock the implementation in the testing suite.
-            bool myBool = await _us.RegisterUserAsync(u);
-
-            if (myBool)
-            {
-                User uTest = new User()
-                {
-                    Username = "username",
-                    Passwd = "passwd",
-                    FirstName = "firstName",
-                    LastName = "lastName",
-                    RoleId = 0
-                };
-                return Created("website.com/my/resource", u);
-            }
-            else
-            {
-                return NotFound($"This action was not successful. It was {myBool}.");
-            }
+            await _us.RegisterUserAsync(u);
+            return CreatedAtAction(nameof(Get), new { userId = u.UserId }, u);
         }
+
         // POST api/<UserController>
 
 
@@ -82,9 +63,10 @@ namespace P2API.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public string Post([FromBody] string value)
+        public void Post([FromBody] User value)
         {
-            return value;
+            _us.RegisterUserAsync(value);
+            //return value;
         }
 
 
