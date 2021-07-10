@@ -29,10 +29,16 @@ namespace P2API.Controllers
 
         // GET: api/<TheaterController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<TheaterMovie>> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<TheaterMovie> theaterMovieList = await _tms.TheaterMovieListAsync();
+            return theaterMovieList;
+            //return new string[] { "value1", "value2" };
         }
+        //  public IEnumerable<string> Get()
+        // {
+        //    return new string[] { "value1", "value2" };
+        // }
 
         // TheaterMovieList 
         [HttpGet("TheaterMovieList")]
@@ -40,6 +46,14 @@ namespace P2API.Controllers
         {
             List<TheaterMovie> theaterMovieList = await _tms.TheaterMovieListAsync();
             return theaterMovieList;
+        }
+
+        // Add new TheaterMovie
+        [HttpPost("AddTheaterMovie")]
+        public async Task<ActionResult<User>> AddTheaterMovie(TheaterMovie tm)
+        {
+            await _tms.AddTheaterMovieAsync(tm);
+            return CreatedAtAction(nameof(Get), new { theaterMovieId = tm.TheaterMovieId }, tm);
         }
 
         // GET api/<TheaterController>/5
@@ -51,9 +65,14 @@ namespace P2API.Controllers
 
         // POST api/<TheaterController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] TheaterMovie value)
         {
+            _tms.AddTheaterMovieAsync(value);
+            //return value;
         }
+        // public void Post([FromBody] string value)
+        // {
+        // }
 
         // PUT api/<TheaterController>/5
         [HttpPut("{id}")]
