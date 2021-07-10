@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +15,31 @@ namespace P2API.Controllers
     [ApiController]
     public class TheaterMovieController : ControllerBase
     {
+        private readonly ILogger<TheaterMovieController> _logger;
+
+        private readonly ITheaterMovieService _tms;
+
+        // create a constructor for businesslayer
+        public TheaterMovieController(ITheaterMovieService tms, ILogger<TheaterMovieController> logger)
+        {
+            this._tms = tms;
+            this._logger = logger;
+
+        }
+
         // GET: api/<TheaterController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
+        }
+
+        // TheaterMovieList 
+        [HttpGet("TheaterMovieList")]
+        public async Task<IEnumerable<TheaterMovie>> TheaterMovieList()
+        {
+            List<TheaterMovie> theaterMovieList = await _tms.TheaterMovieListAsync();
+            return theaterMovieList;
         }
 
         // GET api/<TheaterController>/5
