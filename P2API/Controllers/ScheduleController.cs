@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,47 @@ using System.Threading.Tasks;
 
 namespace P2API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ScheduleController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class ScheduleController : ControllerBase
+  {
+    private readonly ScheduleService _schedule;
+
+    public ScheduleController(IScheduleService schedule)
     {
-        // GET: api/<ScheduleController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<ScheduleController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ScheduleController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ScheduleController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ScheduleController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      _schedule = (ScheduleService)schedule;
     }
+
+    // GET: api/<ScheduleController>
+    [HttpGet]
+    public List<Schedule> Get()
+    {
+      return new List<Schedule>() { };    // get all schedules (?)
+    }
+
+    // GET api/<ScheduleController>/5
+    [HttpGet("{movieId}/{theaterId}")]
+    public Schedule Get(string movieId, int theaterId)
+    {
+      return _schedule.SelectMovieSchedule(movieId, theaterId);
+    }
+
+    // POST api/<ScheduleController>
+    [HttpPost]
+    public void Post([FromBody] string value)
+    {
+    }
+
+    // PUT api/<ScheduleController>/5
+    [HttpPut("{id}")]
+    public void Put(int id, [FromBody] string value)
+    {
+    }
+
+    // DELETE api/<ScheduleController>/5
+    [HttpDelete("{id}")]
+    public void Delete(int id)
+    {
+    }
+  }
 }

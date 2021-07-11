@@ -219,7 +219,7 @@ namespace P2UnitTests
     }
 
     [Fact]
-    public void SelectMovieScheduleSuccsfullySelectSpecifiedSchedule()
+    public void SelectMovieScheduleSuccessfullySelectSpecifiedSchedule()
     {
       //
     }

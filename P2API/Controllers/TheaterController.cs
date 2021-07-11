@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +14,25 @@ namespace P2API.Controllers
   [ApiController]
   public class TheaterController : ControllerBase
   {
+    private readonly TheaterService _theater;
+
+    public TheaterController(ITheaterService theater)
+    {
+      _theater = (TheaterService)theater;
+    }
+
     // GET: api/<TheaterController>
     [HttpGet]
-    public IEnumerable<string> Get()
+    public List<Theater> Get()
     {
-      return new string[] { "value1", "value2" };
+      return _theater.SelectTheaters();
     }
 
     // GET api/<TheaterController>/5
     [HttpGet("{id}")]
-    public string Get(int id)
+    public Theater Get(int id)
     {
-      return "value";
+      return _theater.SelectTheater(id);
     }
 
     // POST api/<TheaterController>
