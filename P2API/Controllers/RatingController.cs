@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using BusinessLayer;
+using MapperClasses;
 
 namespace P2API.Controllers
 {
@@ -12,36 +12,46 @@ namespace P2API.Controllers
     [ApiController]
     public class RatingController : ControllerBase
     {
-        // GET: api/<RatingController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private readonly RatingService _rating;
 
-        // GET api/<RatingController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        public RatingController(IRatingService rating)
         {
-            return "value";
+            _rating = (RatingService) rating;
         }
 
         // POST api/<RatingController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task PostARatingAsync([FromBody] RatingMapBasic value)
         {
+                await _rating.CreateRatingAsync(value);
         }
 
-        // PUT api/<RatingController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET: api/<RatingController>/5
+        [HttpGet("[action]/{movieid}")]
+        public List<RatingMapWithUser> GetAllRaingsForMovie(string movieid)
         {
+            return _rating.ReadRatingsForOneMovie(movieid);
+        }
+
+        // GET api/<RatingController>/5
+        [HttpGet("[action]/{userid}")]
+        public List<RatingMapWithMovie> GetAllRatingsForUser(int userid)
+        {
+            return _rating.ReadRatingsForOneUser(userid);
+        }
+
+        // PUT api/<RatingController>
+        [HttpPut]
+        public async Task PutARatingAsync([FromBody] RatingMapUpdate value)
+        {
+            await _rating.UpdateRatingAsync(value);
         }
 
         // DELETE api/<RatingController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{ratingid}")]
+        public async Task DeleteARatingAsync(int ratingid)
         {
+            await _rating.DeleteRatingAsync(ratingid);
         }
     }
 }

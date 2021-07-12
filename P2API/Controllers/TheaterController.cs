@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,53 @@ using System.Threading.Tasks;
 
 namespace P2API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TheaterController : ControllerBase
+  [Route("api/[controller]")]
+  [ApiController]
+  public class TheaterController : ControllerBase
+  {
+    private readonly TheaterService _theater;
+
+    public TheaterController(ITheaterService theater)
     {
-        // GET: api/<TheaterController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+      _theater = (TheaterService)theater;
+    }
 
-        // GET api/<TheaterController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+    // GET: api/<TheaterController>
+    [HttpGet]
+    public List<Theater> Get()
+    {
+      return _theater.SelectTheaters();
+    }
 
-        // POST api/<TheaterController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+    // GET api/<TheaterController>/5
+    [HttpGet("{id}")]
+    public Theater Get(int id)
+    {
+      return _theater.SelectTheater(id);
+    }
 
-        // PUT api/<TheaterController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+    // POST api/<TheaterController>
+    [HttpPost]
+    public async Task Post([FromBody] Theater theater)
+    {
+      if (ModelState.IsValid)
+      {
+        await _theater.CreateTheaterAsync(theater);
+      }
+    }
 
-        // DELETE api/<TheaterController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+    // PUT api/<TheaterController>/5
+    [HttpPut/*("{id}")*/]
+    [Route("{id}/{theaterLoc}/{theaterName}")]
+    public async void Put(int id, string theaterLoc = "", string theaterName = "")
+    {
+      await _theater.UpdateTheaterAsync(id, theaterLoc, theaterName);
+    }
+
+    // DELETE api/<TheaterController>/5
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+      await _theater.DeleteTheaterAsync(id);
     }
 }
