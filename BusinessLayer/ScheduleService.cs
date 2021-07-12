@@ -1,4 +1,5 @@
-﻿using ModelsLayer;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLayer;
 using RepositoryLayer;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,14 @@ namespace BusinessLayer
     /// <param name="movieId">The ID of the movie whose schedule to retrieve</param>
     /// <param name="theaterId">The ID of the theater the move is playing at</param>
     /// <returns>A Schedule object representing the specified schedule from the database</returns>
-    public Schedule SelectMovieSchedule(string movieId, int theaterId)
+    public List<Schedule> SelectMovieSchedules(string movieId, int theaterId)
     {
       var ScheduleTables = _context.Schedules;
       var dbResults = ScheduleTables.Where(sch => sch.MovieId == movieId && sch.TheaterId == theaterId).ToList();
-      Schedule schedule = new();
+      List<Schedule> Schedules = new();
       foreach (var res in dbResults)
       {
-        schedule = new()
+        Schedule schedule = new()
         {
           ScheduleId = res.ScheduleId,
           MovieId = res.MovieId,
@@ -43,8 +44,47 @@ namespace BusinessLayer
           Theater = res.Theater,
           ShowingTime = res.ShowingTime
         };
+        Schedules.Add(schedule);
       }
-      return schedule;
+      return Schedules;
+    }
+
+    public async Task<bool> CreateScheduleAsync(Schedule schedule)
+    {
+      await _context.Schedules.AddAsync(schedule);
+      try { await _context.SaveChangesAsync(); }
+      catch (DbUpdateConcurrencyException exc)
+      {
+        // instead of WriteLine use Logging for exception
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      catch (DbUpdateException exc)
+      {
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+
+      return true;
+    }
+
+    public async Task<bool> DeleteScheduleAsync(int scheduleId)
+    {
+      var scheduleToDelete = _context.Schedules.Where(th => th.ScheduleId == scheduleId).FirstOrDefault();
+      _context.Schedules.Remove(scheduleToDelete);
+      try { await _context.SaveChangesAsync(); }
+      catch (DbUpdateConcurrencyException exc)
+      {
+        // instead of WriteLine use Logging for exception
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      catch (DbUpdateException exc)
+      {
+        Console.WriteLine($"There was a problem updating the Db => {exc.InnerException}");
+        return false;
+      }
+      return true;
     }
   }
 }

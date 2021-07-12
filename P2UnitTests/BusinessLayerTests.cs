@@ -219,9 +219,124 @@ namespace P2UnitTests
     }
 
     [Fact]
-    public void SelectMovieScheduleSuccessfullySelectSpecifiedSchedule()
+    public async Task SelectMovieScheduleSuccessfullySelectSpecifiedSchedule()
     {
-      //
+      //Arrange
+      Schedule schedule1 = new()
+      {
+        TheaterId = 1,
+        MovieId = "id",
+        ShowingTime = DateTime.Now
+      };
+      Schedule schedule2 = new()
+      {
+        TheaterId = 1,
+        MovieId = "id",
+        ShowingTime = DateTime.Now.AddMinutes(20)
+      };
+
+      //Act
+      List<Schedule> ActualSchedules = new();
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        ScheduleService SchService = new(context);
+        await SchService.CreateScheduleAsync(schedule1);
+        await SchService.CreateScheduleAsync(schedule2);
+        ActualSchedules = SchService.SelectMovieSchedules("id", 1);
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      List<Schedule> ExpectedSchedules = new()
+      {
+        schedule1,
+        schedule2
+      };
+      using (var context = new P2Context(options))
+      {
+        Assert.Equal(ExpectedSchedules, ActualSchedules);
+      }
+    }
+
+    [Fact]
+    public async void CreateScheduleSuccessfullyCreatesSchedule()
+    {
+      //Arrange
+      Schedule schedule = new()
+      {
+        TheaterId = 1,
+        MovieId = "id",
+        ShowingTime = DateTime.Now
+      };
+
+      //Act
+      bool result = false;
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        ScheduleService SchService = new(context);
+        result = await SchService.CreateScheduleAsync(schedule);
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      using (var context = new P2Context(options))
+      {
+        Assert.True(result);
+
+        int ct = await context.Schedules.CountAsync();
+        Assert.Equal(1, ct);
+
+        var ActualTheater = context.Schedules.Where(th => th.TheaterId == 1).FirstOrDefault();
+        Assert.NotNull(ActualTheater);
+        Assert.Contains(ActualTheater, context.Schedules);
+      }
+    }
+
+    [Fact]
+    public async Task DeleteScheduleSuccessfullyRemovesScheduleFromDb()
+    {
+      //Arrange
+      Schedule schedule = new()
+      {
+        TheaterId = 1,
+        MovieId = "id",
+        ShowingTime = DateTime.Now
+      };
+
+      //Act
+      bool result = false;
+      int CtAfterAdd = 0;
+      int CtAfterDelete = 0;
+      using (var context = new P2Context(options))
+      {
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
+        ScheduleService SchService = new(context);
+        await SchService.CreateScheduleAsync(schedule);
+        CtAfterAdd = await context.Schedules.CountAsync();
+        result = await SchService.DeleteScheduleAsync(schedule.ScheduleId);
+        CtAfterDelete = await context.Schedules.CountAsync();
+
+        context.SaveChanges();
+      }
+
+      //Assert
+      using (var context = new P2Context(options))
+      {
+        Assert.True(result);
+
+        Assert.Equal(1, CtAfterAdd);
+        Assert.Equal(0, CtAfterDelete);
+      }
     }
 
     [Fact]

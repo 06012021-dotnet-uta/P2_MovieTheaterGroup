@@ -9,9 +9,11 @@ namespace BusinessLayer
 {
   public interface IScheduleService
   {
+    List<Schedule> SelectMovieSchedules(string movieId, int theaterId);
+    Task<bool> CreateScheduleAsync(Schedule schedule);
+    Task<bool> DeleteScheduleAsync(int scheduleId);
     // ^^^ Passed ^^^
     // ^^^ Failed ^^^
-    Schedule SelectMovieSchedule(string movieId, int theaterId);
     // ^^^ Untested ^^^
   }
 }
