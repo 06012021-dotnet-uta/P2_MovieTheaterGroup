@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ModelsLayer;
 using BusinessLayer;
+using MapperClasses;
 
 namespace P2API.Controllers
 {
@@ -20,40 +20,39 @@ namespace P2API.Controllers
             _rating = (RatingService) rating;
         }
 
-        // GET: api/<RatingController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // POST api/<RatingController>
+        [HttpPost]
+        public async Task PostARatingAsync([FromBody] RatingMapBasic value)
         {
-            return new string[] { "value1", "value2" };
+                await _rating.CreateRatingAsync(value);
+        }
+
+        // GET: api/<RatingController>/5
+        [HttpGet("[action]/{movieid}")]
+        public List<RatingMapWithUser> GetAllRaingsForMovie(string movieid)
+        {
+            return _rating.ReadRatingsForOneMovie(movieid);
         }
 
         // GET api/<RatingController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("[action]/{userid}")]
+        public List<RatingMapWithMovie> GetAllRatingsForUser(int userid)
         {
-            return "value";
+            return _rating.ReadRatingsForOneUser(userid);
         }
 
-        // POST api/<RatingController>
-        [HttpPost]
-        public void Post([FromBody] Rating value)
+        // PUT api/<RatingController>
+        [HttpPut]
+        public async Task PutARatingAsync([FromBody] RatingMapUpdate value)
         {
-            if (ModelState.IsValid)
-            {
-                _rating.CreateRatingAsync(value);
-            }
-        }
-
-        // PUT api/<RatingController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            await _rating.UpdateRatingAsync(value);
         }
 
         // DELETE api/<RatingController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{ratingid}")]
+        public async Task DeleteARatingAsync(int ratingid)
         {
+            await _rating.DeleteRatingAsync(ratingid);
         }
     }
 }

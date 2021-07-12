@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-#nullable disable
-
-namespace ModelsLayer
+namespace MapperClasses
 {
-    public  class Comment
+    public class CommentMapWithUser
     {
-        [Key]
         public int CommentId { get; set; }
 
-        [ForeignKey("MovieId")]
         [Required]
         [MaxLength(30)]
         public string MovieId { get; set; }
 
-        [ForeignKey("UserId")]
         [Required]
+        [MaxLength(30)]
         public int UserId { get; set; }
 
         [Required]
@@ -26,7 +20,9 @@ namespace ModelsLayer
         public string Content { get; set; }
         public DateTime DateMade { get; set; }
 
-        public virtual Movie Movie { get; set; }
-        public virtual User User { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string Username { get; set; }
     }
+
 }
