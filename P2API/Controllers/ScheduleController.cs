@@ -29,16 +29,21 @@ namespace P2API.Controllers
     }
 
     // GET api/<ScheduleController>/5
-    [HttpGet("{movieId}/{theaterId}")]
-    public Schedule Get(string movieId, int theaterId)
+    [HttpGet]
+    [Route("{movieId}/{theaterId}")]
+    public List<Schedule> Get(string movieId, int theaterId)
     {
-      return _schedule.SelectMovieSchedule(movieId, theaterId);
+      return _schedule.SelectMovieSchedules(movieId, theaterId);
     }
 
     // POST api/<ScheduleController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task Post([FromBody] Schedule schedule)
     {
+      if (ModelState.IsValid)
+      {
+        await _schedule.CreateScheduleAsync(schedule);
+      }
     }
 
     // PUT api/<ScheduleController>/5
@@ -49,8 +54,9 @@ namespace P2API.Controllers
 
     // DELETE api/<ScheduleController>/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
+      await _schedule.DeleteScheduleAsync(id);
     }
   }
 }
