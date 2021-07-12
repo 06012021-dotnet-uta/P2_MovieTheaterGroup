@@ -1,4 +1,6 @@
-﻿using RepositoryLayer;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLayer;
+using RepositoryLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,24 @@ namespace BusinessLayer
 
         // admin should schedule a movie 
         // user should see a movie details 
+        // MovieList
+        public async Task<List<Movie>> MovieListAsync()
+        {
+            List<Movie> ps = null;
+            try
+            {
+                ps = await _context.Movies.ToListAsync();
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}"); //or {ex.Message}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"There was a problem gettign the players list => {ex}");
+            }
+            return ps;
+        }
 
     }
 }
