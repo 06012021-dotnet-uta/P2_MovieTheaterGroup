@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MapperClasses\MapperClasses.csproj" />
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
     <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
   </ItemGroup>
