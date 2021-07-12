@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ModelsLayer;
-using BusinessLayer;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace P2API.Controllers
 {
@@ -12,14 +12,6 @@ namespace P2API.Controllers
     [ApiController]
     public class RatingController : ControllerBase
     {
-
-        private readonly RatingService _rating;
-
-        public RatingController(IRatingService rating)
-        {
-            _rating = (RatingService) rating;
-        }
-
         // GET: api/<RatingController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -36,12 +28,8 @@ namespace P2API.Controllers
 
         // POST api/<RatingController>
         [HttpPost]
-        public void Post([FromBody] Rating value)
+        public void Post([FromBody] string value)
         {
-            if (ModelState.IsValid)
-            {
-                _rating.CreateRatingAsync(value);
-            }
         }
 
         // PUT api/<RatingController>/5

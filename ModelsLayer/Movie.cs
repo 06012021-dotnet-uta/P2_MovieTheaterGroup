@@ -9,6 +9,7 @@ namespace ModelsLayer
     public  class Movie
     {
        
+
         [Key]
         public string MovieId { get; set; }
 
@@ -21,6 +22,7 @@ namespace ModelsLayer
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual ICollection<TheaterMovie> TheaterMovies { get; set; }
 
+        // constructor
         public Movie()
         {
             MovieName = "movieName";
@@ -29,7 +31,7 @@ namespace ModelsLayer
             // Schedules = new HashSet<Schedule>();
             // TheaterMovies = new HashSet<TheaterMovie>();
         }
-        public Movie(string moviename)
+        public Movie(string movieName)
         {
             this.MovieName = "movieName";
            

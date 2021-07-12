@@ -22,7 +22,8 @@ namespace BusinessLayer
         /// <param name="context"></param>
         public MovieService(P2Context context) { this._context = context; }
 
-        // user should see a movie details
+        // admin should schedule a movie 
+        // user should see a movie details 
         // MovieList
         public async Task<List<Movie>> MovieListAsync()
         {

@@ -26,12 +26,12 @@ namespace P2API.Controllers
             this._logger = logger;
 
         }
-
+       
         // GET: api/<UserController>
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
         {
-            List<User> userList = await _us.UserListAsync();
+            List<User> userList = await  _us.UserListAsync();
             return userList;
             //return new string[] { "value1", "value2" };
         }
@@ -45,14 +45,14 @@ namespace P2API.Controllers
 
         // Create New User
         [HttpPost("CreateNewUser")]
-        public async Task<ActionResult<User>> CreateNewUser(User u)
+        public async Task<ActionResult<User>> CreateNewUser( User u)
         {
             await _us.RegisterUserAsync(u);
             return CreatedAtAction(nameof(Get), new { userId = u.UserId }, u);
         }
-
+    
         // POST api/<UserController>
-
+        
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]

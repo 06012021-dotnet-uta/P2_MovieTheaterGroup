@@ -11,8 +11,8 @@ using MovieTest = BusinessLayer.MovieService;
 
 namespace P2UnitTests
 {
-	public class MovieModelTest
-	{
+    public class MovieModelTest
+    {
 		//create the in-memory Db //  installed EF Core
 		DbContextOptions<P2Context> options = new DbContextOptionsBuilder<P2Context>()
 		.UseInMemoryDatabase(databaseName: "TestingDb")
@@ -23,13 +23,11 @@ namespace P2UnitTests
 		{
 			// arrange
 			//createa a player to inset into the inmemory db.
-			Movie m1 = new Movie()
-			{
-				MovieId = "a1",
-				MovieName = "Aqua Men"
-			};
+			Movie m1 = new Movie() {
+				MovieId = "a1", 
+				MovieName = "Aqua Men" };
 			Movie m2 = new Movie() { MovieId = "a2", MovieName = "Black panther " };
-			//bool result0 = false;
+			bool result0 = false;
 			List<Movie> result = new List<Movie>();
 
 			using (var context = new P2Context(options))
@@ -52,12 +50,13 @@ namespace P2UnitTests
 				//instantiate the Class that we are going to unit test
 				MovieTest movieListTest = new MovieTest(context);
 				context.Movies.Add(m1);
+				context.SaveChanges();
 				context.Movies.Add(m2);
 				context.SaveChanges();
-				// result0 = await movieListTest.RegisterUserAsync(u);
-				// context.SaveChanges();
-				// result0 = await userListTest.RegisterUserAsync(uu);
-				// context.SaveChanges();
+				//result0 = await movieListTest.MovieListAsync();
+				//context.SaveChanges();
+				//result0 = await userListTest.RegisterUserAsync(uu);
+				//context.SaveChanges();
 
 				result = await movieListTest.MovieListAsync();
 				int movieCount = await context.Movies.CountAsync();
@@ -71,5 +70,6 @@ namespace P2UnitTests
 
 			}
 		}
+
 	}
 }

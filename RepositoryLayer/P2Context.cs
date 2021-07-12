@@ -140,27 +140,30 @@ namespace RepositoryLayer
                     .HasMaxLength(30);
             });
 
-            modelBuilder.Entity<TheaterMovie>(entity =>
-            {
-                entity.HasKey(e => new { e.MovieId, e.TheaterId })
-                    .HasName("PK__Theater___CF041F3B0F975522");
+            //modelBuilder.Entity<TheaterMovie>(entity =>
+            //{
+                //entity.HasKey(e => new { e.MovieId, e.TheaterId })
+                    //.HasName("PK__Theater___CF041F3B0F975522")
+                    ;
 
-                entity.ToTable("Theater_Movies");
+               // entity.ToTable("Theater_Movies");
 
-                entity.Property(e => e.MovieId).HasMaxLength(30);
+                //entity.Property(e => e.MovieId).HasMaxLength(30);
 
-                entity.HasOne(d => d.Movie)
-                    .WithMany(p => p.TheaterMovies)
-                    .HasForeignKey(d => d.MovieId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theater_M__Movie__1273C1CD");
+               // entity.HasOne(d => d.Movie)
+               //     .WithMany(p => p.TheaterMovies)
+               //     .HasForeignKey(d => d.MovieId)
+               //     .OnDelete(DeleteBehavior.ClientSetNull)
+                    //.HasConstraintName("FK__Theater_M__Movie__1273C1CD")
+                    ;
 
-                entity.HasOne(d => d.Theater)
-                    .WithMany(p => p.TheaterMovies)
-                    .HasForeignKey(d => d.TheaterId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theater_M__Theat__117F9D94");
-            });
+                // entity.HasOne(d => d.Theater)
+                //    .WithMany(p => p.TheaterMovies)
+                //    .HasForeignKey(d => d.TheaterId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                    //.HasConstraintName("FK__Theater_M__Theat__117F9D94")
+                    ;
+           // });
 
             modelBuilder.Entity<User>(entity =>
             {

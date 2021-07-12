@@ -31,29 +31,39 @@ namespace P2API
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+            services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                    //builder.WithOrigins("http://67.81.177.245")
+                    builder.WithOrigins("http://192.168.1.13")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
-      services.AddControllers();
+            services.AddControllers();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
       });
       services.AddDbContext<P2Context>(options =>
       {
-        if (!options.IsConfigured)
-        {
-          options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
+                if (!options.IsConfigured)
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("P2Database"));
+                }
+       });
+            services.AddDistributedMemoryCache();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IScheduleService, ScheduleService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IRatingService, RatingService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ITheaterMovieService, TheaterMovieService>();
+            services.AddScoped<ITheaterService, TheaterService>();
         }
-      });
-      services.AddDistributedMemoryCache();
-      services.AddScoped<IUserService, UserService>();
-      services.AddScoped<IScheduleService, ScheduleService>();
-      services.AddScoped<ICommentService, CommentService>();
-      services.AddScoped<IMovieService, MovieService>();
-      services.AddScoped<IRatingService, RatingService>();
-      services.AddScoped<IRoleService, RoleService>();
-      services.AddScoped<ITheaterMovieService, TheaterMovieService>();
-      services.AddScoped<ITheaterService, TheaterService>();
-    }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,6 +78,9 @@ namespace P2API
       app.UseHttpsRedirection();
 
       app.UseRouting();
+
+      //use useCores must go here. PLACEMENT IS IMPORTANT
+      app.UseCors("dev");
 
       app.UseAuthorization();
 
