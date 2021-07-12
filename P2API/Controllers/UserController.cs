@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using ModelsLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +15,44 @@ namespace P2API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly ILogger<UserController> _logger;
+
+        private readonly IUserService _us;
+
+        // create a constructor for businesslayer
+        public UserController(IUserService us, ILogger<UserController> logger)
+        {
+            this._us = us;
+            this._logger = logger;
+
+        }
+       
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<User> userList = await  _us.UserListAsync();
+            return userList;
+            //return new string[] { "value1", "value2" };
         }
+        // UserList 
+        [HttpGet("UserList")]
+        public async Task<IEnumerable<User>> UserList()
+        {
+            List<User> userList = await _us.UserListAsync();
+            return userList;
+        }
+
+        // Create New User
+        [HttpPost("CreateNewUser")]
+        public async Task<ActionResult<User>> CreateNewUser( User u)
+        {
+            await _us.RegisterUserAsync(u);
+            return CreatedAtAction(nameof(Get), new { userId = u.UserId }, u);
+        }
+    
+        // POST api/<UserController>
+        
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
@@ -28,9 +63,12 @@ namespace P2API.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] User value)
         {
+            _us.RegisterUserAsync(value);
+            //return value;
         }
+
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
