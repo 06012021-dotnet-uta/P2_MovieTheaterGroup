@@ -37,20 +37,27 @@ namespace P2API.Controllers
 
     // POST api/<TheaterController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task Post([FromBody] Theater theater)
     {
+      if (ModelState.IsValid)
+      {
+        await _theater.CreateTheaterAsync(theater);
+      }
     }
 
     // PUT api/<TheaterController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    [HttpPut/*("{id}")*/]
+    [Route("{id}/{theaterLoc}/{theaterName}")]
+    public async void Put(int id, string theaterLoc = "", string theaterName = "")
     {
+      await _theater.UpdateTheaterAsync(id, theaterLoc, theaterName);
     }
 
     // DELETE api/<TheaterController>/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
+      await _theater.DeleteTheaterAsync(id);
     }
   }
 }
