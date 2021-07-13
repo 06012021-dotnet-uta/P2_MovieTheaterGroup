@@ -24,64 +24,43 @@ namespace P2UnitTests
 		{
 			// arrange
 			//createa a TheaterMovie to inset into the inmemory db.
-			Theater t = new Theater()
-			{
-				TheaterId = 0,
-				TheaterLoc = "3038 Holland Bronx, NY 10467",
-				TheaterName = "AMC"
-			};
-			Movie m1 = new Movie()
-			{
-				MovieId = "A1", MovieName = "Aqua Men"
-			};
+			// Theater t = new Theater()
+			// {
+			// 	TheaterId = 0,
+			// 	TheaterLoc = "3038 Holland Bronx, NY 10467",
+			// 	TheaterName = "AMC"
+			// };
+			// Movie m1 = new Movie()
+			// {
+			// 	MovieId = "A1", MovieName = "Aqua Men"
+			// };
 
 			TheaterMovie tm = new TheaterMovie(){
-				TheaterId = 0, MovieId = "A1"
+				TheaterId = 1, MovieId = "A1"
 			};
 			bool result = false;
 			TheaterMovie th1;
-
+			// act 
 			using (var context = new P2Context(options))
 			{
 				context.Database.EnsureDeleted();// delete any Db fro a previous test
 				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
-				//context.Movies.Add(m1);
-				//context.SaveChanges();
-				//context.Theaters.Add(t);
-				//context.SaveChanges();
-				context.TheaterMovies.Add(tm);
+				TheaterMovieTest theaterMovieTest = new (context);
+				result = await theaterMovieTest.AddTheaterMovieAsync(tm);
+				
 				context.SaveChanges();
 				th1 = context.TheaterMovies.Where(x => x.MovieId == "A1" 
-									&& x.TheaterId == 0).FirstOrDefault();
+									&& x.TheaterId == 1).FirstOrDefault();
 			}
 
-			// act
-			// add to the In-Memory Db
-			//instantiate the inmemory db
+			// assert 
 			using (var context = new P2Context(options))
 			{
-				//verify that the db was deleted and created anew
-				context.Database.EnsureDeleted();// delete any Db fro a previous test
-				context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
-
-				//instantiate the RpsGameClass that we are going to unit test
-				//context.Movies.Add(m1);
-				//context.SaveChanges();
-				//context.Theaters.Add(t);
-				//context.SaveChanges();
-				TheaterMovieTest theaterMovieTest = new TheaterMovieTest(context);
-				result = await theaterMovieTest.AddTheaterMovieAsync(tm);
-				context.SaveChanges();
-				//}
-
-				//assert
-				// verify the the result was as expected
-				//using (var context = new RpsGameDb(options))
-				//{
+				
 				int countTheaterMovie = await context.TheaterMovies.CountAsync();
 				//u.UserId = 0;
 				var p = context.TheaterMovies.Where(x => x.MovieId == "A1" 
-									&& x.TheaterId == 0).FirstOrDefault();
+									&& x.TheaterId == 1).FirstOrDefault();
 				Assert.True(result);
 				Assert.Equal(1, countTheaterMovie);
 				Assert.NotNull(p);

@@ -67,32 +67,32 @@ namespace BusinessLayer
         }
 
         // login 2nd method
-        public async Task<bool> UserLoginAsync(User a)
-        {
+        // public async Task<bool> UserLoginAsync(User a)
+        // {
 
-            bool al = true;
-            try
-            {
-                al = _context.Users.Where(x => x.Username == a.Username 
-                            && x.Passwd == a.Passwd).ToList().Count > 0;
+        //     bool al = true;
+        //     try
+        //     {
+        //         al = _context.Users.Where(x => x.Username == a.Username 
+        //                     && x.Passwd == a.Passwd).ToList().Count > 0;
 
-            }
-            catch (ArgumentNullException ex)
-            {
-                Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"There was a problem gettign the players list => {ex}");
-                return false;
-            }
+        //     }
+        //     catch (ArgumentNullException ex)
+        //     {
+        //         Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
+        //         return false;
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine($"There was a problem gettign the players list => {ex}");
+        //         return false;
+        //     }
 
-            _user = _context.Users.ToList().Where(x => x.Username == a.Passwd).FirstOrDefault();
-            //Console.WriteLine($"user => {User}");
+        //     _user = _context.Users.ToList().Where(x => x.Username == a.Passwd).FirstOrDefault();
+        //     //Console.WriteLine($"user => {User}");
 
-            return al;
-        }
+        //     return al;
+        // }
 
         // userList 
         /// <summary>
