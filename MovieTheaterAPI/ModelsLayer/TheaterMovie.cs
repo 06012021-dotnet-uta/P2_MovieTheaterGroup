@@ -9,11 +9,7 @@ namespace ModelsLayer
 {
     public  class TheaterMovie
     {
-        [Key]
-        public int TheaterMovieId { get; set; }
-
-
-
+        
         //[Required]
         [MaxLength(30)]
         [ForeignKey("MovieId")]

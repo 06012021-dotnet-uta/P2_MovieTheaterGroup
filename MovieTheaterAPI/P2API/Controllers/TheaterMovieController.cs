@@ -53,7 +53,7 @@ namespace P2API.Controllers
         public async Task<ActionResult<User>> AddTheaterMovie(TheaterMovie tm)
         {
             await _tms.AddTheaterMovieAsync(tm);
-            return CreatedAtAction(nameof(Get), new { theaterMovieId = tm.TheaterMovieId }, tm);
+            return CreatedAtAction(nameof(Get), new { theaterMovieId = tm }, tm);
         }
 
         // GET api/<TheaterController>/5
