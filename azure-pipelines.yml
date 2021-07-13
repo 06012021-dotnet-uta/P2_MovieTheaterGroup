@@ -10,7 +10,7 @@ pool: p1temp
   #vmImage: 'windows-latest'
 
 variables:
-  solution: '**P2API/P2API.sln'
+  solution: 'MovieTheaterAPI/P2API/P2API.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
