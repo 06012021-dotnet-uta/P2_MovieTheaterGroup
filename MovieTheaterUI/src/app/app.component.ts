@@ -10,6 +10,7 @@ import { MovieComments } from './classes/moviecomments';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'MovieTheater';
   constructor(private _freeApiService: freeApiService){
 
   }
@@ -19,7 +20,7 @@ export class AppComponent {
 
   lstposts:Posts[] | undefined;
   objposts:MovieComments | undefined;
-  
+
 
   ngOnInit(){
 
@@ -42,7 +43,7 @@ export class AppComponent {
     );
 
     var opost = new MovieComments();
-    
+
     opost.commentId = 1000;
     opost.movieId = 'testbody';
     opost.userId = 5;
@@ -52,7 +53,7 @@ export class AppComponent {
 
 
     console.log(opost);
-    
+
     this._freeApiService.post(opost)
     .subscribe(
       data=>

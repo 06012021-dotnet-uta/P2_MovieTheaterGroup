@@ -31,8 +31,19 @@ namespace P2API
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+            services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                   
+                    builder.WithOrigins("http://67.81.177.245", "http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
-      services.AddControllers();
+
+            services.AddControllers();
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "testApp", Version = "v1" });
@@ -68,8 +79,11 @@ namespace P2API
       app.UseHttpsRedirection();
 
       app.UseRouting();
+      //use useCores must go here. PLACEMENT IS IMPORTANT
+            app.UseCors("dev");
 
-      app.UseAuthorization();
+
+            app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
