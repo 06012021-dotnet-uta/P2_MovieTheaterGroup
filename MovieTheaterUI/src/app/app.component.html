@@ -5,8 +5,13 @@
       <a class="btn btn-outline-fix text-dark" href="/experiment">Movies</a>
       <a class="btn btn-outline-fix  text-dark" href="/experiments_list">Theatres</a>
       <a class="btn btn-outline-fix text-dark" href="/start_session">Admin</a>
-  </nav>
 </div>
+  </nav>
+  <nav>
+  <a routerLink="/users">All Users</a>
+  </nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
 <div class="jumbotron">
   <h1 class="display-4">Welcome to Mr Movie!</h1>
   <p class="lead">Your guide to the movies you want to see.</p>
@@ -41,4 +46,3 @@
     ...
   </div>
 </div>
-
