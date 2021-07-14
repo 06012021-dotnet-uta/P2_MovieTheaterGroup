@@ -28,7 +28,7 @@ export class freeApiService{
     }
 
     getmoviecomments(): Observable<any>{
-        return this.httpclient.get("https://localhost:44367/api/Comment/GetAllCommentsForMovie/666");
+        return this.httpclient.get("https://localhost:44367/api/Comment/GetAllCommentsForMovie/tt0075029");
 
     }
 
