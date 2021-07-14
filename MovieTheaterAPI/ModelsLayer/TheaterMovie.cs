@@ -10,13 +10,13 @@ namespace ModelsLayer
     public  class TheaterMovie
     {
         
-        //[Required]
-        [MaxLength(30)]
+        [Required]
+        [MaxLength(30), Column(Order = 0)]
         [ForeignKey("MovieId")]
         public string MovieId { get; set; }
 
-        //[Required]
-        [ForeignKey("TheaterId")]
+        [Required]
+        [ForeignKey("TheaterId"), Column(Order = 1)]
         public int TheaterId { get; set; }
 
         public  Movie Movie { get; set; }
