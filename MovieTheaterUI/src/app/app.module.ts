@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http'
 import { freeApiService } from './services/freeapi.service';
+import { RoleComponent } from './role/role.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule,
