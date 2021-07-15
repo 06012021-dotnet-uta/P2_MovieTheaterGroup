@@ -13,7 +13,7 @@ namespace BusinessLayer
     Task<bool> DeleteTheaterAsync(int theaterId);
     Task<bool> UpdateTheaterAsync(int theaterId, string theaterLoc = "", string theaterName = "");
     List<Theater> SelectTheaters();
-    Theater SelectTheater(int theaterId);
+    List<Movie> SelectTheaterMovies(int theaterId);
     // ^^^ Passed ^^^
     // ^^^ Failed ^^^
     // ^^^ Untested ^^^
