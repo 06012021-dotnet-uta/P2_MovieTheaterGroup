@@ -1,0 +1,12 @@
+<div id="cards-container">
+  <div *ngFor="let theater of theaters" class="theaterCard">
+    <div>
+      <p>{{theater.theaterName}}</p>
+      <div>
+        <div *ngFor="let movie of theater.movies">
+          <p>{{movie.movieName}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
