@@ -2,23 +2,32 @@
 
 <h2> Users List </h2>
 <ul class="roles">
-  <li *ngFor="let user of users"
-      [class.selected]="user===selectedUser"
-      (click)="onSelect(user)">
+  <li *ngFor="let user of users">
+      <!-- [class.selected]="user==selectedUser"
+      (click)="onSelect(user)" -->
+      <!-- > -->
      <a  routerLink="/users/{{user.userId}}" >
        <span class="badge">  {{user.userId}}  </span>  {{user.username}}
      </a>
-     <!-- <button class="delete" title="delete user" (click)="delete(role)">
+      <!-- <button class="user-detali" title="user-detail" (click)="onSelect(user)">
+        User Details
+      </button> -->
+     <button class="delete" title="delete user" (click)="DeleteUser(user.userId)">
        Delete User
-     </button> -->
+     </button>
   </li>
 </ul>
+
+<!-- pass user to user detail component/.html  -->
+<!-- <app-user-details [user]="selectedUser"></app-user-details> -->
 
 <!-- nest add a player component here -->
 <!-- <app-add-user [userevent]="AddUserParent($event)"></app-add-user> -->
 
 <button (click)="showAddUser = true">Add a New user</button>
 <app-add-user *ngIf="showAddUser" (userevent)="AddUserParent($event)"></app-add-user>
+
+
 
 
 

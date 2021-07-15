@@ -50,7 +50,31 @@ namespace BusinessLayer
             }
             return true;
         }
-        
+
+        // delete user
+        public async Task<bool> DeleteUserAsync(int user_id)
+        {
+            Console.WriteLine(user_id);
+
+            try
+            {
+                var deleteUser = _context.Users.Where(x => x.UserId == user_id).FirstOrDefault();
+                Console.WriteLine(deleteUser);
+                _context.Users.Remove(deleteUser);
+                await _context.SaveChangesAsync(); }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {       //change this to logging
+                Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
+                return false;
+            }
+            return true;
+        }
+
         // login 1st method
         public async Task<bool> LoginAsync(User user)
         {
@@ -66,33 +90,7 @@ namespace BusinessLayer
             return true;
         }
 
-        // login 2nd method
-        // public async Task<bool> UserLoginAsync(User a)
-        // {
-
-        //     bool al = true;
-        //     try
-        //     {
-        //         al = _context.Users.Where(x => x.Username == a.Username 
-        //                     && x.Passwd == a.Passwd).ToList().Count > 0;
-
-        //     }
-        //     catch (ArgumentNullException ex)
-        //     {
-        //         Console.WriteLine($"There was a problem gettign the players list => {ex.InnerException}");
-        //         return false;
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.WriteLine($"There was a problem gettign the players list => {ex}");
-        //         return false;
-        //     }
-
-        //     _user = _context.Users.ToList().Where(x => x.Username == a.Passwd).FirstOrDefault();
-        //     //Console.WriteLine($"user => {User}");
-
-        //     return al;
-        // }
+       
 
         // userList 
         /// <summary>

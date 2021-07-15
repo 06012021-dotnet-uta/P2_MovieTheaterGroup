@@ -11,7 +11,7 @@ namespace BusinessLayer
     {
         Task<bool> RegisterUserAsync(User user); // register new user
         Task<bool> LoginAsync(User user); // login 1st method
-        // Task<bool> UserLoginAsync(User a);  // login 2nd method
+        Task<bool> DeleteUserAsync(int user_id); // delete user       
         Task<List<User>> UserListAsync(); // UserLiest
     }
 }

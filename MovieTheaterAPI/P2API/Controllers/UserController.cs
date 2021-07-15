@@ -56,9 +56,15 @@ namespace P2API.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        // public string Get(int id)
+        public async Task<User> Get(int id)
         {
-            return "value";
+            List<User> userList = await _us.UserListAsync();
+            //return userList;
+            var returnedUser = userList.Where(x => x.UserId == id).FirstOrDefault();
+
+            return returnedUser;
+            //return "value";
         }
 
         // POST api/<UserController>
@@ -78,8 +84,16 @@ namespace P2API.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //public void Delete(int id)
+         public async Task<ActionResult<User>> Delete(int id)
         {
+            await _us.DeleteUserAsync(id);
+            //return userList;
+            //List<User> userList1 = new List<User>();
+            //foreach (var x in userList)
+            //{ if (x.UserId != id) userList1.Add(x); }
+
+            return RedirectToAction("UserList");
         }
     }
 }
