@@ -6,6 +6,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Posts } from "../classes/posts";
 import { Params } from "@angular/router";
 import { MovieComments } from "../classes/moviecomments";
+import { MovieRatings } from "../classes/movieratings";
 
 
 @Injectable()
@@ -29,6 +30,11 @@ export class freeApiService{
 
     getmoviecomments(): Observable<any>{
         return this.httpclient.get("https://localhost:44367/api/Comment/GetAllCommentsForMovie/tt0075029");
+
+    }
+
+    getmovieratings(): Observable<any>{
+        return this.httpclient.get("https://localhost:44367/api/Rating/GetAllRaingsForMovie/tt0075029");
 
     }
 
