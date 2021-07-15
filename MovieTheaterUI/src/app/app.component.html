@@ -4,14 +4,9 @@
       <a class="btn btn-outline-primary" href="/">Home</a>
       <a class="btn btn-outline-fix text-dark" href="/experiment">Movies</a>
       <a class="btn btn-outline-fix  text-dark" href="/experiments_list">Theatres</a>
-      <a class="btn btn-outline-fix text-dark" href="/start_session">Admin</a>
+      <a class="btn btn-outline-fix text-dark" routerLink="/users" routerLinkActive="active">Log In</a>
+    </nav>
 </div>
-  </nav>
-  <nav>
-  <a routerLink="/users">All Users</a>
-  </nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
 <div class="jumbotron">
   <h1 class="display-4">Welcome to Mr Movie!</h1>
   <p class="lead">Your guide to the movies you want to see.</p>
@@ -24,25 +19,7 @@
 <p>user id: {{objposts?.userId}}</p>
 <p>Title: {{objposts?.title}}</p>
 <p>Body: {{objposts?.body}}</p> -->
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-1">commentId</div>
-    <div class="col-sm-1">movieId</div>
-    <div class="col-sm-1">userId</div>
-    <div class="col-sm-4">content</div>
-    <div class="col-sm-2">dateMade</div>
-    <div class="col-sm-1">username</div>
-  </div>
-  <div class="row" *ngFor="let com of lstmoviecomments">
-    <div class="col-sm-1">{{com.commentId}}</div>
-    <div class="col-sm-1">{{com.movieId}}</div>
-    <div class="col-sm-1">{{com.userId}}</div>
-    <div class="col-sm-4">{{com.content}}</div>
-    <div class="col-sm-2">{{com.dateMade}}</div>
-    <div class="col-sm-1">{{com.username}}</div>
-  </div>
-  <div class="row">
-    ...
-  </div>
+<div>
+  <router-outlet></router-outlet>
 </div>
+

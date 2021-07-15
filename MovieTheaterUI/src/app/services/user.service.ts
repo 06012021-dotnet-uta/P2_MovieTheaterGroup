@@ -33,7 +33,7 @@ export class UserService {
   // getting roles from server
   getUsers() : Observable<User[]> {
     //return this.http.get<Role[]>('https://localhost:5001/api/User/UserList');
-    return this.http.get<User[]>('https://localhost:5001/api/User');
+    return this.http.get<User[]>('https://localhost:5000/api/User');
 
   }
 
