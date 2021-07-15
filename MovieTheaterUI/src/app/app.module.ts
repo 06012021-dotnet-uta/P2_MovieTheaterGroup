@@ -8,6 +8,7 @@ import { HttpClientModule} from '@angular/common/http'
 
 
 import { freeApiService } from './services/freeapi.service';
+import { RoleComponent } from './components/role/role.component';
 import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -23,7 +24,8 @@ import { RegisterComponent } from './components/register/register.component';
     MessagesComponent,
     AddUserComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RoleComponent,
   ],
   imports: [
 
