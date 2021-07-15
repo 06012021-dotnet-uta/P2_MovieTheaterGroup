@@ -6,8 +6,8 @@
 trigger:
 - main
 
-pool: p1temp
-  #vmImage: 'windows-latest'
+pool: #p1temp
+  vmImage: 'windows-latest'
 
 variables:
   solution: 'MovieTheaterAPI/P2API/P2API.sln'
