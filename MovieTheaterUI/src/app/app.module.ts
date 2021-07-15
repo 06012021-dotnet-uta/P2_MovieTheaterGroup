@@ -12,6 +12,7 @@ import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { TheaterComponent } from './components/theater/theater.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     UserComponent,
     UserDetailsComponent,
     MessagesComponent,
-    AddUserComponent
+    AddUserComponent,
+    TheaterComponent
   ],
   imports: [
 

@@ -35,6 +35,13 @@ namespace P2API.Controllers
       return _theater.SelectTheater(id);
     }
 
+    //GET api/<TheaterController>/5
+    [HttpGet("{theaterId}")]
+    public List<Movie> GetMovies(int theaterId)
+    {
+      ///////
+    }
+
     // POST api/<TheaterController>
     [HttpPost]
     public async Task Post([FromBody] Theater theater)
