@@ -15,6 +15,8 @@ import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component
 import { TheaterComponent } from './components/theater/theater.component';
 import { TheaterMovieComponent } from './components/theater-movie/theater-movie.component';
 
@@ -28,6 +30,8 @@ import { TheaterMovieComponent } from './components/theater-movie/theater-movie.
     UserDetailsComponent,
     MessagesComponent,
     AddUserComponent,
+    LoginComponent,
+    RegisterComponent
     TheaterComponent,
     TheaterMovieComponent
   ],
@@ -39,8 +43,8 @@ import { TheaterMovieComponent } from './components/theater-movie/theater-movie.
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [freeApiService],
-  // providers: [],
+  // providers: [freeApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,8 @@ export class UserComponent implements OnInit {
                private messageService : MessageService) { }
 
   onSelect( user : User) : void {
-    this.selectedUser = user;
+    this.selectedUser = user
+    // this.selectedUser = this.users?.find(x => x == user);
     this.messageService.add( `UserCommponent : Selected user id = ${user.userId}`);
   }
 
@@ -28,6 +29,13 @@ export class UserComponent implements OnInit {
       x => this.users?.push(x),
       y => console.log('there was a problem adding the player')
     );
+  }
+
+  DeleteUser(user_id: number): void {
+    //call the service function to add the user to the Db.
+    this.users?.filter(user => user.userId !== user_id);
+    this.userService.DeleteUser(user_id).subscribe();
+
   }
 
 

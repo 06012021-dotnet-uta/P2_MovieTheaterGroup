@@ -12,7 +12,8 @@ import { User } from 'src/app/interfaces/user';
 })
 export class UserDetailsComponent implements OnInit {
 
-user : User | undefined;
+// @Input() user? : User ;
+user : User | undefined ;
 
 constructor(
   private route : ActivatedRoute,
@@ -24,7 +25,7 @@ constructor(
   }
 
   getUser(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.userService.getUser(id)
         .subscribe(user => this.user = user);
   }
@@ -32,6 +33,7 @@ constructor(
   goBack() : void {
     this.location.back();
   }
+
 
 }
 
