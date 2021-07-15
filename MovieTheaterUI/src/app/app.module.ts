@@ -12,6 +12,8 @@ import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     UserComponent,
     UserDetailsComponent,
     MessagesComponent,
-    AddUserComponent
+    AddUserComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
 
@@ -29,8 +33,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [freeApiService],
-  // providers: [],
+  // providers: [freeApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
