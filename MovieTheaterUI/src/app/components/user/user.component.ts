@@ -10,9 +10,9 @@ import { MessageService } from 'src/app/message.service';
 })
 export class UserComponent implements OnInit {
 
-  // roles : Role[] = [];
   users? : User[];
   selectedUser? : User;
+  showAddUser: boolean = false;
 
   constructor( private userService: UserService,
                private messageService : MessageService) { }
@@ -22,14 +22,20 @@ export class UserComponent implements OnInit {
     this.messageService.add( `UserCommponent : Selected user id = ${user.userId}`);
   }
 
-  // getRoles() : void {
-  //   this.roleService.getRoles().subscribe(roles => this.roles = roles);
-  // }
-
-  ngOnInit(): void {
-    // this.getRoles();
-    this.userService.getUsers().subscribe(
-      x => this.users = x
+  AddUserParent(event: User): void {
+    //call the service function to add the user to the Db.
+    this.userService.AddUser(event).subscribe(
+      x => this.users?.push(x),
+      y => console.log('there was a problem adding the player')
     );
   }
+
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe(
+      x => {this.users = x; },
+      y => console.log(`there was an error ${y}`),//the second arg callback func handles an error response
+      () => console.log('This is the complete block callback function')// the 3rd callback called "complete" arg always runs (just like a finally lock)
+    );
+  };
 }

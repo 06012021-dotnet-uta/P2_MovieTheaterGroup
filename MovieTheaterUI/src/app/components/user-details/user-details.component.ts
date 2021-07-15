@@ -12,7 +12,6 @@ import { User } from 'src/app/interfaces/user';
 })
 export class UserDetailsComponent implements OnInit {
 
-// @Input() role? : Role;
 user : User | undefined;
 
 constructor(
@@ -33,13 +32,6 @@ constructor(
   goBack() : void {
     this.location.back();
   }
-
-  // save() : void {
-  //   if (this.role) {
-  //     this.roleService.updateRole(this.role)
-  //     .subscribe( () => this.goBack() );
-  //   }
-  // }
 
 }
 
