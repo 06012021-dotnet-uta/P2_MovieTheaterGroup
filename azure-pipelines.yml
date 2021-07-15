@@ -67,7 +67,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
+    cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
     npm install -g @angular/cli
     npm install
     ng build
