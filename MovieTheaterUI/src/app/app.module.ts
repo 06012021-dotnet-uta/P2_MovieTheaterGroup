@@ -29,8 +29,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  // providers: [freeApiService],
-  providers: [],
+  providers: [freeApiService],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
