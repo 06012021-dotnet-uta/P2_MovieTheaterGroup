@@ -10,7 +10,8 @@ import { USERS } from '../mock-data/mock-data';
   providedIn: 'root'
 })
 export class UserService {
-    url : string = 'https://localhost:5001/api/User/';
+    url :string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
+    // url : string = 'https://localhost:5001/api/User/';
     httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -23,7 +24,8 @@ export class UserService {
 
     // getting roles from server
     getUsers() : Observable<User[]> {
-      return this.http.get<User[]>('https://localhost:5001/api/User');
+      // return this.http.get<User[]>('https://localhost:5001/api/User');
+      return this.http.get<User[]>(`${this.url}User`);
     }
 
   getUser(id : number) : Observable<User>{
@@ -33,7 +35,10 @@ export class UserService {
   }
 
   AddUser(user: User): Observable<User> {
-    return this.http.post<User>('https://localhost:5001/api/User/CreateNewUser/', user, this.httpOptions)
+    return this.http.post<User>(`${this.url}User/CreateNewUser/`, user, this.httpOptions)
   }
+
+  // update
+  // delete
 
 }
