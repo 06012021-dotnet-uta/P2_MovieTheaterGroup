@@ -1,0 +1,65 @@
+<p>add-user works!</p>
+
+<h1>Below is the Template Version of the Add a player form</h1>
+<div>
+  <!-- <label for="userId">user role Id :</label>
+  <input type="number" [(ngModel)]="newUser.userId" name="userId" placeholder=" userId">
+  <br> -->
+  <label for="username">user name:</label>
+  <input type="text" [(ngModel)]="newUser.username" name="username" placeholder=" username">
+  <br>
+  <label for="passwd"> password:</label>
+  <input type="text" [(ngModel)]="newUser.passwd" name="passwd" placeholder="passwd">
+  <br>
+  <label for="firstName">First Name:</label>
+  <input type="text" [(ngModel)]="newUser.firstName" name="firstName" placeholder="firstName">
+  <br>
+  <label for="lastName">Last Name:</label>
+  <input type="text" [(ngModel)]="newUser.lastName" name="lastName" placeholder="lastName">
+  <br>
+  <label for="roleId">user role Id :</label>
+  <input type="number" [(ngModel)]="newUser.roleId" name="roleId" placeholder="roleId">
+  <br>
+  <br><br>
+  <button (click)="AddNewUser()">submit New User</button>
+  <!-- <button type="submit">Submit</button> -->
+</div>
+
+
+<!--
+<h1>Below is the Reactive Version of the above form</h1>
+<form [formGroup]="userForm" (ngSubmit)="UserReactiveFormSubmit($event)">
+
+  <label for="userId">user role Id :</label>
+  <input type="number" name="userId" placeholder="userId" formControlName="userId" class="form-control">
+  <br><br>
+
+  <label for="username">user name:</label>
+  <input type="text" name="username" placeholder="username" formControlName="username" class="form-control">
+
+  <div *ngIf="userForm.controls.username.errors?.minlength">
+    <h6>This input requires at least 3 characters</h6>
+  </div>
+
+  <div *ngIf="userForm.controls.passwd.errors?.maxlength">
+    <h6>This input requires no more than 20 characters</h6>
+  </div>
+  <br>
+
+  <label for="passwd">Last Name:</label>
+  <input type="text" name="passwd" placeholder="last name" formControlName="passwd" class="form-control">
+  <br>
+
+  <label for="firstName">First Name:</label>
+  <input type="text" name="firstName" placeholder="firstName" formControlName="firstName" class="form-control">
+  <br>
+
+  <label for="lastName">lastName:</label>
+  <input type="text" name="lastName" placeholder="lastName" formControlName="lastName" class="form-control">
+  <br>
+
+  <label for="roleId">user role Id :</label>
+  <input type="number" name="roleId" placeholder="user role Id" formControlName="roleId" class="form-control">
+  <br><br>
+  <button type="submit">Submit</button>
+</form> -->

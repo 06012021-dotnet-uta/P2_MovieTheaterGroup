@@ -1,22 +1,11 @@
 <p>user works!</p>
 
-<div>
-  <!-- <label for="new-role">Role name: </label>
-  <input id="new-role" #RoleName /> -->
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <!-- <button class="add-button" (click)="add(RoleName.value); RoleName.value=''">
-    Add User
-  </button> -->
-</div>
-
-
 <h2> Users List </h2>
 <ul class="roles">
   <li *ngFor="let user of users"
       [class.selected]="user===selectedUser"
       (click)="onSelect(user)">
-     <a  routerLink="/roles/{{user.userId}}" >
+     <a  routerLink="/users/{{user.userId}}" >
        <span class="badge">  {{user.userId}}  </span>  {{user.username}}
      </a>
      <!-- <button class="delete" title="delete user" (click)="delete(role)">
@@ -25,7 +14,11 @@
   </li>
 </ul>
 
-<!-- <app-role-detail [role]="selectedRole"></app-role-detail> -->
+<!-- nest add a player component here -->
+<!-- <app-add-user [userevent]="AddUserParent($event)"></app-add-user> -->
+
+<button (click)="showAddUser = true">Add a New user</button>
+<app-add-user *ngIf="showAddUser" (userevent)="AddUserParent($event)"></app-add-user>
 
 
 
