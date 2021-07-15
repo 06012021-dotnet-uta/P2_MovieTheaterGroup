@@ -35,7 +35,7 @@ namespace P2API
             {
                 options.AddPolicy(name: "dev", builder =>
                {
-                   builder.WithOrigins("https://p2movietheatergroup.azurewebsites.net:4200", "https://20.40.202.10:4200", "https://67.81.177.245", "https://72.224.181.226:4200", "https://24.130.200.222:4200", "https://97.112.71.91:4200", "http://localhost:4200")
+                   builder.WithOrigins("https://p2movietheatergroup.azurewebsites.net:4200", "https://20.40.202.10:4200", "https://67.81.177.245:4200", "https://72.224.181.226:4200", "https://24.130.200.222:4200", "https://97.112.71.91:4200", "http://localhost:4200")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
                });
