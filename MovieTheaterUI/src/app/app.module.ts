@@ -8,6 +8,9 @@ import { HttpClientModule} from '@angular/common/http'
 
 
 import { freeApiService } from './services/freeapi.service';
+import { RoleComponent } from './role/role.component';
+import { MovieCommentsComponent } from './movie-comments/movie-comments.component';
+import { MovieRatingsComponent } from './movie-ratings/movie-ratings.component';
 import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -16,6 +19,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 @NgModule({
   declarations: [
     AppComponent,
+    RoleComponent,
+    MovieCommentsComponent,
+    MovieRatingsComponent
     UserComponent,
     UserDetailsComponent,
     MessagesComponent,
