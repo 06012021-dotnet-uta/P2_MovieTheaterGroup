@@ -78,4 +78,4 @@ steps:
     azureSubscription: 'Azure subscription 1(2)(4c353618-50cb-4075-901d-8208ba3b139d)'
     appType: 'webApp'
     WebAppName: 'P2MovieTheaterGroup'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI'
