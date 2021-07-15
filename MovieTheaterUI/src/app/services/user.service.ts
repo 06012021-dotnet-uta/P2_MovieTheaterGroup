@@ -28,6 +28,7 @@ export class UserService {
       return this.http.get<User[]>(`${this.url}User`);
     }
 
+
   getUser(id : number) : Observable<User>{
     const user = USERS.find(r => r.userId == id)! ;
     this.messageService.add(` UserService : fetched user id=${id}`);

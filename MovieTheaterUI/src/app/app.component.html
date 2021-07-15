@@ -1,9 +1,24 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Mr Movie</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+      <a class="btn btn-outline-primary" href="/">Home</a>
+      <a class="btn btn-outline-fix text-dark" href="/experiment">Movies</a>
+      <a class="btn btn-outline-fix  text-dark" href="/experiments_list">Theatres</a>
+      <a class="btn btn-outline-fix text-dark" routerLink="/users" routerLinkActive="active">Log In</a>
+    </nav>
+</div>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Mr Movie!</h1>
+  <p class="lead">Your guide to the movies you want to see.</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
 
-<h1> {{ title }} </h1>
-
-<!-- <app-role></app-role> -->
-<nav>
-  <a routerLink="/users">All Users</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<!-- this is for testinng POST -->
+<!-- <p>id: {{objposts?.id}}</p>
+<p>user id: {{objposts?.userId}}</p>
+<p>Title: {{objposts?.title}}</p>
+<p>Body: {{objposts?.body}}</p> -->
+<div>
+  <router-outlet></router-outlet>
+</div>
