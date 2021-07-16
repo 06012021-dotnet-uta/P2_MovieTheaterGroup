@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     firstName: '',
     lastName: '',
     roleId: 0
-  }
+  };
   @Output() userevent = new EventEmitter<User>();
 
 

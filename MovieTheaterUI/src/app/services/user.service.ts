@@ -11,7 +11,8 @@ import { USERS } from '../mock-data/mock-data';
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = 'https://localhost:5001/api/User';  // URL to web api
+
+    private usersUrl = 'https://localhost:5001/api/User';  // URL to web api
     url :string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
     // url : string = 'https://localhost:5001/api/User/';
     httpOptions = {
