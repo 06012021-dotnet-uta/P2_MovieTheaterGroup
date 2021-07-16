@@ -17,8 +17,10 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { TheaterComponent } from './components/theater/theater.component';
+import { TheaterListComponent } from './components/theater-list/theater-list.component';
 import { TheaterMovieComponent } from './components/theater-movie/theater-movie.component';
+import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
+import { TheaterMoviePreviewComponent } from './components/theater-movie-preview/theater-movie-preview.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,10 @@ import { TheaterMovieComponent } from './components/theater-movie/theater-movie.
     AddUserComponent,
     LoginComponent,
     RegisterComponent,
-    TheaterComponent,
-    TheaterMovieComponent
+    TheaterListComponent,
+    TheaterMovieComponent,
+    TheaterDetailsComponent,
+    TheaterMoviePreviewComponent
   ],
   imports: [
 

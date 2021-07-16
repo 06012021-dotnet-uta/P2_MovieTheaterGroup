@@ -23,14 +23,14 @@ namespace P2API.Controllers
 
         // GET: api/<TheaterController>
         [HttpGet]
-        public List<Theater> Get()
+        public List<Theater> GetTheaters()
         {
             return _theater.SelectTheaters();
         }
 
         // GET api/<TheaterController>/5
-        [HttpGet("{id}")]
-        public Theater Get(int id)
+        [HttpGet("[action]/{id}")]
+        public Theater GetTheater(int id)
         {
             return _theater.SelectTheater(id);
         }

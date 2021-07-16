@@ -33,7 +33,5 @@ constructor(
   goBack() : void {
     this.location.back();
   }
-
-
 }
 

@@ -3,29 +3,32 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Theater } from '../interfaces/theater';
 import { Movie } from '../interfaces/movie';
+import { UrlService } from '../services/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TheaterService {
 
-  url: string = 'https://p2movietheatergroupapi.azurewebsites.net/api/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private url: UrlService) { }
 
   // getting theaters from server
   getTheaters(): Observable<Theater[]> {
-    //return this.http.get<Theater[]>('https://p2movietheatergroupapi.azurewebsites.net/api/Theater');
-    return this.http.get<Theater[]>(`${this.url}Theater`);
+    return this.http.get<Theater[]>(`${this.url.url}Theater`);
   }
 
-  // get movies at a theater
-  getTheaterMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.url}Theater/GetMovies/{theaterId}`)
+  getTheater(theaterId: number): Observable<Theater> {
+    return this.http.get<Theater>(`${this.url.url}Theater/${theaterId}`);
+  }
+
+   //get movies at a theater
+  getTheaterMovies(theaterId: number): Observable<Movie[]> {
+    return this.http.get<Movie[]>(`${this.url.url}Theater/GetMovies/${theaterId}`);
   }
 }

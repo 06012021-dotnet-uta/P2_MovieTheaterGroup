@@ -1,10 +1,9 @@
 <p>user works!</p>
 <h2> Users List </h2>
 <ul class="roles">
-  <li *ngFor="let user of users">
-      <!-- [class.selected]="user==selectedUser"
-      (click)="onSelect(user)" -->
-      <!-- > -->
+  <li *ngFor="let user of users"
+      [class.selected]="user==selectedUser"
+      (click)="onSelect(user)"> 
      <a  routerLink="/users/{{user.userId}}" >
        <span class="badge">  {{user.userId}}  </span>  {{user.username}}
      </a>
