@@ -32,6 +32,7 @@ import { TheaterMovieComponent } from './components/theater-movie/theater-movie.
     AddUserComponent,
     LoginComponent,
     RegisterComponent,
+    RoleComponent,
     TheaterComponent,
     TheaterMovieComponent
   ],

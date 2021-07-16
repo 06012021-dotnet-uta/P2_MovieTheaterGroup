@@ -1,1 +1,33 @@
-<p>register works!</p>
+
+<h1>NEW USER</h1>
+
+<h1>PLEASE ENTER YOUR INFORMATIONS</h1>
+<div>
+
+  <label for="username">user name:</label>
+  <input type="text" [(ngModel)]="newUser.username" name="username" placeholder=" username">
+  <br>
+  <label for="passwd"> password:</label>
+  <input type="text" [(ngModel)]="newUser.passwd" name="passwd" placeholder="passwd">
+  <br>
+  <label for="firstName">First Name:</label>
+  <input type="text" [(ngModel)]="newUser.firstName" name="firstName" placeholder="firstName">
+  <br>
+  <label for="lastName">Last Name:</label>
+  <input type="text" [(ngModel)]="newUser.lastName" name="lastName" placeholder="lastName">
+  <br>
+  <label for="roleId">user role Id :</label>
+  <input type="number" [(ngModel)]="newUser.roleId" name="roleId" placeholder="roleId">
+  <br>
+  <br><br>
+  <button (click)="AddNewUser()">submit New User</button>
+  <!-- <button type="submit">Submit</button> -->
+</div>
+<div >
+  <a routerLink="/login">
+    <h1>GO LOGIN</h1>
+  </a>
+</div>
+
+
+

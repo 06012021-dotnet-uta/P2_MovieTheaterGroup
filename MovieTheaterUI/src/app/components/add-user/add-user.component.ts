@@ -15,22 +15,10 @@ export class AddUserComponent implements OnInit {
     firstName: '',
     lastName: '',
     roleId: 0
-  }
+  };
   @Output() userevent = new EventEmitter<User>();
 
-  userForm = new FormGroup ({
-    // { "username": "Jack",
-    //   "passwd": "Jack",
-    //   "firstName": "Jack",
-    //   "lastName": "Jack",
-    //   "roleId": 2}
-    userId: new FormControl(0, [Validators.min(1)]),
-    username: new FormControl('', [Validators.maxLength(20), Validators.minLength(3)]),
-    passwd: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    roleId: new FormControl(0),
-  });
+
   constructor() { }
 
   ngOnInit(): void {
@@ -38,9 +26,6 @@ export class AddUserComponent implements OnInit {
 
   AddNewUser() : void {
     this.userevent.emit(this.newUser);
-  }
-  UserReactiveFormSubmit(event: MouseEvent): void {
-    console.log('The event was triggered')
   }
 
 }
