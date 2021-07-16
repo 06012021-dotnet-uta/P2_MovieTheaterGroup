@@ -17,6 +17,12 @@ namespace ModelsLayer
         [MaxLength(50)]
         public string MovieName { get; set; }
 
+        [MaxLength(300)]
+        public string MovieImage { get; set; }
+
+        [MaxLength(20)]
+        public string MovieLength { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
