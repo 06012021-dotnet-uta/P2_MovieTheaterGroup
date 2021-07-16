@@ -28,7 +28,7 @@ namespace BusinessLayer
         /// <param name="theater">The theater object to insert into the database</param>
         public async Task<bool> CreateTheaterAsync(Theater theater)
         {
-            await _context.Theaters.AddAsync(theater);
+            _context.Theaters.Add(theater);
             try { await _context.SaveChangesAsync(); }
             catch (DbUpdateConcurrencyException exc)
             {
