@@ -1,4 +1,4 @@
-<p>user works!</p>
+<!-- <p>user works!</p> -->
 <h2> Users List </h2>
 <ul class="roles">
   <li *ngFor="let user of users"
@@ -23,6 +23,7 @@
 
 <button (click)="showAddUser = true">Add a New user</button>
 <app-add-user *ngIf="showAddUser" (userevent)="AddUserParent($event)"></app-add-user>
+<app-register (userevent)="AddUserParent($event)"></app-register>
 
 
 

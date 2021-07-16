@@ -37,7 +37,8 @@ import { TheaterMoviePreviewComponent } from './components/theater-movie-preview
     TheaterListComponent,
     TheaterMovieComponent,
     TheaterDetailsComponent,
-    TheaterMoviePreviewComponent
+    TheaterMoviePreviewComponent,
+    RoleComponent
   ],
   imports: [
 
