@@ -15,7 +15,7 @@ export class AddUserComponent implements OnInit {
     firstName: '',
     lastName: '',
     roleId: 0
-  }
+  };
   @Output() userevent = new EventEmitter<User>();
 
 
