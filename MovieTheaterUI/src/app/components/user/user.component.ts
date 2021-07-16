@@ -31,10 +31,12 @@ export class UserComponent implements OnInit {
     );
   }
 
-  DeleteUser(user_id: number): void {
+  DeleteUser(event: number): void {
     //call the service function to add the user to the Db.
-    this.users?.filter(user => user.userId !== user_id);
-    this.userService.DeleteUser(user_id).subscribe();
+    this.userService.DeleteUser(event).subscribe(
+      x => this.users?.filter(user => user.userId !== event),
+      y => console.log('there was a problem adding the player')
+    );
 
   }
 
