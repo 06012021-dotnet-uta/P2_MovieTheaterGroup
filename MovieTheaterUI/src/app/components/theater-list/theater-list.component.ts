@@ -13,7 +13,6 @@ export class TheaterListComponent implements OnInit {
 
   theaters?: Theater[];
   selectedTheater?: Theater;
-  //movies?: Movie[][];
 
   constructor(private theaterService: TheaterService) { }
 
