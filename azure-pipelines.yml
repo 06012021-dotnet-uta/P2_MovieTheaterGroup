@@ -67,9 +67,10 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
+    cd '$(System.DefaultWorkingDirectory)'
     npm install -g @angular/cli
     npm install
+    cd '**/MovieTheaterUI'
     ng build
 
 - task: AzureRmWebAppDeployment@4
