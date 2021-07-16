@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using IMDBRapidAPIFowardMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ModelsLayer;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MapperClasses;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,19 +23,21 @@ namespace P2API.Controllers
 
         private readonly IMovieService _ms;
 
+        private readonly IMDBForward _imdb;
+
         // create a constructor for businesslayer
-        public MovieController(IMovieService ms, ILogger<MovieController> logger)
+        public MovieController(IMovieService ms, IIMDBForward imdb, ILogger<MovieController> logger)
         {
             this._ms = ms;
             this._logger = logger;
-
+            _imdb = (IMDBForward)imdb;
         }
 
         // GET: api/<MovieController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("[action]/{title}")]
+        public async Task<List<IMDBMapAdmin>> IMDBMovieList(string title)
         {
-            return new string[] { "value1", "value2" };
+            return await _imdb.IMDBMovieTitleAsync(title);
         }
 
         // MovieList 

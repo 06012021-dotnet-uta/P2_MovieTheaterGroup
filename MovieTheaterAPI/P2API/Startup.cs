@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using BusinessLayer;
-
+using IMDBRapidAPIFowardMethods;
 
 namespace P2API
 {
@@ -61,6 +61,8 @@ namespace P2API
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ITheaterMovieService, TheaterMovieService>();
             services.AddScoped<ITheaterService, TheaterService>();
+            services.AddScoped<IIMDBForward, IMDBForward>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
