@@ -20,7 +20,6 @@ import { TheaterMovieComponent } from './components/theater-movie/theater-movie.
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
 import { TheaterMoviePreviewComponent } from './components/theater-movie-preview/theater-movie-preview.component';
 import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
-
 @NgModule({
   declarations: [
     AppComponent,

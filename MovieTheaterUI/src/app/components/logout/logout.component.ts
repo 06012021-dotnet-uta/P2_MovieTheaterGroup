@@ -1,3 +1,4 @@
+import { LoggedUser } from './../../interfaces/loggedUser';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { User } from 'src/app/interfaces/user';
@@ -28,12 +29,13 @@ export class LogoutComponent implements OnInit {
   }
   LogoutUser() : void {
 
-    // this.messageService.add(`before logout ${this.logoutUser.username}`);
-    this.messageService.add(`before logout current user:  ${this.userService.authorizedUser?.username}`);
+    this.logoutUser = this.userService.GetCurrentUser();
+    this.messageService.add(`before logout current user:  ${this.logoutUser.username}`);
     this.userevent.emit(this.logoutUser);
     this.userService.AuthorizedUser(this.logoutUser);
     this.messageService.add("BYE BYE");
-    this.messageService.add(`After logout current user:  ${this.userService.authorizedUser?.username}`);
+    this.logoutUser = this.userService.GetCurrentUser();
+    this.messageService.add(`After logout current user:  ${this.logoutUser.username}`);
 
 
   }

@@ -1,20 +1,21 @@
+import { TheaterListComponent } from './theater-list.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule} from '@angular/common/http';
 
-import { TheaterComponent } from './theater.component';
-
-describe('TheaterComponent', () => {
-  let component: TheaterComponent;
-  let fixture: ComponentFixture<TheaterComponent>;
+describe('TheaterListComponent', () => {
+  let component: TheaterListComponent;
+  let fixture: ComponentFixture<TheaterListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TheaterComponent ]
+        imports: [HttpClientModule],
+      declarations: [ TheaterListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TheaterComponent);
+    fixture = TestBed.createComponent(TheaterListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
