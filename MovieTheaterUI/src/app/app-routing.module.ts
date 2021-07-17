@@ -7,6 +7,7 @@ import { TheaterListComponent } from './components/theater-list/theater-list.com
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component : RegisterComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login' , component: LoginComponent},
+  { path: 'logout' , component: LogoutComponent},
   { path: 'theaters', component: TheaterListComponent },
   { path: 'theater/:id', component: TheaterDetailsComponent }
 ];

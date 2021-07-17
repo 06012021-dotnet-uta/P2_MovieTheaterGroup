@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of , BehaviorSubject} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from '../message.service';
@@ -11,7 +11,7 @@ import { USERS } from '../mock-data/mock-data';
   providedIn: 'root'
 })
 export class UserService {
-
+    public authorizedUser? : User;
     private usersUrl = 'https://localhost:5001/api/User';  // URL to web api
     url :string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
     // url : string = 'https://localhost:5001/api/User/';
@@ -45,6 +45,10 @@ export class UserService {
   DeleteUser(id : number) : Observable<User>{
     return this.http.delete<User>(`${this.url}User/${id}`);
     // return this.http.delete<User>(`${'https://localhost:5001/api/User'}/${id}`, this.httpOptions);
+  }
+
+  AuthorizedUser(user : User) {
+      this.authorizedUser = user;
   }
 
 }
