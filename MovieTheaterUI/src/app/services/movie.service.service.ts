@@ -18,11 +18,11 @@ export class MovieServiceService {
 };
 
 constructor(private http: HttpClient, private url: UrlService) { }
-    // getting theaters from server
-    getMovies(): Observable<Movie[]> {
+  // getting movies from server
+  getMovies(): Observable<Movie[]> {
       return this.http.get<Movie[]>(`${this.url.url}Movie/MovieList`);
   }
-
+  // get a movie from API
   getMovie(movieId: string): Observable<Movie> {
       return this.http.get<Movie>(`${this.url.url}Movie/${movieId}`);
   }
