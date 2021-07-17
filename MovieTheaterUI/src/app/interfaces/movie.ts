@@ -1,4 +1,5 @@
 export interface Movie {
-  movieId: string,
-  movieName: string
+    movieId: string,
+    movieImage: string,
+    movieName: string
 }

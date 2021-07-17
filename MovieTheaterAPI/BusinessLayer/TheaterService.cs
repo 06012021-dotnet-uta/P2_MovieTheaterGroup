@@ -153,7 +153,8 @@ namespace BusinessLayer
                             select new 
                             {
                                 m.MovieId,
-                                m.MovieName
+                                m.MovieName,
+                                m.MovieImage
                             }).ToList();
             List<Movie> Movies = new();
             foreach (var res in dbResult)
@@ -161,7 +162,8 @@ namespace BusinessLayer
                 Movie movie = new()
                 {
                     MovieId = res.MovieId,
-                    MovieName = res.MovieName
+                    MovieName = res.MovieName,
+                    MovieImage = res.MovieImage
                 };
                 Movies.Add(movie);
             }

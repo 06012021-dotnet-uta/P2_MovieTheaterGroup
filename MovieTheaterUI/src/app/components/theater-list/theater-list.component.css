@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap');
 
-#cards-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  align-content: space-evenly;
-  margin: 0 auto;
-  padding: 10px;
-  border: 1px solid black;
-}
-
 .theaterCard {
     border: 1px solid black;
     border-radius: 10px;
@@ -20,6 +9,7 @@
     transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
     box-shadow: 0px;
     transform: scale(1);
+    cursor: pointer;
 }
 
 .theaterCard div {

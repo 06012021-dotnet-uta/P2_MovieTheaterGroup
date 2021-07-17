@@ -38,6 +38,7 @@ namespace IMDBRapidAPIFowardMethods
                     {
                         IMDBMapAdmin movieselected = new();
                         movieselected.MovieID = movie.MovieId;
+                        movieselected.Image = movie.I.ImageUrl;
                         movielist.Add(movieselected);
                     }
                 }

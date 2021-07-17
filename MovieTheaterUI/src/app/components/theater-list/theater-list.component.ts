@@ -22,7 +22,7 @@ export class TheaterListComponent implements OnInit {
 
   ngOnInit(): void {
     this.theaterService.getTheaters().subscribe(
-      x => this.theaters = x
+      theaters => this.theaters = theaters
     );
 
     //if (Array.isArray(this.theaters)) {
