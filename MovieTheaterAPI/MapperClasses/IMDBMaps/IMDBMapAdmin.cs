@@ -14,11 +14,11 @@ namespace MapperClasses
 
         public string Summary { get; set; }
 
-        public string[] Actors { get; set; }
+        public List<string> Actors { get; set; }
 
         public string Image { get; set; }
 
-        public string runtime { get; set; }
+        public int runtime { get; set; }
 
     }
 }
