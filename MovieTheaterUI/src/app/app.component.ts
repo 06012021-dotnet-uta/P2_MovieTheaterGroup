@@ -9,26 +9,41 @@ import { MessageService } from './message.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MovieTheater';
-  currentUser : User = {
-    userId: 0,
-    username: '',
-    passwd: '',
-    firstName: '',
-    lastName: '',
-    roleId: 0
-  };
+    title = 'MovieTheater';
+    currentUser: User = {
+        userId: 0,
+        username: '',
+        passwd: '',
+        firstName: '',
+        lastName: '',
+        roleId: 0
+    };
 
-  constructor( private userService: UserService, private messageService : MessageService) { }
+    constructor(private userService: UserService, private messageService: MessageService) { }
+    admin = false;
+    login = false;
+    //   currentUser?:User;
+    ngOnInit() {
+        this.currentUser = this.userService.GetCurrentUser();
+        // alert(`current user id : ${this.currentUser.userId}`)
+        if (this.currentUser.userId === 1) {
+            this.admin = true;
+        }
+        else
+        {
+            this.admin = false;
+        }
 
-//   currentUser?:User;
-  ngOnInit(){
-    this.currentUser = this.userService.GetCurrentUser() ;
-    alert(`current user id : ${this.currentUser.userId}`)
-  }
+        if (this.currentUser.userId === 0) {
+            this.login = false;
+        }
+        else {
+            this.login = true;
+        }
+    }
 }
