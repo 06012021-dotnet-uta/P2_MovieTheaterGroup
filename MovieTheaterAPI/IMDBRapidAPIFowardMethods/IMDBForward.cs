@@ -32,14 +32,62 @@ namespace IMDBRapidAPIFowardMethods
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadFromJsonAsync<IMDBModelClass>();
-                if(body.D.Count() > 0)
+                if (body.D.Count() > 0)
                 {
                     foreach (var movie in body.D)
                     {
-                        IMDBMapAdmin movieselected = new();
-                        movieselected.MovieID = movie.MovieId;
-                        movieselected.Image = movie.I.ImageUrl;
-                        movielist.Add(movieselected);
+                        if (movie.Q == "feature")
+                        {
+                            IMDBMapAdmin movieselected = new();
+                            movieselected.MovieID = movie.MovieId;
+                            movieselected.Title = movie.L;
+                            movieselected.Actors = movie.S.Split(',');
+                            if (movie.I != null)
+                            {
+                                movieselected.Image = movie.I.ImageUrl;
+                            }
+                            movielist.Add(movieselected);
+                        }
+                    }
+                }
+                return movielist;
+            }
+        }
+
+        public async Task<List<IMDBMapAdmin>> IMDBMovieIDAsync(string searchformovie)
+        {
+            var client = new HttpClient();
+            List<IMDBMapAdmin> movielist = new();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://imdb8.p.rapidapi.com/title/get-videos?tconst={searchformovie}&limit=25&region=US"),
+                Headers =
+                {
+                    { "x-rapidapi-key", $"{auth}" },
+                    { "x-rapidapi-host", $"{thirdparty}" },
+                },
+            };
+            using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadFromJsonAsync<IMDBModelClass>();
+                if (body.D.Count() > 0)
+                {
+                    foreach (var movie in body.D)
+                    {
+                        if (movie.Q == "feature")
+                        {
+                            IMDBMapAdmin movieselected = new();
+                            movieselected.MovieID = movie.MovieId;
+                            movieselected.Title = movie.L;
+                            movieselected.Actors = movie.S.Split(',');
+                            if (movie.I != null)
+                            {
+                                movieselected.Image = movie.I.ImageUrl;
+                            }
+                            movielist.Add(movieselected);
+                        }
                     }
                 }
                 return movielist;
