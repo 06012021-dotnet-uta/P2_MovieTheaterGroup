@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AdminContainerComponent } from './admincontainer.component';
 
 // describe('UserComponent', () => {
@@ -7,6 +7,7 @@ import { AdminContainerComponent } from './admincontainer.component';
 //   let fixture: ComponentFixture<UserComponent>;
 
 //   beforeEach(async () => {
+    // imports : [HttpClientModule],
 //     await TestBed.configureTestingModule({
 //       declarations: [ UserComponent ]
 //     })
