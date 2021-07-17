@@ -42,9 +42,9 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     TheaterMovieComponent,
     TheaterDetailsComponent,
     TheaterMoviePreviewComponent,
-    RoleComponent,,
+    RoleComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
     AdminMovieComponent,
     AdminTheaterComponent,
     AdminScheduleComponent,
