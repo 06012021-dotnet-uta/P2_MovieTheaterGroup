@@ -73,11 +73,14 @@ stages:
         versionSpec: '14.x'
       displayName: 'Install Node.js'
 
-    - script: |
+    - task: DeleteFiles@1
+      inputs:
+        contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/*
+
+    - script: 
         cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
         npm install -g @angular/cli
         npm install
-        rmdir dist
         ng build
 
     - task: AzureRmWebAppDeployment@4
@@ -86,4 +89,4 @@ stages:
         azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
         appType: 'webApp'
         WebAppName: 'P2MovieTheaterGroup'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/'
