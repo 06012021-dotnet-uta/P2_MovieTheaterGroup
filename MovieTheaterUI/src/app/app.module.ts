@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
-
-
 import { freeApiService } from './services/freeapi.service';
 import { RoleComponent } from './components/role/role.component';
 import { MovieCommentsComponent } from './movie-comments/movie-comments.component';
@@ -21,6 +18,7 @@ import { TheaterListComponent } from './components/theater-list/theater-list.com
 import { TheaterMovieComponent } from './components/theater-movie/theater-movie.component';
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
 import { TheaterMoviePreviewComponent } from './components/theater-movie-preview/theater-movie-preview.component';
+import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +36,8 @@ import { TheaterMoviePreviewComponent } from './components/theater-movie-preview
     TheaterMovieComponent,
     TheaterDetailsComponent,
     TheaterMoviePreviewComponent,
-    RoleComponent
+    RoleComponent,
+    AdminContainerComponent
   ],
   imports: [
 
