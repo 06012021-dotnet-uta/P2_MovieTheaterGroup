@@ -31,6 +31,7 @@ export class UserService {
       return this.http.get<User[]>(`${this.url}User`);
     }
 
+
   getUser(id : number) : Observable<User>{
     return this.http.get<User>(`${this.url}User/${id}`);
     // return this.http.get<User>(`${'https://localhost:5001/api/User'}/${id}`);

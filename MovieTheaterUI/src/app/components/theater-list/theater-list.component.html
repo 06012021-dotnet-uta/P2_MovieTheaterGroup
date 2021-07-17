@@ -1,0 +1,16 @@
+<div id="cards-container">
+  <div *ngFor="let theater of theaters" class="theaterCard"
+       routerLink="../theater/{{theater.theaterId}}">
+    <div>
+      <h1 class="cardTitle">
+        <a>{{theater.theaterName}}</a>
+      </h1>
+      <h2 class="cardTitleSub">
+        {{theater.theaterLoc}}
+      </h2>
+    </div>
+    <div>
+      <app-theater-movie-preview [theaterId]="theater.theaterId"></app-theater-movie-preview>
+    </div>
+  </div>
+</div>

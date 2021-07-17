@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\IMDBRapidAPIFowardMethods\IMDBRapidAPIFowardMethods.csproj" />
     <ProjectReference Include="..\MapperClasses\MapperClasses.csproj" />
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
     <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
