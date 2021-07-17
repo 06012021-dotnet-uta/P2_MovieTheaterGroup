@@ -7,7 +7,9 @@ import { TheaterListComponent } from './components/theater-list/theater-list.com
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
+import { AdminMovieComponent } from './components/admin-movie/admin-movie.component';
+import { AdminTheaterComponent } from './components/admin-theater/admin-theater.component';
+import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
 const routes: Routes = [
 
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'logout' , component: LogoutComponent},
   { path: 'theaters', component: TheaterListComponent },
   { path: 'theater/:id', component: TheaterDetailsComponent },
-  { path: 'admincontainer', component : AdminContainerComponent}
+  { path: 'adminmovie', component: AdminMovieComponent },
+  { path: 'admintheater', component: AdminTheaterComponent },
+  { path: 'adminschedule', component: AdminScheduleComponent },
 ];
 
 @NgModule({

@@ -49,8 +49,7 @@ export class UserService {
 
   AuthorizedUser(user : User) {
       this.authorizedUser = user;
-  }
-
+    }
 }
   // update
 

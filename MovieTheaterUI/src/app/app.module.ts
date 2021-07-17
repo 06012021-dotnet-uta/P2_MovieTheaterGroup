@@ -19,7 +19,9 @@ import { TheaterListComponent } from './components/theater-list/theater-list.com
 import { TheaterMovieComponent } from './components/theater-movie/theater-movie.component';
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
 import { TheaterMoviePreviewComponent } from './components/theater-movie-preview/theater-movie-preview.component';
-import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
+import { AdminMovieComponent } from './components/admin-movie/admin-movie.component';
+import { AdminTheaterComponent } from './components/admin-theater/admin-theater.component';
+import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AdminContainerComponent } from './components/admin-container/adminconta
     TheaterDetailsComponent,
     TheaterMoviePreviewComponent,
     RoleComponent,
-    AdminContainerComponent
+    AdminMovieComponent,
+    AdminTheaterComponent,
+    AdminScheduleComponent
   ],
   imports: [
 

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { freeApiService } from './services/freeapi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
 import { MovieComments } from './classes/moviecomments';
+import { LoggedUser } from './interfaces/loggedUser';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -10,29 +13,45 @@ import { MovieComments } from './classes/moviecomments';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MovieTheater';
-  // constructor(private _freeApiService: freeApiService){
+    constructor(private _userService: UserService) {
+     }
+    title = 'MovieTheater';
+    test = true;
+    placeholder = 'Placeholder';
 
-  // }
+    currentuser?: number = this._userService.authorizedUser?.roleId;
+//    if(typeof currentuser ==="undefined")
+//        {
+//            alert('ok');
+//        }
 
+
+
+
+
+//   ngOnInit(): void {
+//    this.currentuser? = this._userService.authorizedUser?.roleId;
+//    }
+//}
+
+
+
+
+
+
+
+     //this._freeApiService.getcomments()
+     //.subscribe
+     //(
+     //  data=>
+     //  {
+     //    this.lstcomments = data;
+     //);
   // lstcomments:Comments[] | undefined;
   // lstmoviecomments:MovieComments[] | undefined;
 
   // lstposts:Posts[] | undefined;
   // objposts:MovieComments | undefined;
-
-
-  // ngOnInit(){
-
-  //   this._freeApiService.getcomments()
-  //   .subscribe
-  //   (
-  //     data=>
-  //     {
-  //       this.lstcomments = data;
-  //     }
-  //   );
-
   //   this._freeApiService.getcommentsbyparameter()
   //   .subscribe
   //   (
@@ -74,4 +93,3 @@ export class AppComponent {
   //     }
   //   );
   // }
-}
