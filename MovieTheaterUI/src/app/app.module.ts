@@ -21,6 +21,7 @@ import { TheaterDetailsComponent } from './components/theater-details/theater-de
 import { TheaterMoviePreviewComponent } from './components/theater-movie-preview/theater-movie-preview.component';
 import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     TheaterMoviePreviewComponent,
     RoleComponent,
     AdminContainerComponent,
-    MovieListComponent
+    MovieListComponent,
+    MovieDetailsComponent
   ],
   imports: [
 
