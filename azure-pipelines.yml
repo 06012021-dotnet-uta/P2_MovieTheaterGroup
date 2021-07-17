@@ -77,7 +77,7 @@ stages:
       inputs:
         contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/*
 
-    - script: 
+    - script: |
         cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
         npm install -g @angular/cli
         npm install
@@ -89,4 +89,4 @@ stages:
         azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
         appType: 'webApp'
         WebAppName: 'P2MovieTheaterGroup'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist'
