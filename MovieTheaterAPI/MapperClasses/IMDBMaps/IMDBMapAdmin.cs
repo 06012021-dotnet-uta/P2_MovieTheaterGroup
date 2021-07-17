@@ -18,7 +18,7 @@ namespace MapperClasses
 
         public string Image { get; set; }
 
-        public string runtime { get; set; }
+        public int runtime { get; set; }
 
     }
 }
