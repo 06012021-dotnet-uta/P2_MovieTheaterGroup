@@ -8,6 +8,7 @@ import { TheaterDetailsComponent } from './components/theater-details/theater-de
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
+import { LogoutComponent } from './components/logout/logout.component';
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component : RegisterComponent},
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login' , component: LoginComponent},
+  { path: 'logout' , component: LogoutComponent},
   { path: 'theaters', component: TheaterListComponent },
   { path: 'theater/:id', component: TheaterDetailsComponent },
   { path: 'admincontainer', component : AdminContainerComponent}

@@ -14,6 +14,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { TheaterListComponent } from './components/theater-list/theater-list.component';
 import { TheaterMovieComponent } from './components/theater-movie/theater-movie.component';
 import { TheaterDetailsComponent } from './components/theater-details/theater-details.component';
@@ -32,6 +33,7 @@ import { AdminContainerComponent } from './components/admin-container/adminconta
     AddUserComponent,
     LoginComponent,
     RegisterComponent,
+    LogoutComponent,
     TheaterListComponent,
     TheaterMovieComponent,
     TheaterDetailsComponent,
