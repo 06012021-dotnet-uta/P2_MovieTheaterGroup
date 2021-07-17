@@ -57,7 +57,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure subscription 1(1)(4c353618-50cb-4075-901d-8208ba3b139d)'
+        azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
         appType: 'apiApp'
         WebAppName: 'P2MovieTheaterGroupAPI'
         deployToSlotOrASE: true
@@ -83,7 +83,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure subscription 1(2)(4c353618-50cb-4075-901d-8208ba3b139d)'
+        azureSubscription: 'Azure subscription 1(4c353618-50cb-4075-901d-8208ba3b139d)'
         appType: 'webApp'
         WebAppName: 'P2MovieTheaterGroup'
         packageForLinux: '$(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI'
