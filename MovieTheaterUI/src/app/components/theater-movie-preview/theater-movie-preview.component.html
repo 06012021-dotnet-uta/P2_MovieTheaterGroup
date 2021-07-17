@@ -1,4 +1,8 @@
-<div *ngFor="let movie of movies">
-    <span>{{movie.movieName}}</span>
-    <img [src]="movie.movieImage"/>
+<div class="moviePreviewContainer">
+    <div *ngFor="let movie of movies">
+        <div class="previewDetail">
+            <img src={{movie.movieImage}} />
+            <span>{{movie.movieName}}</span>
+        </div>
+    </div>
 </div>
