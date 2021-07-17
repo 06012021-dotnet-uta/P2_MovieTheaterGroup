@@ -48,7 +48,6 @@ export class UserService {
 
   AuthorizedUser(user : User) {
       this.authorizedUser = user;
-      // return this.authorizedUser = user;  AuthorizedUser
   }
 
 }

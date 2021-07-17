@@ -34,17 +34,7 @@ export class LogoutComponent implements OnInit {
     this.userService.AuthorizedUser(this.logoutUser);
     this.messageService.add("BYE BYE");
     this.messageService.add(`After logout current user:  ${this.userService.authorizedUser?.username}`);
-    // // this.messageService.add(`after login ${this.currentUser.username}`);
-    // this.authorizedUser = this.users?.find( user => user.username == this.currentUser.username
-    //   && user.passwd == this.currentUser.passwd);
-    // // this.messageService.add(`authorizedUser username:  ${this.authorizedUser?.username}`);
 
-    // if(this.authorizedUser?.username != this.currentUser.username){
-    //   this.messageService.add("wrong username or password");
-    // }else {
-    //   this.messageService.add(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
-    //   this.userService.AuthorizedUser(this.authorizedUser);
-    // }
 
   }
 

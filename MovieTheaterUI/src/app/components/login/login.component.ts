@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     };
 
     LoggedCorrectUser() : void {
-      // this.messageService.add(`before login ${this.currentUser.username}`);
+      this.messageService.add(`currentUser before login ${this.currentUser.username}`);
       this.userevent.emit(this.currentUser);
-      // this.messageService.add(`after login ${this.currentUser.username}`);
+      this.messageService.add(`currentUser after login ${this.currentUser.username}`);
       this.authorizedUser = this.users?.find( user => user.username == this.currentUser.username
         && user.passwd == this.currentUser.passwd);
-      // this.messageService.add(`authorizedUser username:  ${this.authorizedUser?.username}`);
+      this.messageService.add(`authorizedUser username:  ${this.authorizedUser?.username}`);
 
       if(this.authorizedUser?.username != this.currentUser.username){
         this.messageService.add("wrong username or password");
