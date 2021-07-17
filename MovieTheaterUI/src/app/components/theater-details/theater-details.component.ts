@@ -12,7 +12,7 @@ import { Movie } from '../../interfaces/movie';
 })
 export class TheaterDetailsComponent implements OnInit {
 
-  theater?: Theater;
+  theater!: Theater;
   movies?: Movie[];
   id: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
 

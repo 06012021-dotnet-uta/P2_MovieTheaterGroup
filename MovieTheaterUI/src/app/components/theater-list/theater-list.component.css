@@ -10,6 +10,7 @@
     box-shadow: 0px;
     transform: scale(1);
     cursor: pointer;
+    margin: 10px;
 }
 
 .theaterCard div {
@@ -24,10 +25,6 @@
     transform: scale(1.05);
 }
 
-.cardTitle {
-      font-size: 2.5em;
-      font-family: 'Overlock SC', cursive;
-}
 .cardTitleSub {
     font-size: 1.5em;
 }

@@ -11,6 +11,10 @@
     padding: 10px;
     border: 1px solid black;
 }
+.cardTitle {
+    font-size: 2.5em;
+    font-family: 'Overlock SC', cursive;
+}
 img {
     border-radius: 10px;
 }

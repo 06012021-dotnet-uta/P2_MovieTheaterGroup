@@ -1,3 +1,7 @@
+.movieList {
+
+}
+
 .movieCard {
     border: 1px solid black;
     border-radius: 10px;
@@ -14,6 +18,10 @@
     box-shadow: rgb(0,149,255) 0px 0px 15px;
     transition: all .3s ease-in-out;
     transform: scale(1.05);
+}
+
+theaterMovieTitle {
+
 }
 
 img {

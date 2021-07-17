@@ -1,6 +1,11 @@
-<div id="cards-container">
-    <div *ngFor="let movie of movies" class="movieCard">
-        <img src={{movie.movieImage}} />
-        <span>{{movie.movieName}}</span>
+<div class="movieList">
+    <div id="theaterMovieTitle">
+        <h1>Now Playing at {{theater.theaterName}}</h1>
+    </div>
+    <div id="cards-container">
+        <div *ngFor="let movie of movies" class="movieCard">
+            <img src={{movie.movieImage}} />
+            <span>{{movie.movieName}}</span>
+        </div>
     </div>
 </div>
