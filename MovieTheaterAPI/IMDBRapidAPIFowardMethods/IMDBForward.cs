@@ -21,7 +21,7 @@ namespace IMDBRapidAPIFowardMethods
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://imdb8.p.rapidapi.com/auto-complete?q={searchformovie}"),
+                RequestUri = new Uri($"https://imdb8.p.rapidapi.com/title/find?q={searchformovie}"),
                 Headers =
                 {
                     { "x-rapidapi-key", $"{auth}" },
@@ -31,25 +31,27 @@ namespace IMDBRapidAPIFowardMethods
             using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead))
             {
                 response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadFromJsonAsync<IMDBModelClass>();
-                if (body.D.Count() > 0)
-                {
-                    foreach (var movie in body.D)
-                    {
-                        if (movie.Q == "feature")
-                        {
-                            IMDBMapAdmin movieselected = new();
-                            movieselected.MovieID = movie.MovieId;
-                            movieselected.Title = movie.L;
-                            movieselected.Actors = movie.S.Split(',');
-                            if (movie.I != null)
-                            {
-                                movieselected.Image = movie.I.ImageUrl;
-                            }
-                            movielist.Add(movieselected);
-                        }
-                    }
-                }
+                //var body = await response.Content.ReadFromJsonAsync<IMDBModelClass>();
+                var alsobody = await response.Content.ReadAsStringAsync();
+                //dynamic stuff = JsonSerializer.Deserialize<dynamic>(body);
+                //if (body.D.Count() > 0)
+                //{
+                //    foreach (var movie in body.D)
+                //    {
+                //        if (movie.Q == "feature")
+                //        {
+                //            IMDBMapAdmin movieselected = new();
+                //            movieselected.MovieID = movie.MovieId;
+                //            movieselected.Title = movie.L;
+                //            movieselected.Actors = movie.S.Split(',');
+                //            if (movie.I != null)
+                //            {
+                //                movieselected.Image = movie.I.ImageUrl;
+                //            }
+                //            movielist.Add(movieselected);
+                //        }
+                //    }
+                //}
                 return movielist;
             }
         }
