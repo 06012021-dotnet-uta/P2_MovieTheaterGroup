@@ -9,6 +9,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminContainerComponent } from './components/admin-container/admincontainer.component';
 import { LogoutComponent } from './components/logout/logout.component';
+// import { MoviesComponent } from './components/movie-list/movie-list.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: 'logout' , component: LogoutComponent},
   { path: 'theaters', component: TheaterListComponent },
   { path: 'theater/:id', component: TheaterDetailsComponent },
-  { path: 'admincontainer', component : AdminContainerComponent}
+  { path: 'admincontainer', component : AdminContainerComponent},
+  { path: 'movies', component : MovieListComponent}
 ];
 
 @NgModule({

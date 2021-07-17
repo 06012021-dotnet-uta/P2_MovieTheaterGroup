@@ -1,0 +1,16 @@
+<p>movie-list works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2"><B>Movie Id</B></div>
+      <div class="col-sm-6"><B>Movie Name</B></div>
+    </div>
+    <div class="row" *ngFor="let movie of movies">
+      <div class="col-sm-2">{{movie.movieId}}</div>
+      <div class="col-sm-6">{{movie.movieName}}</div>
+    </div>
+    <div class="row">
+      ...
+    </div>
+  </div>
+  
+
