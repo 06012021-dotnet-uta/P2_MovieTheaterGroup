@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.messageService.add("wrong username or password");
       }else {
         this.messageService.add(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
-
+        this.userService.AuthorizedUser(this.authorizedUser);
       }
     }
 
