@@ -11,6 +11,8 @@ import { AdminMovieComponent } from './components/admin-movie/admin-movie.compon
 import { AdminTheaterComponent } from './components/admin-theater/admin-theater.component';
 import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
+// import { MoviesComponent } from './components/movie-list/movie-list.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'adminmovie', component: AdminMovieComponent },
   { path: 'admintheater', component: AdminTheaterComponent },
   { path: 'adminschedule', component: AdminScheduleComponent },
+  { path: 'movies', component : MovieListComponent}
 ];
 
 @NgModule({

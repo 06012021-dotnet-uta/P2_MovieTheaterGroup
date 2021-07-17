@@ -22,6 +22,7 @@ import { TheaterMoviePreviewComponent } from './components/theater-movie-preview
 import { AdminMovieComponent } from './components/admin-movie/admin-movie.component';
 import { AdminTheaterComponent } from './components/admin-theater/admin-theater.component';
 import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminScheduleComponent } from './components/admin-schedule/admin-schedu
     RoleComponent,
     AdminMovieComponent,
     AdminTheaterComponent,
-    AdminScheduleComponent
+    AdminScheduleComponent,
+    MovieListComponent
   ],
   imports: [
 
