@@ -75,7 +75,7 @@ stages:
 
     - task: DeleteFiles@1
       inputs:
-        contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI*
+        contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI/*
 
     - script: |
         cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
