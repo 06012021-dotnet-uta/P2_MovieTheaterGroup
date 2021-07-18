@@ -1,16 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
-
+.mainBody {
+    background-color: white;
+    width: 70%;
+    margin: 0 auto 0 auto;
+}
 #cards-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: space-evenly;
     margin: 0 auto;
-    width: 70%;
     padding: 10px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    justify-content: center;
 }
+.cardTitle {
+    font-size: 2.5em;
+    font-family: 'Overlock SC', cursive;
+}
+.cardTitleSub {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+.movieCard {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 0px;
+    transform: scale(1);
+    cursor: pointer;
+    margin: 10px;
+}
+.movieCard:hover {
+    box-shadow: rgb(0,149,255) 0px 0px 15px;
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+}
+.movieCard img {
+    height: 300px;
+    width: 210px;
+}
+.movieCard span {
+    font-size: 1.5em;
+}
+
+.theaterCard {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    box-shadow: 0px;
+    transform: scale(1);
+    cursor: pointer;
+    margin: 10px;
+}
+.theaterCard:hover {
+    box-shadow: rgb(0,149,255) 0px 0px 15px;
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+}
+.theaterCard img {
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0px;
+}
+.theaterCard img:hover {
+    box-shadow: rgb(0,149,255) 0px 0px 15px;
+}
+
 img {
     border-radius: 10px;
+    border: 2px solid black;
 }

@@ -2,7 +2,7 @@ import { freeApiService } from './services/freeapi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
 import { MovieComments } from './classes/moviecomments';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { MessageService } from './message.service';
