@@ -14,7 +14,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 // import { MoviesComponent } from './components/movie-list/movie-list.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
-
+import { MovieCommentsComponentComponent } from './components/movie-comments-component/movie-comments-component.component';
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'admintheater', component: AdminTheaterComponent },
   { path: 'adminschedule', component: AdminScheduleComponent },
   { path: 'movies', component : MovieListComponent},
-  { path: 'movies/:id', component : MovieDetailsComponent}
+  { path: 'movies/:id', component : MovieDetailsComponent},
+  { path: 'Comment/GetAllCommentsForMovie/:id', component : MovieCommentsComponentComponent}
 ];
 
 @NgModule({

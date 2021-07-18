@@ -1,0 +1,23 @@
+<p>movie-comments works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-1">commentId</div>
+      <div class="col-sm-1">movieId</div>
+      <div class="col-sm-1">userId</div>
+      <div class="col-sm-4">content</div>
+      <div class="col-sm-2">dateMade</div>
+      <div class="col-sm-1">username</div>
+    </div>
+    <div class="row" *ngFor="let com of lstmoviecomments">
+      <div class="col-sm-1">{{com.commentId}}</div>
+      <div class="col-sm-1">{{com.movieId}}</div>
+      <div class="col-sm-1">{{com.userId}}</div>
+      <div class="col-sm-4">{{com.content}}</div>
+      <div class="col-sm-2">{{com.dateMade}}</div>
+      <div class="col-sm-1">{{com.username}}</div>
+    </div>
+    <div class="row">
+      ...
+    </div>
+  </div>
+  
