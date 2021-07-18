@@ -77,11 +77,29 @@ stages:
     #   inputs:
     #     contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI/*
 
-    - script: |
-        cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
-        npm install -g @angular/cli
-        npm install -g
-        ng build
+    # - script: |
+    #     cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
+    #     npm install -g @angular/cli
+    #     npm install -g
+    #     ng build
+
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
+        customCommand: 'install -g @angular/cli'
+
+    - task: Npm@1
+      inputs:
+        command: 'install'
+        workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
+        verbose: true
+
+    - task: Npm@1
+      inputs:
+        command: 'custom'
+        workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
+        customCommand: 'ng build'
 
     - task: AzureRmWebAppDeployment@4
       inputs:
