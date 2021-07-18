@@ -16,6 +16,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MovieCommentsComponentComponent } from './components/movie-comments-component/movie-comments-component.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { MovieRatingsComponentComponent } from './components/movie-ratings-component/movie-ratings-component.component';
+
 const routes: Routes = [
 
   { path: 'users',     component : UserComponent},
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'movies', component : MovieListComponent},
   { path: 'movies/:id', component : MovieDetailsComponent},
   { path: 'Comment/GetAllCommentsForMovie/:id', component : MovieCommentsComponentComponent},
+  { path: 'Rating/GetAllRaingsForMovie/:id', component : MovieRatingsComponentComponent},
   { path: 'schedule/:movieId/:theaterId', component: ScheduleComponent }
 
 ];
