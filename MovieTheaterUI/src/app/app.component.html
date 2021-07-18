@@ -9,7 +9,7 @@
             <ng-template #elseBlock>
                 <a class="btn btn-outline-fix text-white" routerLink="/logout" routerLinkActive="active">Log Out</a>
                 <a href="#" class="nav-link text-white">
-                    Logged In As: {{this.currentUser.username}}
+                    Logged In As: {{currentUser.username}}
                 </a>
             </ng-template>
         </nav>
@@ -23,5 +23,7 @@
     </div>
     <div style="height:100%">
         <router-outlet></router-outlet>
+        <app-messages></app-messages>
     </div>
 </div>
+

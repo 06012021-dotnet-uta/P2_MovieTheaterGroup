@@ -16,8 +16,8 @@ import { MessageService } from './message.service';
 export class AppComponent {
     title = 'MovieTheater';
     currentUser: User = {
-        userId: 0,
-        username: '',
+        userId: 1,
+        username: 'test',
         passwd: '',
         firstName: '',
         lastName: '',
@@ -27,23 +27,35 @@ export class AppComponent {
     constructor(private userService: UserService, private messageService: MessageService) { }
     admin = false;
     login = false;
-    //   currentUser?:User;
-    ngOnInit() {
+    checklogin(): void {
         this.currentUser = this.userService.GetCurrentUser();
-        // alert(`current user id : ${this.currentUser.userId}`)
         if (this.currentUser.userId === 1) {
             this.admin = true;
         }
-        else
-        {
-            this.admin = false;
-        }
-
         if (this.currentUser.userId === 0) {
             this.login = false;
         }
-        else {
-            this.login = true;
-        }
+    }
+    //this.currentUser = this.userService.GetCurrentUser();
+    //alert(`current user id : ${this.currentUser.userId}`)
+    //if (this.currentUser.userId === 1) {
+    //    this.admin = true;
+    //}
+    //else {
+    //    this.admin = false;
+    //}
+
+    //if (this.currentUser.userId === 0) {
+    //    this.login = false;
+    //}
+    //else {
+    //    this.login = true;
+    //}
+
+
+    //   currentUser?:User;
+    ngOnInit() {
+        this.currentUser = this.userService.GetCurrentUser();
+        alert(`current user id : ${this.currentUser.userId}`)
     }
 }
