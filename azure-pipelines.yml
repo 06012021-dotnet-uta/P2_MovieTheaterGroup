@@ -78,10 +78,9 @@ stages:
     #     contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI/*
 
     - script: |
-        cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
+        cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
         npm install -g @angular/cli
-        cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
-        npm install
+        npm install -g
         ng build
 
     - task: AzureRmWebAppDeployment@4
