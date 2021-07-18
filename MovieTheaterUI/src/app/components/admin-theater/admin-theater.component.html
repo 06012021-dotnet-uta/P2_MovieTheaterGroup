@@ -1,32 +1,48 @@
 <!-- <p>user works!</p> -->
 <h2> Users List </h2>
-<ul class="roles">
-  <li *ngFor="let user of users"
-      [class.selected]="user==selectedUser"
-      (click)="onSelect(user)"> 
-     <a  routerLink="/users/{{user.userId}}" >
-       <span class="badge">  {{user.userId}}  </span>  {{user.username}}
-     </a>
-      <!-- <button class="user-detali" title="user-detail" (click)="onSelect(user)">
-        User Details
-      </button> -->
-      <br>
-     <button class="delete" title="delete user" (click)="DeleteUser(user.userId)">
-       Delete User
-     </button>
-  </li>
-</ul>
-<!-- pass user to user detail component/.html  -->
-<!-- <app-user-details [user]="selectedUser"></app-user-details> -->
-<!-- nest add a player component here -->
-<!-- <app-add-user [userevent]="AddUserParent($event)"></app-add-user> -->
 
-<button (click)="showAddUser = true">Add a New user</button>
-<app-add-user *ngIf="showAddUser" (userevent)="AddUserParent($event)"></app-add-user>
-<app-register (userevent)="AddUserParent($event)"></app-register>
-
-
-
-
+<form class="mainBody" style="width:100%">
+    <table>
+        <thead>
+            <tr>Theater Name</tr>
+            <tr>Theater Location</tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let theater of theaters">
+                <td>
+                    {{theater.theaterName}}
+                </td>
+                <td>
+                    {{theater.theaterLoc}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-Warning">Edit</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-Danger">Remove</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" placeholder="Theater Name">
+                        <label for="floatingInput">Theater Name</label>
+                        <span class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" placeholder="Theater Location">
+                        <label for="floatingInput">Theater Location</label>
+                        <span class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-Success">Add</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
 
 

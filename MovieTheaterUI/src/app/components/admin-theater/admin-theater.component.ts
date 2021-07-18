@@ -1,11 +1,10 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { TheaterListComponent } from 'src/app/components/theater-list/theater-list.component.js';
+import { Component} from '@angular/core';
+import { TheaterListComponent } from '../theater-list/theater-list.component';
 
 @Component({
-  selector: 'app-admintheater',
+  selector: 'app-admin-theater',
   templateUrl: './admin-theater.component.html',
   styleUrls: ['./admin-theater.component.css']
 })
-export class AdminTheaterComponent {
-    constructor(private theaterListComponent: TheaterListComponent) { }
+export class AdminTheaterComponent extends TheaterListComponent{
 }
