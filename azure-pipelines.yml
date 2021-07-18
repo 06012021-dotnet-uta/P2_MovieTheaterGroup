@@ -73,16 +73,6 @@ stages:
         versionSpec: '14.x'
       displayName: 'Install Node.js'
 
-    # - task: DeleteFiles@1
-    #   inputs:
-    #     contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI/*
-
-    # - script: |
-    #     cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
-    #     npm install -g @angular/cli
-    #     npm install -g
-    #     ng build
-
     - task: Npm@1
       inputs:
         command: 'custom'
@@ -94,9 +84,11 @@ stages:
         command: 'install'
         workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
 
-    - script: |
-        cd 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
-        ng build
+    - task: CmdLine@2
+      inputs:
+        script: 'ng build'
+        workingDirectory: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
+        failOnStderr: true
 
     - task: AzureRmWebAppDeployment@4
       inputs:
