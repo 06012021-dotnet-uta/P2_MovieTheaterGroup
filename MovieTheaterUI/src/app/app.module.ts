@@ -54,7 +54,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     AdminScheduleComponent,
     MovieListComponent,
     MovieCommentsComponentComponent,
-    MovieRatingsComponentComponent
+    MovieRatingsComponentComponent,
     ScheduleComponent
   ],
   imports: [
