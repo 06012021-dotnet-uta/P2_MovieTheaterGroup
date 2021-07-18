@@ -79,10 +79,10 @@ stages:
 
     - script: |
         cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
-        npm install --global npm
+        npm install
         npm install -g @angular/cli
         npm install --save-dev @angular-devkit/build-angular
-        ng build --base-href "/MovieTheaterUI/"
+        ng build
 
     - task: AzureRmWebAppDeployment@4
       inputs:
