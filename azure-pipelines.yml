@@ -93,10 +93,9 @@ stages:
       inputs:
         command: 'install'
         workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
-        verbose: true
 
     - script: |
-        cd '$(System.DefaultWorkingDirectory)\MovieTheaterUI'
+        cd 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
         ng build
 
     - task: AzureRmWebAppDeployment@4
