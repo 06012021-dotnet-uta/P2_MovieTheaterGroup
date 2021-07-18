@@ -78,7 +78,7 @@ stages:
     #     contents: $(System.DefaultWorkingDirectory)/MovieTheaterUI/dist/sampleAPI/*
 
     - script: |
-        cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
+        cd '$(System.DefaultWorkingDirectory)/**/MovieTheaterUI'
         npm install @angular/cli
         npm install
         ng build
