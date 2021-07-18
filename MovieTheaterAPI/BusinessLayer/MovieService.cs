@@ -43,5 +43,10 @@ namespace BusinessLayer
             return ps;
         }
 
+        public Movie Movie(string movieId)
+        {
+            return _context.Movies.Where(x => x.MovieId == movieId).FirstOrDefault(); 
+        }
+
     }
 }
