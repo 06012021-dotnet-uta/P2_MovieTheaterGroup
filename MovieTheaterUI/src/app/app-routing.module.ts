@@ -14,7 +14,6 @@ import { LogoutComponent } from './components/logout/logout.component';
 // import { MoviesComponent } from './components/movie-list/movie-list.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
-import { ScheduleService } from './services/schedule.service';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 const routes: Routes = [
 

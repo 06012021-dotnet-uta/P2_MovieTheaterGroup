@@ -1,6 +1,9 @@
 <div>
-    <div *ngFor="let schedule of schedules">
-        <span>{{schedule.scheduleId}}</span>
-        <span>{{schedule.hour}}</span>
+    <!--<div class="movieCard">
+        <img src={{movie.movieImage}} />
+        <span>{{movie.movieName}}</span>
+    </div>-->
+    <div *ngFor="let schedule of schedules" class="time">
+        <span>{{schedule.showingTime | date:'h:mm'}}</span>
     </div>
 </div>
