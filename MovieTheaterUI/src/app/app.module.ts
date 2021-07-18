@@ -26,6 +26,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MovieCommentsComponentComponent } from './components/movie-comments-component/movie-comments-component.component';
 import { MovieRatingsComponentComponent } from './components/movie-ratings-component/movie-ratings-component.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { MovieRatingsComponentComponent } from './components/movie-ratings-compo
     MovieListComponent,
     MovieCommentsComponentComponent,
     MovieRatingsComponentComponent
+    ScheduleComponent
   ],
   imports: [
 

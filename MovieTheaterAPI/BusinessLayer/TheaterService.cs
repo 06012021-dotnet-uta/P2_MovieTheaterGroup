@@ -126,18 +126,13 @@ namespace BusinessLayer
         public Theater SelectTheater(int theaterId)
         {
             var TheatersTable = _context.Theaters;
-            var dbResults = TheatersTable.Where(th => th.TheaterId == theaterId).ToList();
-            Theater theater = null;
-            foreach (var th in TheatersTable)
+            var dbResults = TheatersTable.Where(th => th.TheaterId == theaterId).FirstOrDefault();
+            Theater theater = new()
             {
-                theater = new()
-                {
-                    TheaterId = th.TheaterId,
-                    TheaterLoc = th.TheaterLoc,
-                    TheaterName = th.TheaterName,
-                    TheaterMovies = th.TheaterMovies
-                };
-            }
+                TheaterId = dbResults.TheaterId,
+                TheaterLoc = dbResults.TheaterLoc,
+                TheaterName = dbResults.TheaterName
+            };
             return theater;
         }
 

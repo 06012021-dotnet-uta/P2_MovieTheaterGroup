@@ -2,10 +2,12 @@ import { freeApiService } from './services/freeapi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
 import { MovieComments } from './classes/moviecomments';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { MessageService } from './message.service';
+import { Observable, of , BehaviorSubject} from 'rxjs';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -16,8 +18,8 @@ import { MessageService } from './message.service';
 export class AppComponent {
     title = 'MovieTheater';
     currentUser: User = {
-        userId: 0,
-        username: '',
+        userId: 1,
+        username: 'test',
         passwd: '',
         firstName: '',
         lastName: '',
@@ -27,23 +29,27 @@ export class AppComponent {
     constructor(private userService: UserService, private messageService: MessageService) { }
     admin = false;
     login = false;
-    //   currentUser?:User;
-    ngOnInit() {
+    checkLogin() : void {
         this.currentUser = this.userService.GetCurrentUser();
-        // alert(`current user id : ${this.currentUser.userId}`)
-        if (this.currentUser.userId === 1) {
+
+        if (this.currentUser.roleId === 1) {
             this.admin = true;
         }
-        else
-        {
+        else {
             this.admin = false;
         }
 
-        if (this.currentUser.userId === 0) {
+        if (this.currentUser.roleId === 0) {
             this.login = false;
         }
         else {
             this.login = true;
         }
     }
+    ngOnInit() {
+        this.admin = false;
+        this.login = false;
+        interval(1000).subscribe(x => this.checkLogin())
+    }
+
 }
