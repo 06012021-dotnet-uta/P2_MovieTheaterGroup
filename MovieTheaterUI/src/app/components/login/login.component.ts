@@ -11,7 +11,7 @@ import { LoggedUser } from 'src/app/interfaces/loggedUser';
 })
 export class LoginComponent implements OnInit {
 
-  currentUser : LoggedUser = {username: '', passwd: ''};
+  currentUser : LoggedUser = {username: '', passwd:''};
   authorizedUser? : User = {
     userId: 0,
     username: '',
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     };
 
     LoggedCorrectUser() : void {
+
       // this.messageService.add(`currentUser before login ${this.currentUser.username}`);
       this.userevent.emit(this.currentUser);
       // this.messageService.add(`currentUser after login ${this.currentUser.username}`);
@@ -48,9 +49,9 @@ export class LoginComponent implements OnInit {
       }else {
         this.messageService.add(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
         this.userService.AuthorizedUser(this.authorizedUser);
-        this.currentUser = {username: '', passwd: ''};
         // alert(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
       }
+      this.currentUser = {username: '', passwd: ''};
     }
 
 
