@@ -50,9 +50,9 @@ namespace P2API.Controllers
 
         // GET api/<MovieController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(string id)
         {
-            return "value";
+            return _ms.Movie(id);
         }
 
         // POST api/<MovieController>
