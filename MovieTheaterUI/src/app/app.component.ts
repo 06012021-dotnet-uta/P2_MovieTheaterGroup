@@ -18,8 +18,8 @@ import { interval } from 'rxjs';
 export class AppComponent {
     title = 'MovieTheater';
     currentUser: User = {
-        userId: 0,
-        username: '',
+        userId: 1,
+        username: 'test',
         passwd: '',
         firstName: '',
         lastName: '',
@@ -32,28 +32,24 @@ export class AppComponent {
     checkLogin() : void {
         this.currentUser = this.userService.GetCurrentUser();
 
-        // setTimeout(() => {this.currentUser = this.userService.GetCurrentUser();}, 1000);
-            // alert(`current user updated ${this.currentUser.userId}`)
-        // .subscribe((val) => { console.log('called'); });
-
         if (this.currentUser.roleId === 1) {
             this.admin = true;
         }
-        // else{ this.admin = false;}
+        else {
+            this.admin = false;
+        }
 
-        if (this.currentUser.roleId === 2) {
+        if (this.currentUser.roleId === 0) {
+            this.login = false;
+        }
+        else {
             this.login = true;
         }
     }
-    //   currentUser?:User;
     ngOnInit() {
         this.admin = false;
         this.login = false;
         interval(1000).subscribe(x => this.checkLogin())
-        // setTimeout(() => { this.currentUser = this.userService.GetCurrentUser();
-        //                    this.messageService.add(` current user ${this.currentUser.username}`);
-        //                 }, 1000);
-
     }
 
 }
