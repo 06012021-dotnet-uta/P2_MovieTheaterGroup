@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Schedule } from '../../interfaces/schedule';
 import { ScheduleService } from '../../services/schedule.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Theater } from '../../interfaces/theater';
+import { Movie } from '../../interfaces/movie';
+import { MovieServiceService } from '../../services/movie.service.service';
+import { TheaterService } from '../../services/theater.service';
 
 @Component({
     selector: 'app-schedule',
@@ -15,13 +19,18 @@ export class ScheduleComponent implements OnInit {
     theaterId: number = parseInt(this.route.snapshot.paramMap.get('theaterId')!, 10);
     movieId: string = this.route.snapshot.paramMap.get('movieId')!;
     schedules?: Schedule[] = [];
+    theater!: Theater;
+    movie!: Movie;
 
-
-    constructor(private scheduleService: ScheduleService, private route: ActivatedRoute) { }
+    constructor(private scheduleService: ScheduleService,
+        private movieService: MovieServiceService,
+        private theaterService: TheaterService,
+        private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.getSchedules();
-        this.extractTimes();
+        this.getMovie();
+        this.getTheater();
     }
 
     getSchedules(): void {
@@ -30,13 +39,15 @@ export class ScheduleComponent implements OnInit {
         );
     }
 
-    extractTimes(): void {
-        if (Array.isArray(this.schedules)) {
-            this.schedules.forEach(sch => {
-                sch.hour = sch.showingTime.toLocaleTimeString();
-                //sch.minute = sch.showingTime.getHours();
-                //console.log(sch.showingTime.getHours());
-            });
-        }
+    getMovie(): void {
+        this.movieService.getMovie(this.movieId).subscribe(
+            movie => this.movie = movie
+        );
+    }
+
+    getTheater(): void {
+        this.theaterService.getTheater(this.theaterId).subscribe(
+            theater => this.theater = theater
+        );
     }
 }

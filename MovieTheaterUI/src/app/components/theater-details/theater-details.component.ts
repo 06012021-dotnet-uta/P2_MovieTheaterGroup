@@ -24,8 +24,6 @@ export class TheaterDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.getMovies();
         this.getTheater();
-        console.log(this.theater);
-        console.log(this.id);
     }
 
     getMovies(): void {

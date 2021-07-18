@@ -40,6 +40,12 @@ namespace P2API.Controllers
             return await _imdb.IMDBMovieTitleAsync(title);
         }
 
+        [HttpGet("[action]/{}")]
+        public async Task<IMDBMapAdmin> IMDBGetMovie(string movieId)
+        {
+            //return await _imdb.
+        }
+
         // MovieList 
         [HttpGet("MovieList")]
         public async Task<IEnumerable<Movie>> MovieList()
