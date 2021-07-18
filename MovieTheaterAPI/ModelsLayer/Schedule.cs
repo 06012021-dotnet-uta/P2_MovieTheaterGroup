@@ -7,8 +7,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ModelsLayer
 {
-  public class Schedule
-  {
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+    public class Schedule
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+    {
     [Key]
     public int ScheduleId { get; set; }
 
@@ -19,6 +21,7 @@ namespace ModelsLayer
     [Required]
     [ForeignKey("MovieId")]
     public string MovieId { get; set; }
+
     public DateTime ShowingTime { get; set; }
 
     public virtual Movie Movie { get; set; }

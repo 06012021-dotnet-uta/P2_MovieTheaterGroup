@@ -1,3 +1,7 @@
+
+body {
+    background-color: green;
+}
 .form-control-dark {
     color: #fff;
     background-color: var(--bs-dark);

@@ -1,10 +1,13 @@
-<div id="theaterMovieTitle">
-    <span style="position: relative; left: -20px;" class="cardTitleSub">Now Playing at</span>
-    <h1 style="font-size: 3em;">{{theater.theaterName}}</h1>
-</div>
-<div id="cards-container">
-    <div *ngFor="let movie of movies" class="movieCard">
-        <img src={{movie.movieImage}} />
-        <span>{{movie.movieName}}</span>
+<div class="mainBody">
+    <div id="theaterMovieTitle">
+        <span style="position: relative; left: -20px;" class="cardTitleSub">Now Playing at</span>
+        <h1 style="font-size: 3em;">{{theater.theaterName}}</h1>
+    </div>
+    <div id="cards-container">
+        <div *ngFor="let movie of movies" class="movieCard"
+             routerLink="../../schedule/{{movie.movieId}}/{{theater.theaterId}}">
+            <img src={{movie.movieImage}} />
+            <span>{{movie.movieName}}</span>
+        </div>
     </div>
 </div>

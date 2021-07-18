@@ -5,32 +5,24 @@ import { Movie } from 'src/app/interfaces/movie';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-theater',
-  templateUrl: './theater-list.component.html',
-  styleUrls: ['./theater-list.component.css']
+    selector: 'app-theater',
+    templateUrl: './theater-list.component.html',
+    styleUrls: ['./theater-list.component.css']
 })
 export class TheaterListComponent implements OnInit {
 
-  theaters?: Theater[];
-  selectedTheater?: Theater;
+    theaters?: Theater[];
+    selectedTheater?: Theater;
 
-  constructor(private theaterService: TheaterService) { }
+    constructor(private theaterService: TheaterService) { }
 
-  onSelect(theater: Theater): void {
-    this.selectedTheater = theater;
-  }
+    onSelect(theater: Theater): void {
+        this.selectedTheater = theater;
+    }
 
-  ngOnInit(): void {
-    this.theaterService.getTheaters().subscribe(
-      theaters => this.theaters = theaters
-    );
-
-    //if (Array.isArray(this.theaters)) {
-    //  for (let i = 0; i < this.theaters?.length; i++) {
-    //    this.theaterService.getTheaterMovies(this.theaters[i].theaterId).subscribe(
-    //      x => this.movies?.push(x)
-    //    );
-    //  }
-    //}
-  }
+    ngOnInit(): void {
+        this.theaterService.getTheaters().subscribe(
+            theaters => this.theaters = theaters
+        );
+    }
 }
