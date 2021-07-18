@@ -10,5 +10,8 @@ namespace BusinessLayer
     public interface IMovieService
     {
         Task<List<Movie>> MovieListAsync(); // MovieList
+        Movie Movie(string id);
+
     }
+
 }
