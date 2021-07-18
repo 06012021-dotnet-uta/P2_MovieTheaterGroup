@@ -88,7 +88,6 @@ stages:
       inputs:
         script: 'ng build'
         workingDirectory: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
-        failOnStderr: true
 
     - task: AzureRmWebAppDeployment@4
       inputs:
