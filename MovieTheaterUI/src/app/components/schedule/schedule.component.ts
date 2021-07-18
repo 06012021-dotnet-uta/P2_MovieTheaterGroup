@@ -33,9 +33,9 @@ export class ScheduleComponent implements OnInit {
     extractTimes(): void {
         if (Array.isArray(this.schedules)) {
             this.schedules.forEach(sch => {
-                sch.hour = sch.showingTime.getHours();
-                sch.minute = sch.showingTime.getHours();
-                console.log(sch.showingTime.getHours());
+                sch.hour = sch.showingTime.toLocaleTimeString();
+                //sch.minute = sch.showingTime.getHours();
+                //console.log(sch.showingTime.getHours());
             });
         }
     }

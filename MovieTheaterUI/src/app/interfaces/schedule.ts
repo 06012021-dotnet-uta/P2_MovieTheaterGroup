@@ -3,6 +3,6 @@ export interface Schedule {
     theaterId: number,
     movieId: string,
     showingTime: Date,
-    hour: number,
-    minute: number
+    hour: string
+    //minute: number
 }
