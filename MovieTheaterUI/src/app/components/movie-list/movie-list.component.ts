@@ -25,7 +25,6 @@ export class MovieListComponent implements OnInit {
     (
       data=>
       {
-        console.log(data);
         this.movies = data;
       }
     );
