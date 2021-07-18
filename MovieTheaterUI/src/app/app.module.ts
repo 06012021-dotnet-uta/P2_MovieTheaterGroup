@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { freeApiService } from './services/freeapi.service';
 import { RoleComponent } from './components/role/role.component';
-import { MovieCommentsComponent } from './movie-comments/movie-comments.component';
-import { MovieRatingsComponent } from './movie-ratings/movie-ratings.component';
+// import { MovieCommentsComponent } from './movie-comments/movie-comments.component';
+// import { MovieRatingsComponent } from './movie-ratings/movie-ratings.component';
 import { UserComponent } from './components/user/user.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -24,14 +24,17 @@ import { AdminTheaterComponent } from './components/admin-theater/admin-theater.
 import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MovieCommentsComponentComponent } from './components/movie-comments-component/movie-comments-component.component';
+import { MovieRatingsComponentComponent } from './components/movie-ratings-component/movie-ratings-component.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RoleComponent,
-    MovieCommentsComponent,
-    MovieRatingsComponent,
+    // MovieCommentsComponent,
+    // MovieRatingsComponent,
     UserComponent,
     UserDetailsComponent,
     MessagesComponent,
@@ -50,6 +53,8 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     AdminTheaterComponent,
     AdminScheduleComponent,
     MovieListComponent,
+    MovieCommentsComponentComponent,
+    MovieRatingsComponentComponent
     ScheduleComponent
   ],
   imports: [

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { Theater } from '../interfaces/theater';
 import { Movie } from '../interfaces/movie';
+import { MovieComments } from '../interfaces/movieComments';
+import { MovieRatings } from '../interfaces/movieRatings';
 import { UrlService } from '../services/url.service';
 
 
@@ -25,6 +27,16 @@ constructor(private http: HttpClient, private url: UrlService) { }
   // get a movie from API
   getMovie(movieId: string): Observable<Movie> {
       return this.http.get<Movie>(`${this.url.url}Movie/${movieId}`);
+  }
+
+  // get a movie from API
+  getMovieComments(movieId: string): Observable<MovieComments[]> {
+      return this.http.get<MovieComments[]>(`${this.url.url}Comment/GetAllCommentsForMovie/${movieId}`);
+  }
+
+  // get a movie from API
+  getMovieRatings(movieId: string): Observable<MovieRatings[]> {
+      return this.http.get<MovieRatings[]>(`${this.url.url}Rating/GetAllRaingsForMovie/${movieId}`);
   }
 
 }

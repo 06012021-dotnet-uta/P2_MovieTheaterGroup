@@ -13,9 +13,14 @@ import { Movie } from 'src/app/interfaces/movie';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movie?: Movie;
-  id: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-
+  movie: Movie = {
+    movieId: "aa",
+    movieName: "This is movie name",
+    movieImage: "xx"
+  }
+  // id: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  id: string = this.route.snapshot.paramMap.get('id')!;
+  // id: string = 'tt0075029'
 
   constructor(    
     private route: ActivatedRoute,
@@ -23,19 +28,30 @@ export class MovieDetailsComponent implements OnInit {
     private location: Location) { }
 
 
-  ngOnInit(): void {
-    // this.getMovie();
+    
+  ngOnInit(): void { 
+    
+    this.getMovie();
   }
 
-  // getMovie(): void {
-  //   this.movieService.getMovie(this.id)
-  //   .subscribe(
-  //     data=>
-  //     {
-  //       console.log(data);
-  //       this.movie = data;
-  //     }
-  //   )
-  // }
+  getMovie(): void {
+    console.log(this.id);
+    this.movieService.getMovie(this.id)
+    .subscribe(
+      // data=>
+      // {
+      //   console.log(data);
+      //   this.movie = data;
+      //   console.log(this.movie);
+      // }
+      movie => this.movie = movie
+      
+      // this.movie.movieName => movie.movieName;
+      // this.movie?.movieName = movieName 
+
+    )
+    console.log(this.movie);
+    console.log(this.movie.movieName);
+  }
 
 }
