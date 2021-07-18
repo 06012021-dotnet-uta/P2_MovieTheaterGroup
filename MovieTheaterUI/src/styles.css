@@ -7,7 +7,6 @@
     align-items: flex-start;
     align-content: space-evenly;
     margin: 0 auto;
-    width: 70%;
     padding: 10px;
     border: 1px solid black;
 }
@@ -15,6 +14,52 @@
     font-size: 2.5em;
     font-family: 'Overlock SC', cursive;
 }
+.cardTitleSub {
+    font-size: 1.5em;
+}
+.movieCard {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: 0px;
+    transform: scale(1);
+    cursor: pointer;
+}
+.movieCard:hover {
+    box-shadow: rgb(0,149,255) 0px 0px 15px;
+    transition: all .3s ease-in-out;
+    transform: scale(1.05);
+}
+.movieCard img {
+    height: 300px;
+}
+.movieCard span {
+    font-size: 1.5em;
+}
+
+.theaterCard {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: 0px;
+    transform: scale(1);
+    cursor: pointer;
+    margin: 10px;
+}
+.theaterCard:hover {
+    box-shadow: rgb(0,149,255) 0px 0px 15px;
+    transition: all .3s ease-in-out;
+    transform: scale(1.05);
+}
+
 img {
     border-radius: 10px;
+    border: 2px solid black;
 }
