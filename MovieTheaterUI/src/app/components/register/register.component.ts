@@ -39,6 +39,8 @@ export class RegisterComponent implements OnInit {
   AddNewUser() : void {
     this.userevent.emit(this.newUser);
     this.RegisterNewUser(this.newUser);
+    this.newUser = {userId: 0, username: '', passwd: '', firstName: '', lastName: '', roleId: 0
+      };
   }
 
   RegisterNewUser(user: User): void {

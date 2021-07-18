@@ -6,6 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { MessageService } from './message.service';
+import { Observable, of , BehaviorSubject} from 'rxjs';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -27,35 +29,31 @@ export class AppComponent {
     constructor(private userService: UserService, private messageService: MessageService) { }
     admin = false;
     login = false;
-    checklogin(): void {
+    checkLogin() : void {
         this.currentUser = this.userService.GetCurrentUser();
-        if (this.currentUser.userId === 1) {
+
+        // setTimeout(() => {this.currentUser = this.userService.GetCurrentUser();}, 1000);
+            // alert(`current user updated ${this.currentUser.userId}`)
+        // .subscribe((val) => { console.log('called'); });
+
+        if (this.currentUser.roleId === 1) {
             this.admin = true;
         }
-        if (this.currentUser.userId === 0) {
-            this.login = false;
+        // else{ this.admin = false;}
+
+        if (this.currentUser.roleId === 2) {
+            this.login = true;
         }
     }
-    //this.currentUser = this.userService.GetCurrentUser();
-    //alert(`current user id : ${this.currentUser.userId}`)
-    //if (this.currentUser.userId === 1) {
-    //    this.admin = true;
-    //}
-    //else {
-    //    this.admin = false;
-    //}
-
-    //if (this.currentUser.userId === 0) {
-    //    this.login = false;
-    //}
-    //else {
-    //    this.login = true;
-    //}
-
-
     //   currentUser?:User;
     ngOnInit() {
-        this.currentUser = this.userService.GetCurrentUser();
-        alert(`current user id : ${this.currentUser.userId}`)
+        this.admin = false;
+        this.login = false;
+        interval(1000).subscribe(x => this.checkLogin())
+        // setTimeout(() => { this.currentUser = this.userService.GetCurrentUser();
+        //                    this.messageService.add(` current user ${this.currentUser.username}`);
+        //                 }, 1000);
+
     }
+
 }

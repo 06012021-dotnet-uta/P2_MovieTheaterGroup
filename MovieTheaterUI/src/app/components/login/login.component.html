@@ -1,21 +1,21 @@
-<main class="form-signin">
-  <form>
 
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<div class="form-signin">
 
-    <div class="form-floating">
-      <label for="floatingInput">Username </label>
+  <label for="username">user name:</label>
+  <input type="text" [(ngModel)]="currentUser.username" name="username" placeholder=" username">
+  <br>
+  <label for="passwd"> password:</label>
+  <input type="text" [(ngModel)]="currentUser.passwd" name="passwd" placeholder="passwd">
+  <br>
 
-      <input type="text" class="form-control" id="floatingInput" [(ngModel)]="currentUser.username" name="username" placeholder="Username">
-    </div>
-    <div class="form-floating">
-      <label for="floatingPassword">Password</label>
-      <input type="password" class="form-control" id="floatingPassword" [(ngModel)]="currentUser.passwd" name="passwrd" placeholder="Password">
-    </div>
+  <button (click)="LoggedCorrectUser()">Sign in</button>
+  <!-- <button type="submit">Submit</button> -->
+</div>
+<!-- <div >
+  <a routerLink="/login">
+    <h1>GO LOGIN</h1>
+  </a>
+</div> -->
 
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit"
-            (click)="LoggedCorrectUser()">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; TheMovieTheater</p>
-  </form>
-</main>
+
