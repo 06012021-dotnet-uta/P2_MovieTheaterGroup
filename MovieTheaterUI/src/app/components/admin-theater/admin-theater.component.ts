@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { MessageService } from 'src/app/message.service';
 
 @Component({
-  selector: 'app-admin-theater',
+  selector: 'app-admintheater',
   templateUrl: './admin-theater.component.html',
   styleUrls: ['./admin-theater.component.css']
 })
