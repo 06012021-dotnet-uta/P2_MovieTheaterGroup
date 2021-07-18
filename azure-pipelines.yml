@@ -79,7 +79,7 @@ stages:
 
     - script: |
         cd '$(System.DefaultWorkingDirectory)/MovieTheaterUI'
-        npm install -g @angular/cli
+        npm install @angular/cli
         npm install
         ng build
 
