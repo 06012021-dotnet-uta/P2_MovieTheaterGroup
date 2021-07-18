@@ -95,11 +95,9 @@ stages:
         workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
         verbose: true
 
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: 'S:\Users\Greg\Downloads\_work\2\s\MovieTheaterUI'
-        customCommand: 'ng build'
+    - script: |
+        cd '$(System.DefaultWorkingDirectory)\MovieTheaterUI'
+        ng build
 
     - task: AzureRmWebAppDeployment@4
       inputs:
