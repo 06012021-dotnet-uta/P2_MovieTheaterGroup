@@ -23,7 +23,11 @@ export class LogoutComponent implements OnInit {
 
 
   constructor( private userService: UserService,
-               private messageService : MessageService) { }
+  private messageService: MessageService) { }
+
+    DestroyCredentials() {
+        sessionStorage.clear();
+    }
 
   ngOnInit(): void {
   }
@@ -33,6 +37,7 @@ export class LogoutComponent implements OnInit {
     this.messageService.add(`before logout current user:  ${this.logoutUser.username}`);
     //this.userevent.emit(this.logoutUser);
     this.userService.AuthorizedUser(this.logoutUser);
+    this.DestroyCredentials();
     this.messageService.add("BYE BYE");
     this.logoutUser = this.userService.GetCurrentUser();
     this.messageService.add(`After logout current user:  ${this.logoutUser.username}`);

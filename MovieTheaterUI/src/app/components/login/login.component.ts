@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
       );
     };
 
+    SetCredentials(credentials: string) {
+        sessionStorage.setItem('thing', credentials);
+    }
+
     LoggedCorrectUser() : void {
 
       // this.messageService.add(`currentUser before login ${this.currentUser.username}`);
@@ -48,7 +52,8 @@ export class LoginComponent implements OnInit {
         // alert("wrong username or password");
       }else {
         this.messageService.add(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
-        this.userService.AuthorizedUser(this.authorizedUser);
+          this.userService.AuthorizedUser(this.authorizedUser);
+          this.SetCredentials(`${this.authorizedUser.userId},${this.authorizedUser.roleId},${Math.random()}`)
         // alert(` Hi ${this.authorizedUser?.username} Welcome to The Theater Movie app`);
       }
       this.currentUser = {username: '', passwd: ''};
