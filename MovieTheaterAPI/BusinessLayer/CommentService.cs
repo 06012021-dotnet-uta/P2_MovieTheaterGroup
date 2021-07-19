@@ -33,7 +33,7 @@ namespace BusinessLayer
             _comment.Content = comment.Content;
             _comment.MovieId = comment.MovieId;
             _comment.UserId = comment.UserId;
-            _comment.DateMade = comment.DateMade;
+            _comment.DateMade = System.DateTime.Now;
             _context.Comments.Add(_comment);
             await _context.SaveChangesAsync();
         }
