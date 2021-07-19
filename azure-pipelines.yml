@@ -84,6 +84,8 @@ stages:
         command: 'install'
         workingDir: '$(Build.Repository.LocalPath)\MovieTheaterUI'
 
+
+
     - task: CmdLine@2
       inputs:
         script: 'ng build'
@@ -92,7 +94,8 @@ stages:
     # perform unit-tets and publish test and code coverage results
     - script: |
         npx ng test --watch=false --karmaConfig karma.conf.ci.js --code-coverage
-      displayName: 'perform unit tests'    
+      displayName: 'perform unit tests'  
+      workingDirectory: '$(Build.Repository.LocalPath)\MovieTheaterUI'
 
     - task: PublishTestResults@2
       condition: succeededOrFailed()
