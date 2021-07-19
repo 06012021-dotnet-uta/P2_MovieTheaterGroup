@@ -2,7 +2,7 @@ import { freeApiService } from './services/freeapi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
 import { MovieComments } from './classes/moviecomments';
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { MessageService } from './message.service';
@@ -51,5 +51,35 @@ export class AppComponent {
         this.login = false;
         interval(1000).subscribe(x => this.checkLogin())
     }
+
+    logoutUser : User = {
+        userId: 0,
+        username: '',
+        passwd: '',
+        firstName: '',
+        lastName: '',
+        roleId: 0
+      };
+
+      logoutUser1 : User = {
+        userId: 0,
+        username: '',
+        passwd: '',
+        firstName: '',
+        lastName: '',
+        roleId: 0
+      };
+      @Input() userevent = new EventEmitter<User>();
+
+      LogoutUser() : void {
+        this.logoutUser1 = this.userService.GetCurrentUser();
+        this.messageService.add(`before logout current user:  ${this.logoutUser1.username}`);
+        // this.userevent.emit(this.logoutUser);
+        this.messageService.add(`atfter logout current user:  ${this.logoutUser.username}`);
+        this.userService.AuthorizedUser(this.logoutUser);
+        this.messageService.add("BYE BYE");
+        this.logoutUser = this.userService.GetCurrentUser();
+        this.messageService.add(`After logout current user:  ${this.logoutUser.username}`);
+      }
 
 }
