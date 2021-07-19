@@ -29,4 +29,15 @@ export class MovieRatingsComponentComponent implements OnInit {
                 lstMovieRatings => this.lstMovieRatings = lstMovieRatings
             );
     }
+    getRatingsAverage(): string {
+        var sum: number = 0;
+        var listLength: number = 0;
+        if (this.lstMovieRatings != null) {
+            listLength = this.lstMovieRatings?.length;
+            this.lstMovieRatings?.forEach(rating => {
+                sum = sum + parseInt(rating.content, 10);
+            });
+        }
+        return (sum / listLength).toFixed(1);
+    }
 }

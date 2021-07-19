@@ -8,60 +8,60 @@ import { User } from '../interfaces/user';
 import { USERS } from '../mock-data/mock-data';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
-    private authorizedUser : User = {
+    private authorizedUser: User = {
         userId: 0,
         username: '',
         passwd: '',
         firstName: '',
         lastName: '',
         roleId: 0
-      };
+    };
     private usersUrl = 'https://localhost:5001/api/User';  // URL to web api
-    url :string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
+    url: string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
     // url : string = 'https://localhost:5001/api/User/';
     httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
     };
     // constructor(private http: HttpClient) { }
     constructor(private messageService: MessageService,
-      private http: HttpClient) { }
-      // https://localhost:5001/api/User/UserList
+        private http: HttpClient) { }
+    // https://localhost:5001/api/User/UserList
 
     // getting roles from server
-    getUsers() : Observable<User[]> {
-      // return this.http.get<User[]>('https://localhost:5001/api/User');
-      return this.http.get<User[]>(`${this.url}User`);
+    getUsers(): Observable<User[]> {
+        // return this.http.get<User[]>('https://localhost:5001/api/User');
+        return this.http.get<User[]>(`${this.url}User`);
     }
 
 
-  getUser(id : number) : Observable<User>{
-    return this.http.get<User>(`${this.url}User/${id}`);
-    // return this.http.get<User>(`${'https://localhost:5001/api/User'}/${id}`);
-  }
+    getUser(id: number): Observable<User> {
+        return this.http.get<User>(`${this.url}User/${id}`);
+        // return this.http.get<User>(`${'https://localhost:5001/api/User'}/${id}`);
+    }
 
-  AddUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.url}User/CreateNewUser/`, user, this.httpOptions)
-  }
+    AddUser(user: User): Observable<User> {
+        return this.http.post<User>(`${this.url}User/CreateNewUser/`, user, this.httpOptions)
+    }
 
-  // delete
-  DeleteUser(id : number) : Observable<User>{
-    return this.http.delete<User>(`${this.url}User/${id}`);
-    // return this.http.delete<User>(`${'https://localhost:5001/api/User'}/${id}`, this.httpOptions);
-  }
+    // delete
+    DeleteUser(id: number): Observable<User> {
+        return this.http.delete<User>(`${this.url}User/${id}`);
+        // return this.http.delete<User>(`${'https://localhost:5001/api/User'}/${id}`, this.httpOptions);
+    }
 
-  AuthorizedUser(user : User) {
-      this.authorizedUser = user;
-  }
+    AuthorizedUser(user: User) {
+        this.authorizedUser = user;
+    }
 
-  // get current user
-  GetCurrentUser() : User{
-    return this.authorizedUser;
-  }
+    // get current user
+    GetCurrentUser(): User {
+        return this.authorizedUser;
+    }
 
 }
   // update

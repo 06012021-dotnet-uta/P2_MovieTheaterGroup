@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MovieServiceService } from 'src/app/services/movie.service.service';
 import { MovieComments } from 'src/app/interfaces/movieComments';
+import { AppComponent } from '../../app.component';
+import { MessageService } from '../../message.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user';
+import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-movie-comments-component',
@@ -13,14 +18,38 @@ export class MovieCommentsComponentComponent implements OnInit {
 
     lstMovieComments?: MovieComments[];
     @Input() movieId!: string;
+    currentUser?: User = this.userService.GetCurrentUser();
 
     constructor(
         private route: ActivatedRoute,
         private movieService: MovieServiceService,
-        private location: Location) { }
+        private location: Location,
+        private userService: UserService) {
+    }
+
+    admin = false;
+    login = false;
+    checkLogin(): void {
+        this.currentUser = this.userService.GetCurrentUser();
+
+        if (this.currentUser.roleId === 1) {
+            this.admin = true;
+        }
+        else {
+            this.admin = false;
+        }
+
+        if (this.currentUser.roleId === 0) {
+            this.login = false;
+        }
+        else {
+            this.login = true;
+        }
+    }
 
     ngOnInit(): void {
         this.getMovieComments();
+        interval(1000).subscribe(x => this.checkLogin());
     }
 
     getMovieComments(): void {
