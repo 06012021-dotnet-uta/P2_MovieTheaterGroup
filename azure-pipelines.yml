@@ -76,18 +76,18 @@ stages:
     - task: Npm@1
       inputs:
         command: 'custom'
-        workingDir: '$(Agent.BuildDirectory)'
+        workingDir: '$(Build.Repository.LocalPath)\MovieTheaterUI'
         customCommand: 'install -g @angular/cli'
 
     - task: Npm@1
       inputs:
         command: 'install'
-        workingDir: '$(Agent.BuildDirectory)'
+        workingDir: '$(Build.Repository.LocalPath)\MovieTheaterUI'
 
     - task: CmdLine@2
       inputs:
         script: 'ng build'
-        workingDirectory: '$(Agent.BuildDirectory)'
+        workingDirectory: '$(Build.Repository.LocalPath)\MovieTheaterUI'
 
     - task: AzureRmWebAppDeployment@4
       inputs:
@@ -95,4 +95,4 @@ stages:
         azureSubscription: 'Azure subscription 1(3)(4c353618-50cb-4075-901d-8208ba3b139d)'
         appType: 'webApp'
         WebAppName: 'P2MovieTheaterGroup'
-        packageForLinux: '$(Agent.BuildDirectory)\MovieTheaterUI\dist\sampleAPI'
+        packageForLinux: '$(Build.Repository.LocalPath)\MovieTheaterUI\dist\sampleAPI'
