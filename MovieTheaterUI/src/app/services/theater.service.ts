@@ -31,4 +31,9 @@ export class TheaterService {
     getTheaterMovies(theaterId: number): Observable<Movie[]> {
         return this.http.get<Movie[]>(`${this.url.url}Theater/GetMovies/${theaterId}`);
     }
+
+    //adds a theater
+    addTheater(theater: Theater): Observable<Theater> {
+        return this.http.post<Theater>(`${this.url.url}Theater`, theater, this.httpOptions);
+    }
 }

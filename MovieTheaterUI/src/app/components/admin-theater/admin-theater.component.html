@@ -1,11 +1,10 @@
-<!-- <p>user works!</p> -->
-<h2> Users List </h2>
-
-<form class="mainBody" style="width:100%">
-    <table>
+<form *ngif="login" class="mainBody" #newTheaterForm="ngForm" (ngSubmit)="onSubmit()">
+    <table class="theatertable">
         <thead>
-            <tr>Theater Name</tr>
-            <tr>Theater Location</tr>
+            <tr>
+                <td><b>Theater Name</b></td>
+                <td><b>Theater Location</b></td>
+            </tr>
         </thead>
         <tbody>
             <tr *ngFor="let theater of theaters">
@@ -16,29 +15,29 @@
                     {{theater.theaterLoc}}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-Warning">Edit</button>
+                    <button type="button" class="btn btn-warning" style="background-image: var(--bs-gradient)">Edit</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-Danger">Remove</button>
+                    <button type="button" class="btn btn-danger" style="background-image: var(--bs-gradient)">Remove</button>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Theater Name">
-                        <label for="floatingInput">Theater Name</label>
+                        <input type="text" class="form-control" placeholder="New Theater Name" required [(ngModel)]="theaterName" name="theaterName">
+                        <label for="floatingInput">New Theater Name</label>
                         <span class="text-danger"></span>
                     </div>
                 </td>
                 <td>
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Theater Location">
-                        <label for="floatingInput">Theater Location</label>
+                        <input type="text" class="form-control" placeholder="New Theater Location" required [(ngModel)]="theaterLocation" name="theaterLocation">
+                        <label for="floatingInput">New Theater Location</label>
                         <span class="text-danger"></span>
                     </div>
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-Success">Add</button>
+                    <button type="submit" class="btn btn-success" style="background-image: var(--bs-gradient)">Add</button>
                 </td>
             </tr>
         </tbody>
