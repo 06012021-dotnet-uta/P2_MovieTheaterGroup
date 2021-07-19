@@ -19,6 +19,6 @@ export class MovieCommentsService {
 
     addComment(movieComment: MovieCommentsMap): Observable<MovieCommentsMap> {
         console.log(movieComment);
-        return this.http.post<MovieCommentsMap>(`${this.url.url}Comment`, movieComment, this.httpOptions);
+        return this.http.post<MovieCommentsMap>(`${this.url.url}Comment`, movieComment);
     }
 }

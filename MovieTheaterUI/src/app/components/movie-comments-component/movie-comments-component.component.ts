@@ -19,7 +19,14 @@ export class MovieCommentsComponentComponent implements OnInit {
 
     lstMovieComments?: MovieComments[];
     @Input() movieId!: string;
-    currentUser?: User = this.userService.GetCurrentUser();
+    currentUser: User = {
+        userId: 0,
+        username: 'test',
+        passwd: '',
+        firstName: '',
+        lastName: '',
+        roleId: 0
+    };
 
     constructor(
         private route: ActivatedRoute,
@@ -60,7 +67,7 @@ export class MovieCommentsComponentComponent implements OnInit {
     onSubmit(): void {
         const newComment: MovieCommentsMap = {
             movieId: this.movieId,
-            userId: this.currentUser!.userId,
+            userId: this.currentUser.userId,
             content: this.content
         }
         console.log(newComment);
