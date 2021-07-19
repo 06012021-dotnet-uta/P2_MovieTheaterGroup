@@ -31,7 +31,7 @@ export class LogoutComponent implements OnInit {
 
     this.logoutUser = this.userService.GetCurrentUser();
     this.messageService.add(`before logout current user:  ${this.logoutUser.username}`);
-    this.userevent.emit(this.logoutUser);
+    //this.userevent.emit(this.logoutUser);
     this.userService.AuthorizedUser(this.logoutUser);
     this.messageService.add("BYE BYE");
     this.logoutUser = this.userService.GetCurrentUser();
