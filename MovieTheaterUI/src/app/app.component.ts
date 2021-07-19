@@ -2,12 +2,13 @@ import { freeApiService } from './services/freeapi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
 import { MovieComments } from './classes/moviecomments';
-import { Component, OnInit, Output, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ViewEncapsulation, HostBinding } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { MessageService } from './message.service';
 import { Observable, of , BehaviorSubject} from 'rxjs';
 import { interval } from 'rxjs';
+/*import { Dom } from '@angular/core';*/
 
 
 @Component({
@@ -26,7 +27,12 @@ export class AppComponent {
         roleId: 0
     };
 
-    constructor(private userService: UserService, private messageService: MessageService) { }
+    constructor(private userService: UserService, private messageService: MessageService) {
+        const credentials = sessionStorage.getItem('thing')
+        if (credentials) {
+            this.OnsetCredentials(credentials)
+        }
+    }
     admin = false;
     login = false;
     checkLogin() : void {
@@ -80,6 +86,9 @@ export class AppComponent {
         this.messageService.add("BYE BYE");
         this.logoutUser = this.userService.GetCurrentUser();
         this.messageService.add(`After logout current user:  ${this.logoutUser.username}`);
-      }
+    }
 
+    OnsetCredentials(credentials: string) {
+        sessionStorage.setItem('thing', credentials);
+        }
 }

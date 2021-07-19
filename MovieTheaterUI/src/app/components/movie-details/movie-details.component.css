@@ -1,0 +1,30 @@
+img {
+    height: 300px;
+}
+
+.movieCard {
+    width: min-content;
+    text-align: center;
+    height: min-content;
+}
+
+.mainBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.section-title {
+    color: gray;
+}
+.c {
+    margin-left: -15px;
+}
+
+#detail-container {
+    margin: 20px 0 0 20px;
+}
+
+#comment-container {
+    margin-top: 20px;
+    margin-left: 15px;
+}

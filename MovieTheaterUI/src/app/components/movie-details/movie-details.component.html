@@ -1,17 +1,28 @@
 <div class="mainBody">
-    <div>{{movie.movieName}}</div>
-    <div>
+    <div class="movieCard">
+        <img src={{movie.movieImage}} />
+        <span id="movie-name">{{movie.movieName}}</span>
         <app-movie-ratings-component movieId={{movieId}}></app-movie-ratings-component>
     </div>
-    <div>
-        <app-movie-comments-component movieId={{movieId}}></app-movie-comments-component>
+    <div id="detail-container">
+        <div id="description-container">
+            <span class="section-title">Description</span>
+            <div id="description-content">
+                <span>{{description}}</span>
+            </div>
+        </div>
+        <div id="comment-container">
+            <span class="section-title c">Comments</span>
+            <div>
+                <app-movie-comments-component movieId={{movieId}}></app-movie-comments-component>
+            </div>
+        </div>
+        <div id="schedule-container">
+            <app-schedule *ngIf="theaterId"></app-schedule>
+        </div>
     </div>
 </div>
 
 
-<!--<p>movie-details works!</p>
-<div><h1>{{movie.movieName}}</h1></div>
-<div>{{movie.movieImage}}</div>
-<div><img src={{movie.movieImage}} width="500" height="600"/></div>
-<div>#rd Party description goes here</div>-->
+
 

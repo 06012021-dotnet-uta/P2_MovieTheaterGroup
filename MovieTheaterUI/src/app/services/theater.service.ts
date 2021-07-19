@@ -5,6 +5,7 @@ import { Theater } from '../interfaces/theater';
 import { Movie } from '../interfaces/movie';
 import { UrlService } from '../services/url.service';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -30,5 +31,20 @@ export class TheaterService {
     //get movies at a theater
     getTheaterMovies(theaterId: number): Observable<Movie[]> {
         return this.http.get<Movie[]>(`${this.url.url}Theater/GetMovies/${theaterId}`);
+    }
+
+    //adds a theater
+    addTheater(theater: Theater): Observable<Theater> {
+        return this.http.post<Theater>(`${this.url.url}Theater`, theater, this.httpOptions);
+    }
+
+    //updates a theater
+    updateTheater(theater: Theater): Observable<Theater> {
+        return this.http.put<Theater>(`${this.url.url}Theater`, theater.theaterId, this.httpOptions);
+    }
+
+    //deletes a theater
+    deleteTheater(id: number): Observable<Theater> {
+        return this.http.delete<Theater>(`${this.url.url}Theater/${id}`);
     }
 }

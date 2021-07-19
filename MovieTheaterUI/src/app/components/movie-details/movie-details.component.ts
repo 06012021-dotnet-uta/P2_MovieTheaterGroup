@@ -14,7 +14,9 @@ import { Movie } from 'src/app/interfaces/movie';
 export class MovieDetailsComponent implements OnInit {
 
     movie!: Movie;
-    movieId: string = this.route.snapshot.paramMap.get('id')!;
+    movieId: string = this.route.snapshot.paramMap.get('movieId')!;
+    theaterId?: number;
+    description?: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -23,12 +25,23 @@ export class MovieDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.getMovie();
+        this.getDescription();
+        if (this.route.snapshot.paramMap.get('theaterId')) {
+            this.theaterId = parseInt(this.route.snapshot.paramMap.get('theaterId')!, 10);
+        }
     }
 
     getMovie(): void {
         this.movieService.getMovie(this.movieId)
             .subscribe(
                 movie => this.movie = movie
+            );
+    }
+
+    getDescription(): void {
+        this.movieService.getMovieDescription(this.movieId)
+            .subscribe(
+                movie => this.description = movie.summary
             );
     }
 }

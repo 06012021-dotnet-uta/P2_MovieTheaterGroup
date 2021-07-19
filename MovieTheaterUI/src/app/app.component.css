@@ -29,11 +29,21 @@ body {
 
 #mainheader {
     background-color: black;
+    width:100%;
 }
 
 #mainpage {
     height: 100%;
     background-color: ghostwhite;
+}
+
+#mainnav{
+    width: 100%;
+    text-align: right;
+}
+
+#mrmovie{
+    min-width:90px;
 }
 
 html, flex, body, app-root {

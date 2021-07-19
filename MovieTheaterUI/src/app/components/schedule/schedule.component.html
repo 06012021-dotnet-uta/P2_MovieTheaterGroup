@@ -1,10 +1,8 @@
-<div class="mainBody">
-    <div class="cardTitleSub">
-        Available showtimes
-    </div>
-    <div id="schedule-view">
-        <div *ngFor="let schedule of schedules" class="time">
-            <span>{{schedule.showingTime | date:'h:mm'}}</span>
-        </div>
+<div class="section-title">
+    Available showtimes
+</div>
+<div id="schedule-view">
+    <div *ngFor="let schedule of schedules" class="time">
+        <span>{{schedule.showingTime | date:'h:mm'}}</span>
     </div>
 </div>

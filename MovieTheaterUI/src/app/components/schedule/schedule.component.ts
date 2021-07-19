@@ -14,10 +14,8 @@ import { TheaterService } from '../../services/theater.service';
 })
 export class ScheduleComponent implements OnInit {
 
-    //@Input() theaterId!: number;
-    //@Input() movieId!: string;
-    theaterId: number = parseInt(this.route.snapshot.paramMap.get('theaterId')!, 10);
-    movieId: string = this.route.snapshot.paramMap.get('movieId')!;
+    @Input() theaterId!: number;
+    @Input() movieId!: string;
     schedules?: Schedule[] = [];
     theater!: Theater;
     movie!: Movie;
