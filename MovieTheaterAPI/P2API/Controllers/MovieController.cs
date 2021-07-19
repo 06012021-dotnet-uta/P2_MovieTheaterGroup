@@ -49,8 +49,8 @@ namespace P2API.Controllers
         }
 
         // GET api/<MovieController>/5
-        [HttpGet("{id}")]
-        public async Task<IMDBMapAdmin> Get(string id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IMDBMapAdmin> IMDBMovie(string id)
         {
             return await _imdb.IMDBMovieIDAsync(id);
         }
