@@ -6,8 +6,8 @@
 trigger:
 - main
 
-pool: #p1temp
-  vmImage: 'windows-latest'
+pool: p1temp
+  #vmImage: 'windows-latest'
 
 variables:
   solution: 'MovieTheaterAPI/P2API/P2API.sln'
@@ -44,7 +44,7 @@ stages:
         codeCoverageTool: 'Cobertura'
         summaryFileLocation: '**/coburtura/coverage.xml'
 
-    - task: SonarCloudAnalyze@1
+    #- task: SonarCloudAnalyze@1
 
     - task: DotNetCoreCLI@2
       inputs:
@@ -88,26 +88,6 @@ stages:
       inputs:
         script: 'ng build'
         workingDirectory: '$(Build.Repository.LocalPath)\MovieTheaterUI'
-
-    # perform unit-tets and publish test and code coverage results
-    - script: |
-        npx ng test --watch=false --karmaConfig karma.conf.ci.js --code-coverage
-      displayName: 'perform unit tests'    
-
-    - task: PublishTestResults@2
-      condition: succeededOrFailed()
-      inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '**/TESTS-*.xml'
-      displayName: 'publish unit test results'
-
-    - task: PublishCodeCoverageResults@1
-      displayName: 'publish code coverage report'
-      condition: succeededOrFailed()
-      inputs:
-        codeCoverageTool: Cobertura
-        summaryFileLocation: '$(Build.SourcesDirectory)/coverage/cobertura-coverage.xml'
-        failIfCoverageEmpty: true   
 
     - task: AzureRmWebAppDeployment@4
       inputs:
