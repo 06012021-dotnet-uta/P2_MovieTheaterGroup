@@ -36,8 +36,8 @@ const routes: Routes = [
   { path: 'movies/:movieId', component : MovieDetailsComponent},
   { path: 'Comment/GetAllCommentsForMovie/:id', component : MovieCommentsComponentComponent},
   { path: 'Rating/GetAllRaingsForMovie/:id', component : MovieRatingsComponentComponent},
-  { path: 'schedule/:movieId/:theaterId', component: ScheduleComponent }
-
+  { path: 'schedule/:movieId/:theaterId', component: ScheduleComponent },
+  { path: '', component: MovieListComponent }
 ];
 
 @NgModule({
