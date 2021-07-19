@@ -6,3 +6,10 @@ export interface MovieComments {
     dateMade: string,
     username: string
 }
+
+export interface MovieCommentsMap {
+    movieId: string,
+    userId: number,
+    content: string,
+    dateMade: string
+}

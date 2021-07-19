@@ -3,19 +3,19 @@ import { Theater } from 'src/app/interfaces/theater';
 import { TheaterService } from 'src/app/services/theater.service';
 
 @Component({
-  selector: 'app-admin-theater',
-  templateUrl: './admin-theater.component.html',
-  styleUrls: ['./admin-theater.component.css']
+    selector: 'app-admin-theater',
+    templateUrl: './admin-theater.component.html',
+    styleUrls: ['./admin-theater.component.css']
 })
-export class AdminTheaterComponent implements OnInit{
+export class AdminTheaterComponent implements OnInit {
 
     theaters?: Theater[];
 
     theaterName = '';
     theaterLocation = '';
 
-constructor(private theaterService: TheaterService) {
-}
+    constructor(private theaterService: TheaterService) {
+    }
 
     onSubmit(): void {
         const newTheater: Theater = {

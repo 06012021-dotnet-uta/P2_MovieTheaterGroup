@@ -5,6 +5,7 @@ img {
 .movieCard {
     width: min-content;
     text-align: center;
+    height: min-content;
 }
 
 .mainBody {

@@ -13,10 +13,12 @@ import { USERS } from '../mock-data/mock-data';
 export class UserService {
     private authorizedUser: User = {
         userId: 0,
+        //username: 'bricor',
         username: '',
         passwd: '',
         firstName: '',
         lastName: '',
+        //roleId: 2
         roleId: 0
     };
     private usersUrl = 'https://localhost:5001/api/User';  // URL to web api

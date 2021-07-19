@@ -27,6 +27,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { MovieCommentsComponentComponent } from './components/movie-comments-component/movie-comments-component.component';
 import { MovieRatingsComponentComponent } from './components/movie-ratings-component/movie-ratings-component.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -66,7 +67,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     ReactiveFormsModule
   ],
   // providers: [freeApiService],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

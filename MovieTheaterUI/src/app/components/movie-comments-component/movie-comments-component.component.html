@@ -11,9 +11,10 @@
 </div>
 <div *ngIf="login && this.currentUser" id="new-comment">
     <span>{{currentUser.username}}</span>
-    <form>
+    <form (ngSubmit)="onSubmit()" #newCommentForm="ngForm">
         <textarea rows="3" style="width: 80%"
-                  placeholder="Write a comment"></textarea>
+                  placeholder="Write a comment"
+                  requried [(ngModel)]="content" name="comment"></textarea>
         <br />
         <input type="submit" value="Post" />
     </form>

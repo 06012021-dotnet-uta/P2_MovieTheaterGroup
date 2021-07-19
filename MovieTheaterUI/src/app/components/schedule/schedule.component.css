@@ -9,6 +9,7 @@
 
 .time {
     font-size: 1.25em;
+    font-weight: bold;
     background-color: rgb(158,197,255);
     width: min-content;
     padding: 2px 8px 2px 8px;
