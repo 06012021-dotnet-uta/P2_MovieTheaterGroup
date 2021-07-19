@@ -1,11 +1,11 @@
 <div class="mainBody">
     <div id="cards-container">
         <div *ngFor="let movie of movies" class="movieCard"
-             routerLink="../moviedetails/{{movie.movieId}}">
+             routerLink="../movies/{{movie.movieId}}">
             <img src={{movie.movieImage}} />
             <span>{{movie.movieName}}</span>
         </div>
     </div>
 </div>
-  
+
 

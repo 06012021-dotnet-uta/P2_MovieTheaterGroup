@@ -2,11 +2,21 @@
     width: min-content;
 }
 
+#schedule-view {
+    display: flex;
+    flex-direction: row;
+}
+
 .time {
-    font-size: 1.5em;
+    font-size: 1.25em;
     background-color: rgb(158,197,255);
     width: min-content;
     padding: 2px 8px 2px 8px;
     border-radius: 10px;
     border: 1px solid black;
+    margin: 20px 10px 10px 10px;
+}
+
+.cardTitleSub {
+    margin-left: 10px;
 }
