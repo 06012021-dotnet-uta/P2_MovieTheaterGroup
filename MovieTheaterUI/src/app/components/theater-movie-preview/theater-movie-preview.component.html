@@ -1,6 +1,6 @@
 <div class="moviePreviewContainer">
     <div *ngFor="let movie of movies">
-        <div class="previewDetail" routerLink="../schedule/{{movie.movieId}}/{{theaterId}}">
+        <div class="previewDetail" routerLink="../movies/{{movie.movieId}}/{{theaterId}}">
             <img src={{movie.movieImage}} />
             <span>{{movie.movieName}}</span>
         </div>
