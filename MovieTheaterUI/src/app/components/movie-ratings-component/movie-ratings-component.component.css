@@ -2,5 +2,5 @@
     font-size: 1.3em;
 }
 #rating::after {
-    content: " out of 5";
+    content: " out of 5 stars";
 }
