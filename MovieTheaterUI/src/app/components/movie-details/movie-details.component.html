@@ -17,7 +17,9 @@
                 <app-movie-comments-component movieId={{movieId}}></app-movie-comments-component>
             </div>
         </div>
-        <app-schedule *ngIf="theaterId"></app-schedule>
+        <div id="schedule-container">
+            <app-schedule *ngIf="theaterId"></app-schedule>
+        </div>
     </div>
 </div>
 
