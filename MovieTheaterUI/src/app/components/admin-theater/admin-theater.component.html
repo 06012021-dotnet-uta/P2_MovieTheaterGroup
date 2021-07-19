@@ -1,4 +1,5 @@
-<form *ngif="login" class="mainBody" #newTheaterForm="ngForm" (ngSubmit)="onSubmit()">
+{{ checkLogin() }}
+<form class="mainBody" #newTheaterForm="ngForm" (ngSubmit)="onSubmit()">
     <table class="theatertable">
         <thead>
             <tr>
@@ -14,12 +15,12 @@
                 <td>
                     {{theater.theaterLoc}}
                 </td>
-                <td>
-                    <button type="button" class="btn btn-warning" style="background-image: var(--bs-gradient)">Edit</button>
+                <!--<td>
+                    <button (click)="update({{theater.Id}})" type="button" class="btn btn-warning" style="background-image: var(--bs-gradient)">Edit</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" style="background-image: var(--bs-gradient)">Remove</button>
-                </td>
+                    <button (click)="delete({{theater.Id}})" type="button" class="btn btn-danger" style="background-image: var(--bs-gradient)">Remove</button>
+                </td>-->
             </tr>
             <tr>
                 <td>
