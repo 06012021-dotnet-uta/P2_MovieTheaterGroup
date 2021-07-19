@@ -10,6 +10,5 @@ export interface MovieComments {
 export interface MovieCommentsMap {
     movieId: string,
     userId: number,
-    content: string,
-    dateMade: string
+    content: string
 }

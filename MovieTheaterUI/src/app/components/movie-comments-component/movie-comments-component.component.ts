@@ -56,15 +56,12 @@ export class MovieCommentsComponentComponent implements OnInit {
     }
 
     content = '';
-    //    2021-07-19T07:51:31.757Z
-    thisDate = new Date();
 
     onSubmit(): void {
         const newComment: MovieCommentsMap = {
             movieId: this.movieId,
             userId: this.currentUser!.userId,
-            content: this.content,
-            dateMade: this.thisDate.toISOString()
+            content: this.content
         }
         console.log(newComment);
         this.commentService.addComment(newComment);
