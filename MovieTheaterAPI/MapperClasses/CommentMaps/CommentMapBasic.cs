@@ -15,7 +15,6 @@ namespace MapperClasses
         [Required]
         [MaxLength(210)]
         public string Content { get; set; }
-        public DateTime DateMade { get; set; }
     }
 
 }
