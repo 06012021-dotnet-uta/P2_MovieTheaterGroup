@@ -55,6 +55,12 @@ namespace P2API.Controllers
             return await _imdb.IMDBMovieIDAsync(id);
         }
 
+        [HttpGet("{movieId}")]
+        public Movie Movie(string movieId)
+        {
+            return _ms.Movie(movieId);
+        }
+
         // POST api/<MovieController>
         [HttpPost]
         public void Post([FromBody] string value)
