@@ -1,33 +1,30 @@
-
-<h1>NEW USER</h1>
-
-<h1>PLEASE ENTER YOUR INFORMATIONS</h1>
-<div>
-
-  <label for="username">user name:</label>
-  <input type="text" [(ngModel)]="newUser.username" name="username" placeholder=" username">
-  <br>
-  <label for="passwd"> password:</label>
-  <input type="text" [(ngModel)]="newUser.passwd" name="passwd" placeholder="passwd">
-  <br>
-  <label for="firstName">First Name:</label>
-  <input type="text" [(ngModel)]="newUser.firstName" name="firstName" placeholder="firstName">
-  <br>
-  <label for="lastName">Last Name:</label>
-  <input type="text" [(ngModel)]="newUser.lastName" name="lastName" placeholder="lastName">
-  <br>
-  <label for="roleId">user role Id :</label>
-  <input type="number" [(ngModel)]="newUser.roleId" name="roleId" placeholder="roleId">
-  <br>
-  <br><br>
-  <button (click)="AddNewUser()">submit New User</button>
-  <!-- <button type="submit">Submit</button> -->
-</div>
-<!-- <div >
-  <a routerLink="/login">
-    <h1>GO LOGIN</h1>
-  </a>
-</div> -->
+<main class="form-signin">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="signin">
+        <h1 style="text-align:center">Create an Account</h1>
+        <div class="form-floating">
+            <input class="form-control" type="text" [(ngModel)]="newUser.username" name="username" placeholder=" User Name">
+            <label for="floatingInput">User Name</label>
+            <span asp-validation-for="User Name" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" type="text" [(ngModel)]="newUser.passwd" name="passwd" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" type="text" [(ngModel)]="newUser.firstName" name="firstName" placeholder="First Name">
+            <label for="floatingInput">First Name</label>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" type="text" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Last Name">
+            <label for="floatingInput">Last Name</label>
+        </div>
+        <div>
+            <input hidden type="number" [(ngModel)]="newUser.roleId" name="roleId" placeholder="roleId" value="2">
+        </div>
+        <button class="w-100 btn btn-lg btn-success" (click)="AddNewUser()">Sign Up</button>
+    </div>
+</main>
 
 
 
