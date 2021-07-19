@@ -5,7 +5,7 @@
     </div>
     <div id="cards-container">
         <div *ngFor="let movie of movies" class="movieCard"
-             routerLink="../../schedule/{{movie.movieId}}/{{theater.theaterId}}">
+             routerLink="../../movies/{{movie.movieId}}/{{theater.theaterId}}">
             <img src={{movie.movieImage}} />
             <span>{{movie.movieName}}</span>
             <span>{{theater.theaterId}}</span>

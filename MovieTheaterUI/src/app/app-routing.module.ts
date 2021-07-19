@@ -31,8 +31,9 @@ const routes: Routes = [
   { path: 'admin-movie', component: AdminMovieComponent },
   { path: 'admin-theater', component: AdminTheaterComponent },
   { path: 'admin-schedule', component: AdminScheduleComponent },
-  { path: '', component : MovieListComponent},
-  { path: 'movies/:id', component : MovieDetailsComponent},
+  { path: 'movies', component : MovieListComponent},
+  { path: 'movies/:movieId/:theaterId', component : MovieDetailsComponent},
+  { path: 'movies/:movieId', component : MovieDetailsComponent},
   { path: 'Comment/GetAllCommentsForMovie/:id', component : MovieCommentsComponentComponent},
   { path: 'Rating/GetAllRaingsForMovie/:id', component : MovieRatingsComponentComponent},
   { path: 'schedule/:movieId/:theaterId', component: ScheduleComponent }
