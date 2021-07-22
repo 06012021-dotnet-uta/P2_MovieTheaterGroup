@@ -28,4 +28,5 @@ export class AddUserComponent implements OnInit {
     this.userevent.emit(this.newUser);
   }
 
+
 }

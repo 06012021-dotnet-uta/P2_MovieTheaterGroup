@@ -1,0 +1,16 @@
+
+# version: '1.0'
+services:
+  movietheaterapicontainer:
+    #build: ./P2API
+    image: movietheaterapiimage
+    ports: 
+    - "5001:80"
+    environment: 
+    - ConnectionStrings__P2Database=Server=tcp:p2movietheatergroup.database.windows.net,1433;Initial Catalog=P2;Persist Security Info=False;User ID=Group4;Password=Cheeseburger!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    # - ConnectionStrings__AzureDb=Server=tcp:06012021batch-sqldb.database.windows.net,1433;Initial Catalog=06012021BatchDb;Persist Security Info=False;User ID=batch06012021;Password=06012021Batch;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+  
+  movietheaterangularcontainer:
+    image: movietheaterangularimage
+    ports:
+    - "4200:80"

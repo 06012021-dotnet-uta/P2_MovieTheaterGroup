@@ -9,7 +9,8 @@
             <a class="btn btn-outline-fix text-white" *ngIf="!login; else elseBlock" routerLink="/login" routerLinkActive="active">Log In</a>
             <a class="btn btn-outline-fix text-white" *ngIf="!login" routerLink="/register">Register</a>
             <ng-template #elseBlock>
-                <a class="btn btn-outline-fix text-white" routerLink="/logout" routerLinkActive="active">Log Out</a>
+                <!-- <a class="btn btn-outline-fix text-white" routerLink="/logout" routerLinkActive="active">Log Out</a> -->
+                <button (click)="LogoutUser()">Logout</button>
                 <a href="#" class="nav-link text-white">
                     Logged In As: {{this.currentUser.username}}
                 </a>
@@ -24,6 +25,7 @@
         </nav>
     </div>
     <div style="height:100%">
+        <app-messages></app-messages>
         <router-outlet></router-outlet>
     </div>
 </div>
