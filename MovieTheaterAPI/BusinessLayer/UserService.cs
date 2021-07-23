@@ -61,7 +61,10 @@ namespace BusinessLayer
                 var deleteUser = _context.Users.Where(x => x.UserId == user_id).FirstOrDefault();
                 Console.WriteLine(deleteUser);
                 _context.Users.Remove(deleteUser);
-                await _context.SaveChangesAsync(); }
+                await _context.SaveChangesAsync();
+                var remainuser = _context.Users.ToList();
+                Console.WriteLine(remainuser);
+            }
             catch (DbUpdateConcurrencyException ex)
             {
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
@@ -72,6 +75,7 @@ namespace BusinessLayer
                 Console.WriteLine($"There was a problem updating the Db => {ex.InnerException}");
                 return false;
             }
+            
             return true;
         }
 

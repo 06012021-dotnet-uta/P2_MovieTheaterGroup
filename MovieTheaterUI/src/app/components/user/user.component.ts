@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { MessageService } from 'src/app/message.service';
@@ -10,9 +10,12 @@ import { MessageService } from 'src/app/message.service';
 })
 export class UserComponent implements OnInit {
 
-  users? : User[];
+  users : User[] = [];
   selectedUser? : User;
   showAddUser: boolean = false;
+
+  deleteUser : number = 0;
+  @Output() userevent = new EventEmitter<number>();
 
   constructor( private userService: UserService,
                private messageService : MessageService) { }
@@ -26,16 +29,17 @@ export class UserComponent implements OnInit {
   AddUserParent(event: User): void {
     //call the service function to add the user to the Db.
     this.userService.AddUser(event).subscribe(
-      x => this.users?.push(x),
+      x => this.users.push(x),
       y => console.log('there was a problem adding the player')
     );
   }
 
-  DeleteUser(event: number): void {
-    //call the service function to add the user to the Db.
-    this.userService.DeleteUser(event).subscribe(
-      x => this.users?.filter(user => user.userId !== event),
-      y => console.log('there was a problem adding the player')
+  delete(user: User): void {
+      this.messageService.add( `delete user Id :  ${user.userId}`);
+      this.users = this.users.filter(x => x !== user);
+      this.userService.DeleteUser(user.userId).subscribe(
+    //   x => this.users.filter(x => x !== user),
+    //   y => console.log('there was a problem removing the user')
     );
 
   }

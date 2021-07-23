@@ -22,7 +22,7 @@ export class UserService {
         roleId: 0
     };
     private usersUrl = 'https://localhost:5001/api/User';  // URL to web api
-    url: string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
+    private url: string = 'https://p2movietheatergroupapi.azurewebsites.net/api/'
     // url : string = 'https://localhost:5001/api/User/';
     httpOptions = {
         headers: new HttpHeaders({
@@ -52,7 +52,7 @@ export class UserService {
 
     // delete
     DeleteUser(id: number): Observable<User> {
-        return this.http.delete<User>(`${this.url}User/${id}`);
+        return this.http.delete<User>(`${this.url}User/${id}`, this.httpOptions);
         // return this.http.delete<User>(`${'https://localhost:5001/api/User'}/${id}`, this.httpOptions);
     }
 
