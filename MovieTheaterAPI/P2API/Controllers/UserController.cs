@@ -84,16 +84,18 @@ namespace P2API.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        //public void Delete(int id)
-         public async Task<ActionResult<User>> Delete(int id)
+        public void delete(int id)
+         //public async Task<ActionResult<User>> Delete(int id)
         {
-            await _us.DeleteUserAsync(id);
+            _us.DeleteUserAsync(id);
+           // var xx =  _us.UserListAsync();
+         
             //return userList;
             //List<User> userList1 = new List<User>();
             //foreach (var x in userList)
             //{ if (x.UserId != id) userList1.Add(x); }
 
-            return RedirectToAction("UserList");
+            // return RedirectToAction("Get");
         }
     }
 }

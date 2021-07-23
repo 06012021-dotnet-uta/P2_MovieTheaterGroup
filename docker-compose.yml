@@ -2,7 +2,7 @@
 # version: '1.0'
 services:
   movietheaterapicontainer:
-    #build: ./P2API
+    # build: ./MovieTheaterAPI/P2API
     image: movietheaterapiimage
     ports: 
     - "5001:80"
