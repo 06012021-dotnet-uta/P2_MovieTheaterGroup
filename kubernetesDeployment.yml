@@ -16,7 +16,7 @@ spec:
       containers:
       - name: myapp
       # add docker registry image 
-        image: movietheaterangularimage
+        image: dockertokubernetesregistry.azurecr.io/movietheaterangularimage
         resources:
           limits:
             memory: "512Mi"
