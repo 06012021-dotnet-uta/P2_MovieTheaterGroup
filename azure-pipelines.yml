@@ -37,7 +37,6 @@ stages:
       inputs:
         command: 'test'
         projects: '$(solution)'
-        publishTestResults: true
         arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
 
     - task: PublishCodeCoverageResults@1
